@@ -19,8 +19,10 @@ const AccordionList = () => {
     width: "1400px",
     height: "500px",
     backgroundColor: "#D9D9D9",
+    maxHeight: "500px",
 
     borderRadius: "20px",
+    overflow: "auto",
   };
 
   const accordionStyle = {
@@ -94,6 +96,24 @@ const AccordionList = () => {
       department: "College of Computer Studies gihapon",
       birthdate: "Ugma",
     },
+    {
+        id: "3",
+        name: "Kinsa ni",
+        department: "College of Computer Studies gihapon",
+        birthdate: "Ugma",
+      },
+      {
+        id: "4",
+        name: "Kinsa ni",
+        department: "College of Computer Studies gihapon",
+        birthdate: "Ugma",
+      },
+      {
+        id: "5",
+        name: "Kinsa ni",
+        department: "College of Computer Studies gihapon",
+        birthdate: "Ugma",
+      },
   ];
   console.log(hover);
   return (
@@ -133,6 +153,7 @@ const AccordionList = () => {
                 </AccordionHeader>
 
                 <AccordionBody
+                  className="accordionBodyStyle"
                   accordionId={personalInfo.id}
                   style={{ backgroundColor: "#F8F8F8" }}
                 >
