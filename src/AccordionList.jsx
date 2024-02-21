@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/css/AccordionList.css';
 import React, { useState } from 'react';
 import { Button, Container, Accordion, AccordionItem, AccordionBody, AccordionHeader, Input, Card, CardBody, Collapse } from 'reactstrap';
 
@@ -37,7 +38,8 @@ const AccordionList = () => {
     const departmentStyle = 
     {
         /* top right bottom left */
-        margin: '-166px 0px -18px 300px',
+
+        margin: '-166px 0px -18px 450px',
     }
 
     //This is for the opening and closing of the Accordion
@@ -88,9 +90,13 @@ const AccordionList = () => {
         {
             personalInfos.map(personalInfo => (
                 <AccordionItem style={accordionStyle} key={personalInfo.id}>
-                    <AccordionHeader targetId={personalInfo.id} style={accordionHeaderStyle}>
-                        {personalInfo.name}
-                        <input type="checkbox" checked={selectedItems.includes(personalInfo.id)} onChange={() => handleCheckboxChange(personalInfo.id)} />
+                    <AccordionHeader targetId={personalInfo.id} className='d-flex justify-content-evenly align-items-center accordionHeaderStyle'>
+                        <div className='d-flex'>
+                            {personalInfo.name}
+                        </div>
+                        <div className="d-flex align-items-center">
+                            <input type="checkbox" className='align-self-end checkBoxStyle' checked={selectedItems.includes(personalInfo.id)} onChange={() => handleCheckboxChange(personalInfo.id)} />
+                        </div>
                     </AccordionHeader>
                     <AccordionBody accordionId={personalInfo.id} style={{ backgroundColor: '#F8F8F8' }}>
                         <span className='nameLabel'>Name : {personalInfo.name}</span> <br />

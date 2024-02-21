@@ -1,0 +1,12 @@
+.accordionHeaderStyle>button
+{
+    background-color: #FF862D !important;
+    color: #f8f8f8;
+}
+
+.checkBoxStyle
+{
+    position: relative;
+    /* left: 0; */
+    /* margin-left: 300px; */
+}
