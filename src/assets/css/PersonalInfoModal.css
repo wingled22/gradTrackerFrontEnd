@@ -1,0 +1,25 @@
+.header {
+    background-color: orange;
+    color: white;
+  }
+
+
+.modal-body{
+    background-color: #D9D9D9;
+    
+}
+
+.modal-content {
+    width: 1080px;
+}
+  
+  .separator {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .group-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
