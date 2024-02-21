@@ -47,10 +47,20 @@ const AccordionList = () => {
     margin: "-166px 0px -18px 450px",
   };
 
+  // state for the hover of input
+  const [hover, setHover] = useState(false);
+
+  // onHover function
+  const onHover = () => {
+    setHover(!hover);
+  };
+
   //This is for the opening and closing of the Accordion
   const [open, setOpen] = useState("0");
   const toggle = (id) => {
     if (open === id) {
+      setOpen();
+    } else if (hover) {
       setOpen();
     } else {
       setOpen(id);
@@ -85,7 +95,7 @@ const AccordionList = () => {
       birthdate: "Ugma",
     },
   ];
-
+  console.log(hover);
   return (
     <>
       <div
@@ -116,6 +126,8 @@ const AccordionList = () => {
                       className="align-self-end checkBoxStyle"
                       checked={selectedItems.includes(personalInfo.id)}
                       onChange={() => handleCheckboxChange(personalInfo.id)}
+                      onMouseEnter={onHover}
+                      onMouseLeave={onHover}
                     />
                   </div>
                 </AccordionHeader>
