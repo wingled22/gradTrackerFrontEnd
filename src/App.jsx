@@ -19,18 +19,7 @@ function App() {
       <Searchc />
       <AccordionList />
       <Footer />
-      {/* <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
-
-      {
-        <Button
-          color="info"
-          onClick={() => {
-            toggle();
-          }}
-        >
-          View Employment History
-        </Button>
-      }
+     
     </>
   );
 }

@@ -6,12 +6,9 @@ const Bttons = () => {
   return (
     <>
       <PersonalInfoModal />
-      <div style={{ position: 'relative', right: '-515px', bottom: '64px' }}>
+      <div style={{ display: 'flex', position: 'relative', right: '-515px', bottom: '64px' }}>
        <Button color='danger'>Delete</Button>
-</div>
-
-
-
+      </div>
 
     </>
   );
