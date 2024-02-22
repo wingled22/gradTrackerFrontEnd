@@ -128,6 +128,7 @@ const AccordionList = () => {
         }}
       >
         <Container className="accordionContainer" style={containerStyle}>
+          
           <Accordion
             open={open}
             toggle={toggle}

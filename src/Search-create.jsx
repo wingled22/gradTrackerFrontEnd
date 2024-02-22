@@ -6,9 +6,14 @@ const Searchc = () => {
   return (
     <>
     
-      <Input type='text' placeholder='Search Alumni' style={{ width: '600px', marginLeft: '70px', marginTop: '120px' }} />
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+  <Input type='text' placeholder='Search Alumni' style={{ width: '600px', marginLeft:'-503px', marginTop: '131px' }} />
+
+  <Bttons/>
+
+  </div>
+
    
-    <Bttons/>
    
     </> 
   );
