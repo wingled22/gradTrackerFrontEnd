@@ -42,7 +42,7 @@ const PersonalInfoModal = (props) => {
     barangay,
     street,
     email,
-    contact_number,
+    contactNumber,
     department,
     program,
     yearGraduated,
@@ -172,8 +172,14 @@ const PersonalInfoModal = (props) => {
               </Col>
               <Col>
                 <FormGroup>
-                  <Label for="city">City/Municipality</Label>
-                  <Input type="text" name="city" id="city" />
+                  <Label for="municaplity">City/Municipality</Label>
+                  <Input
+                    type="municaplity"
+                    name="municaplity"
+                    id="municaplity"
+                    value={municaplity}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
             </Row>
@@ -181,13 +187,25 @@ const PersonalInfoModal = (props) => {
               <Col>
                 <FormGroup>
                   <Label for="barangay">Barangay</Label>
-                  <Input type="text" name="barangay" id="barangay" />
+                  <Input
+                    type="text"
+                    name="barangay"
+                    id="barangay"
+                    value={barangay}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
               <Col>
                 <FormGroup>
                   <Label for="street">Street</Label>
-                  <Input type="text" name="street" id="street" />
+                  <Input
+                    type="text"
+                    name="street"
+                    id="street"
+                    value={street}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
             </Row>
@@ -197,13 +215,25 @@ const PersonalInfoModal = (props) => {
               <Col>
                 <FormGroup>
                   <Label for="email">Email Address</Label>
-                  <Input type="email" name="email" id="email" />
+                  <Input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={email}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
               <Col>
                 <FormGroup>
                   <Label for="contactNumber">Contact Number</Label>
-                  <Input type="text" name="contactNumber" id="contactNumber" />
+                  <Input
+                    type="text"
+                    name="contactNumber"
+                    id="contactNumber"
+                    value={contactNumber}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
             </Row>
@@ -217,7 +247,8 @@ const PersonalInfoModal = (props) => {
                     type="select"
                     name="department"
                     id="department"
-                    onChange={handleDepartmentChange}
+                    value={department}
+                    onChange={handleChange}
                   >
                     <option value="">Select Department</option>
                     <option value="CCS">CCS</option>
@@ -225,7 +256,10 @@ const PersonalInfoModal = (props) => {
                     {/* {Pag add value for department} */}
                   </Input>
                 </FormGroup>
-
+              </Col>
+            </Row>
+            <Row>
+              <Col>
                 <FormGroup>
                   <Label for="program">Program</Label>
                   <Input
@@ -233,7 +267,7 @@ const PersonalInfoModal = (props) => {
                     name="program"
                     id="program"
                     value={program}
-                    onChange={(e) => setProgram(e.target.value)}
+                    onChange={handleChange}
                   >
                     {department === "CCS" ? (
                       <>
@@ -249,6 +283,18 @@ const PersonalInfoModal = (props) => {
                     )}
                     {/* {if mag add kag department ari diri} */}
                   </Input>
+                </FormGroup>
+              </Col>
+              <Col>
+                <FormGroup>
+                  <Label for="yearGraduated">Year Graduated</Label>
+                  <Input
+                    type="date"
+                    name="yearGraduated"
+                    id="yearGraduated"
+                    value={yearGraduated}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
             </Row>
