@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/AccordionList.css";
 import React, { useState } from "react";
+import EmployeeHistory from "./components/EmpHistory";
+
 import {
   Button,
   Container,
@@ -48,6 +50,12 @@ const AccordionList = () => {
 
     margin: "-166px 0px -18px 450px",
   };
+
+  
+// for modal employee history
+const [modal, setModal] = useState(false);
+const toggleEmpHistory = () => setModal(!modal);
+
 
   // state for the hover of input
   const [hover, setHover] = useState(false);
@@ -118,6 +126,9 @@ const AccordionList = () => {
   console.log(hover);
   return (
     <>
+    <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory}></EmployeeHistory>
+
+
       <div
         style={{
           display: "flex",
@@ -189,10 +200,14 @@ const AccordionList = () => {
                     <br /> <br />
                   </div>
                   <div className="d-flex justify-content-end">
-                    <Button
+                  <Button
                       color="success"
                       className="mr-2"
                       style={buttonStyle}
+
+                      onClick={() => {
+                        toggleEmpHistory();
+                      }}
                     >
                       Employment History
                     </Button>
