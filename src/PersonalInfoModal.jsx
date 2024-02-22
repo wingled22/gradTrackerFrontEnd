@@ -1,79 +1,173 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col } from 'reactstrap';
-import './assets/css/PersonalInfoModal.css'; 
+import React, { useState } from "react";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+} from "reactstrap";
+import "./assets/css/PersonalInfoModal.css";
 
 const PersonalInfoModal = (props) => {
   const [modal, setModal] = useState(false);
-  const [department, setDepartment] = useState('');
-  const [program, setProgram] = useState('');
+
+  const [alumniCredentials, setAlumniCredentials] = useState({
+    firstName: "",
+    lastName: "",
+    middleName: "",
+    province: "",
+    municaplity: "",
+    barangay: "",
+    street: "",
+    email: "",
+    contactNumber: "",
+    department: "",
+    program: "",
+    yearGraduated: "",
+    birthDate: "",
+  });
+
+  // destructure the alumni creds
+  const {
+    firstName,
+    lastName,
+    middleName,
+    province,
+    municaplity,
+    barangay,
+    street,
+    email,
+    contact_number,
+    department,
+    program,
+    yearGraduated,
+    birthDate,
+  } = alumniCredentials;
+
+  // monitor changes in the alumni credentials
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAlumniCredentials((currentCreds) => ({
+      ...currentCreds,
+      [name]: value,
+    }));
+  };
 
   const toggle = () => setModal(!modal);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
   };
 
- 
   const handleDepartmentChange = (e) => {
     const selectedDepartment = e.target.value;
-    setDepartment(selectedDepartment);
-   
-    if (selectedDepartment === 'Commerce') {
-      setProgram('Accountancy');
+    setAlumniCredentials((currentCreds) => ({
+      ...currentCreds,
+      department: value,
+    }));
+
+    if (selectedDepartment === "Commerce") {
+      setAlumniCredentials((currentCreds) => ({
+        ...currentCreds,
+        department: value,
+      }));
     } else {
-      setProgram('');
+      setAlumniCredentials((currentCreds) => ({
+        ...currentCreds,
+        program: value,
+      }));
     }
   };
 
+  console.log(alumniCredentials);
+
   return (
     <div>
-      <Button color="primary" onClick={toggle}>Create</Button>
-      <Modal size='lg' isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} className="header">Personal Information Form</ModalHeader>
-        <ModalBody className='modal-body'>
+      <Button color="primary" onClick={toggle}>
+        Create
+      </Button>
+      <Modal size="lg" isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle} className="personal-info-header">
+          Personal Information Form
+        </ModalHeader>
+        <ModalBody className="modal-body">
           <form onSubmit={handleSubmit}>
             <Row>
               <Col>
                 <FormGroup>
                   <Label for="firstName">First Name</Label>
-                  <Input type="text" name="firstName" id="firstName" />
+                  <Input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    value={firstName}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
               <Col>
                 <FormGroup>
                   <Label for="middleName">Middle Name</Label>
-                  <Input type="text" name="middleName" id="middleName" />
+                  <Input
+                    type="text"
+                    name="middleName"
+                    id="middleName"
+                    value={middleName}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
               <Col>
                 <FormGroup>
                   <Label for="lastName">Last Name</Label>
-                  <Input type="text" name="lastName" id="lastName" />
+                  <Input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    value={lastName}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
             </Row>
             <Row>
-              <Col>
+              {/* <Col>
                 <FormGroup>
                   <Label for="birthPlace">Birth Place</Label>
                   <Input type="text" name="birthPlace" id="birthPlace" />
                 </FormGroup>
-              </Col>
+              </Col> */}
               <Col>
                 <FormGroup>
                   <Label for="birthDate">Birth Date</Label>
-                  <Input type="date" name="birthDate" id="birthDate" />
+                  <Input
+                    type="date"
+                    name="birthDate"
+                    id="birthDate"
+                    value={birthDate}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
             </Row>
-              <hr className="separator" />
-              <h5 className="group-title">Address Information</h5>
+            <hr className="separator" />
+            <h5 className="group-title">Address Information</h5>
             <Row>
               <Col>
                 <FormGroup>
                   <Label for="province">Province</Label>
-                  <Input type="text" name="province" id="province" />
+                  <Input
+                    type="text"
+                    name="province"
+                    id="province"
+                    value={province}
+                    onChange={handleChange}
+                  />
                 </FormGroup>
               </Col>
               <Col>
@@ -119,24 +213,36 @@ const PersonalInfoModal = (props) => {
               <Col>
                 <FormGroup>
                   <Label for="department">Department</Label>
-                  <Input type="select" name="department" id="department" onChange={handleDepartmentChange}>
+                  <Input
+                    type="select"
+                    name="department"
+                    id="department"
+                    onChange={handleDepartmentChange}
+                  >
                     <option value="">Select Department</option>
                     <option value="CCS">CCS</option>
                     <option value="Commerce">Commerce</option>
                     {/* {Pag add value for department} */}
                   </Input>
                 </FormGroup>
-            
-              
+
                 <FormGroup>
                   <Label for="program">Program</Label>
-                  <Input type="select" name="program" id="program" value={program} onChange={(e) => setProgram(e.target.value)}>
-                    {department === 'CCS' ? (
+                  <Input
+                    type="select"
+                    name="program"
+                    id="program"
+                    value={program}
+                    onChange={(e) => setProgram(e.target.value)}
+                  >
+                    {department === "CCS" ? (
                       <>
                         <option value="IT">IT</option>
-                        <option value="Computer Science">Computer Science</option>
+                        <option value="Computer Science">
+                          Computer Science
+                        </option>
                       </>
-                    ) : department === 'Commerce' ? (
+                    ) : department === "Commerce" ? (
                       <option value="Accountancy">Accountancy</option>
                     ) : (
                       <option value="">Select Program</option>
@@ -149,11 +255,13 @@ const PersonalInfoModal = (props) => {
           </form>
         </ModalBody>
         <ModalFooter>
-            <Button color="success" type="submit">Submit</Button>
+          <Button color="success" type="submit">
+            Submit
+          </Button>
         </ModalFooter>
       </Modal>
     </div>
   );
-}
+};
 
 export default PersonalInfoModal;
