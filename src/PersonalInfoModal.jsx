@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col } from 'reactstrap';
-import './assets/css/PersonalInfoModal.css'; 
+import './assets/css/PersonalInfoModal.css';
 
 const PersonalInfoModal = (props) => {
   const [modal, setModal] = useState(false);
@@ -10,7 +10,7 @@ const PersonalInfoModal = (props) => {
     lastName: "",
     middleName: "",
     province: "",
-    municaplity: "",
+    municipality: "",
     barangay: "",
     street: "",
     email: "",
@@ -19,6 +19,7 @@ const PersonalInfoModal = (props) => {
     program: "",
     yearGraduated: "",
     birthDate: "",
+    sex: "",
   });
 
   // destructure the alumni creds
@@ -27,7 +28,7 @@ const PersonalInfoModal = (props) => {
     lastName,
     middleName,
     province,
-    municaplity,
+    municipality,
     barangay,
     street,
     email,
@@ -36,6 +37,7 @@ const PersonalInfoModal = (props) => {
     program,
     yearGraduated,
     birthDate,
+    sex
   } = alumniCredentials;
 
   // monitor changes in the alumni credentials
@@ -58,13 +60,30 @@ const PersonalInfoModal = (props) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(personalFormData)
+        body: JSON.stringify(alumniCredentials)
       });
 
       if (response.ok) {
-        
+
+        setAlumniCredentials({
+          firstName: "",
+          lastName: "",
+          middleName: "",
+          province: "",
+          municipality: "",
+          barangay: "",
+          street: "",
+          email: "",
+          contactNumber: "",
+          department: "",
+          program: "",
+          yearGraduated: "",
+          birthDate: "",
+          sex: "",
+        })
+
         console.log('Form data submitted successfully');
-       
+        alert('Form submitted successfully!');
         setModal(false);
       } else {
 
@@ -72,26 +91,6 @@ const PersonalInfoModal = (props) => {
       }
     } catch (error) {
       console.error('Error submitting form data:', error);
-    }
-  };
-
-  const handleDepartmentChange = (e) => {
-    const selectedDepartment = e.target.value;
-    setAlumniCredentials((currentCreds) => ({
-      ...currentCreds,
-      department: value,
-    }));
-
-    if (selectedDepartment === "Commerce") {
-      setAlumniCredentials((currentCreds) => ({
-        ...currentCreds,
-        department: value,
-      }));
-    } else {
-      setAlumniCredentials((currentCreds) => ({
-        ...currentCreds,
-        program: value,
-      }));
     }
   };
 
@@ -147,12 +146,22 @@ const PersonalInfoModal = (props) => {
               </Col>
             </Row>
             <Row>
-              {/* <Col>
+              <Col>
                 <FormGroup>
-                  <Label for="birthPlace">Birth Place</Label>
-                  <Input type="text" name="birthPlace" id="birthPlace" />
+                  <Label for="sex">Sex</Label>
+                  <Input
+                    type="select"
+                    name="sex"
+                    id="sex"
+                    value={sex}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Sex</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                  </Input>
                 </FormGroup>
-              </Col> */}
+              </Col>
               <Col>
                 <FormGroup>
                   <Label for="birthDate">Birth Date</Label>
@@ -183,12 +192,12 @@ const PersonalInfoModal = (props) => {
               </Col>
               <Col>
                 <FormGroup>
-                  <Label for="municaplity">City/Municipality</Label>
+                  <Label for="municipality">City/Municipality</Label>
                   <Input
-                    type="municaplity"
-                    name="municaplity"
-                    id="municaplity"
-                    value={municaplity}
+                    type="municipality"
+                    name="municipality"
+                    id="municipality"
+                    value={municipality}
                     onChange={handleChange}
                   />
                 </FormGroup>
@@ -312,10 +321,7 @@ const PersonalInfoModal = (props) => {
           </form>
         </ModalBody>
         <ModalFooter>
-          <Button color="success" type="submit">
-            Submit
-          </Button>
-            <Button onClick ={handleSubmit} color="success" type="submit">Submit</Button>
+          <Button onClick={handleSubmit} color="success" type="submit">Submit</Button>
         </ModalFooter>
       </Modal>
     </div>
