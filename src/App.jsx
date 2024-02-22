@@ -1,20 +1,43 @@
-import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-// import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
+import PersonalInfoModal from './PersonalInfoModal.jsx'
+import AccordionList from './AccordionList';
+import { Button, Modal, Row, Table, Form, Input } from "reactstrap";
+import EmployeeHistory from "./components/EmpHistory";
 import Searchc from './Search-create';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   return (
     <>
+      <NavigationBar />
       <Searchc/>
+      <AccordionList />
+      <PersonalInfoModal />
+      <Footer />
+      <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
+
+     {
+        
+
+        <Button
+          color="info"
+          onClick={() => {
+            toggle();
+          }}
+        >
+          View Employment History
+        </Button>
+      }
       
     </>
-  )
+  );
 }
 
-export default App
+export default App;

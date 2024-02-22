@@ -1,0 +1,31 @@
+.accordionHeaderStyle>button
+{
+    background-color: #FF862D !important;
+    color: #f8f8f8;
+    display: grid;
+
+    /* name, checbox, dropdown (this is inside the accordion header)*/
+    grid-template-columns: 50fr 1fr 1fr;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    /* border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px; */
+}
+
+.accordionBodyStyle
+{
+    border-radius: 15px;
+}
+
+.checkBoxStyle
+{
+    /* position: relative; */
+    /* left: 0; */
+    /* margin-start: auto; */
+
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
