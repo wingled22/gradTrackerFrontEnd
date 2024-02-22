@@ -34,6 +34,13 @@ const AccordionList = () => {
     marginBottom: "5px",
   };
 
+  const [hover, setHover] = useState(false);
+
+  // onHover function
+  const onHover = () => {
+      setHover(!hover);
+  };
+
   //This is for the opening and closing of the Accordion
   const [open, setOpen] = useState("0");
   const toggle = (id) => {
@@ -90,7 +97,7 @@ const AccordionList = () => {
             {alumni.map((alumnus) => (
               <AlumnustItem key={alumnus.id} alumnus={alumnus}/>
             ))}
-            
+
           </Accordion>
         </Container>
       </div>
