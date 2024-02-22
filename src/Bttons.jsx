@@ -1,16 +1,16 @@
-import React from 'react';
-import { Button } from 'reactstrap';
+import React from "react";
+import { Button } from "reactstrap";
+import PersonalInfoModal from "./PersonalInfoModal";
 
-
-const Bttons = () => {
+const Bttons = ({ getAlumni }) => {
   return (
     <>
-      <Button color='info' style={{ marginLeft: '420px', marginTop: "-350px" }}>Create</Button>
-      <Button color='danger' style={{ marginLeft: '10px', marginTop: "-350px" }}>Delete</Button>
-
-      
+      <PersonalInfoModal getAlumni={getAlumni} />
+      <div style={{}}>
+        <Button color="danger">Delete</Button>
+      </div>
     </>
   );
-}
+};
 
 export default Bttons;

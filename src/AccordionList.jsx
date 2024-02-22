@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/AccordionList.css";
-import React, { useState } from "react";
+import AlumnustItem from "./AlumnusItem";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -14,12 +15,14 @@ import {
   Collapse,
 } from "reactstrap";
 
-const AccordionList = () => {
+const AccordionList = ({ data, getAlumni }) => {
+  // const [alumni, setAlumni] = useState([]);
+
   const containerStyle = {
-    width: "1400px",
+    width: "1200px",
     height: "500px",
     backgroundColor: "#D9D9D9",
-    maxHeight: "500px",
+    maxHeight: "400px",
 
     borderRadius: "20px",
     overflow: "auto",
@@ -30,26 +33,6 @@ const AccordionList = () => {
     marginBottom: "5px",
   };
 
-  const accordionHeaderStyle = {
-    backgroundColor: "#FF862D !important",
-  };
-
-  const buttonStyle = {
-    margin: "5px",
-    height: "60px",
-    width: "120px",
-    backgroundColor: "#28A745",
-
-    borderRadius: "22px",
-  };
-
-  const departmentStyle = {
-    /* top right bottom left */
-
-    margin: "-166px 0px -18px 450px",
-  };
-
-  // state for the hover of input
   const [hover, setHover] = useState(false);
 
   // onHover function
@@ -61,61 +44,35 @@ const AccordionList = () => {
   const [open, setOpen] = useState("0");
   const toggle = (id) => {
     if (open === id) {
-      setOpen();
+      setOpen("0");
     } else if (hover) {
-      setOpen();
+      setOpen("0");
     } else {
       setOpen(id);
     }
   };
 
   //This is for the check and unchecking of checbox
-  const [selectedItems, setSelectedItems] = useState([]);
-  const handleCheckboxChange = (item) => {
-    const updatedSelection = [...selectedItems];
 
-    if (updatedSelection.includes(item)) {
-      updatedSelection.splice(updatedSelection.indexOf(item), 1);
-    } else {
-      updatedSelection.push(item);
-    }
+  //FETCHING THE DATA OF THE ALUMNI
+  useEffect(() => {
+    getAlumni();
+  }, []);
 
-    setSelectedItems(updatedSelection);
-  };
+  // const getAlumni = async () => {
+  //   try {
 
-  const personalInfos = [
-    {
-      id: "1",
-      name: "Neil Chris Ursal",
-      department: "College of Computer Studies",
-      birthdate: "Karon",
-    },
-    {
-      id: "2",
-      name: "Kinsa ni",
-      department: "College of Computer Studies gihapon",
-      birthdate: "Ugma",
-    },
-    {
-        id: "3",
-        name: "Kinsa ni",
-        department: "College of Computer Studies gihapon",
-        birthdate: "Ugma",
-      },
-      {
-        id: "4",
-        name: "Kinsa ni",
-        department: "College of Computer Studies gihapon",
-        birthdate: "Ugma",
-      },
-      {
-        id: "5",
-        name: "Kinsa ni",
-        department: "College of Computer Studies gihapon",
-        birthdate: "Ugma",
-      },
-  ];
-  console.log(hover);
+  //     const response = await fetch("http://localhost:5134/api/Alumni");
+  //     const data = await response.json();
+  //     setAlumni(data);
+
+  //     console.log(data);
+
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   return (
     <>
       <div
@@ -123,7 +80,7 @@ const AccordionList = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          height: "70vh",
         }}
       >
         <Container className="accordionContainer" style={containerStyle}>
@@ -133,75 +90,10 @@ const AccordionList = () => {
             className="mt-4"
             style={accordionStyle}
           >
-            {personalInfos.map((personalInfo) => (
-              <AccordionItem style={accordionStyle} key={personalInfo.id}>
-                <AccordionHeader
-                  targetId={personalInfo.id}
-                  className="accordionHeaderStyle"
-                >
-                  <div className="d-flex">{personalInfo.name}</div>
-                  <div className="d-flex align-items-center">
-                    <input
-                      type="checkbox"
-                      className="align-self-end checkBoxStyle"
-                      checked={selectedItems.includes(personalInfo.id)}
-                      onChange={() => handleCheckboxChange(personalInfo.id)}
-                      onMouseEnter={onHover}
-                      onMouseLeave={onHover}
-                    />
-                  </div>
-                </AccordionHeader>
+            {data.length === 0 && "No Alumni Information"}
 
-                <AccordionBody
-                  className="accordionBodyStyle"
-                  accordionId={personalInfo.id}
-                  style={{ backgroundColor: "#F8F8F8" }}
-                >
-                  <span className="nameLabel">Name : {personalInfo.name}</span>{" "}
-                  <br />
-                  <span className="birthDateLabel">
-                    Birthdate : {personalInfo.birthdate}
-                  </span>{" "}
-                  <br />
-                  <span className="addressLabel">
-                    Address : Sambag
-                  </span> <br /> <br />
-                  <span className="contactLabel">
-                    Contact Number : 09213123123
-                  </span>{" "}
-                  <br />
-                  <span className="emailAddLabel">
-                    Email Address : emailniya@gmail.com
-                  </span>{" "}
-                  <br /> <br />
-                  <div style={departmentStyle}>
-                    <span className="departmentLabel">
-                      Department : {personalInfo.department}
-                    </span>{" "}
-                    <br />
-                    <span className="programLabel">
-                      Program : Bachelor of Science in Tuba
-                    </span>{" "}
-                    <br />
-                    <span className="yearGraduatedLabel">
-                      Year Graduated : 2024
-                    </span>{" "}
-                    <br /> <br />
-                  </div>
-                  <div className="d-flex justify-content-end">
-                    <Button
-                      color="success"
-                      className="mr-2"
-                      style={buttonStyle}
-                    >
-                      Employment History
-                    </Button>
-                    <Button color="success" style={buttonStyle}>
-                      Update
-                    </Button>
-                  </div>
-                </AccordionBody>
-              </AccordionItem>
+            {data.map((alumnus) => (
+              <AlumnustItem key={alumnus.id} alumnus={alumnus} />
             ))}
           </Accordion>
         </Container>
