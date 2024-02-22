@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
+import PersonalInfoModal from './PersonalInfoModal.jsx'
 import AccordionList from './AccordionList';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <AccordionList/>
+      <NavigationBar />
+      <AccordionList />
+      <PersonalInfoModal />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
