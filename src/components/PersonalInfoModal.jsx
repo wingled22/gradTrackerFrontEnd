@@ -11,7 +11,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import "./assets/css/PersonalInfoModal.css";
+import "../assets/css/PersonalInfoModal.css";
 
 const PersonalInfoModal = ({ getAlumni }) => {
   const [modal, setModal] = useState(false);
