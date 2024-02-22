@@ -11,8 +11,6 @@ import Searchc from './Search-create';
 
 
 function App() {
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
 
   return (
     <>
@@ -21,20 +19,8 @@ function App() {
       <AccordionList />
       <PersonalInfoModal />
       <Footer />
-      <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
-
-     {
-        
-
-        <Button
-          color="info"
-          onClick={() => {
-            toggle();
-          }}
-        >
-          View Employment History
-        </Button>
-      }
+    
+    
       
     </>
   );
