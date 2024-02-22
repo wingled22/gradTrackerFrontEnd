@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/AccordionList.css";
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -15,6 +15,9 @@ import {
 } from "reactstrap";
 
 const AccordionList = () => {
+
+  const [alumni, setAlumni] = useState([]);
+
   const containerStyle = {
     width: "1200px",
     height: "500px",
@@ -61,9 +64,9 @@ const AccordionList = () => {
   const [open, setOpen] = useState("0");
   const toggle = (id) => {
     if (open === id) {
-      setOpen();
+      setOpen("0");
     } else if (hover) {
-      setOpen();
+      setOpen("0");
     } else {
       setOpen(id);
     }
@@ -83,39 +86,29 @@ const AccordionList = () => {
     setSelectedItems(updatedSelection);
   };
 
-  const personalInfos = [
-    {
-      id: "1",
-      name: "Neil Chris Ursal",
-      department: "College of Computer Studies",
-      birthdate: "Karon",
-    },
-    {
-      id: "2",
-      name: "Kinsa ni",
-      department: "College of Computer Studies gihapon",
-      birthdate: "Ugma",
-    },
-    {
-        id: "3",
-        name: "Kinsa ni",
-        department: "College of Computer Studies gihapon",
-        birthdate: "Ugma",
-      },
-      {
-        id: "4",
-        name: "Kinsa ni",
-        department: "College of Computer Studies gihapon",
-        birthdate: "Ugma",
-      },
-      {
-        id: "5",
-        name: "Kinsa ni",
-        department: "College of Computer Studies gihapon",
-        birthdate: "Ugma",
-      },
-  ];
-  console.log(hover);
+
+  //FETCHING THE DATA OF THE ALUMNI
+  useEffect(() => {
+    getAlumni();
+
+  }, []);
+
+  const getAlumni = async () => 
+  {
+    try {
+      
+      const response = await fetch("http://localhost:5134/api/Alumni");
+      const data = await response.json();
+      setAlumni(data);
+
+      console.log(data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   return (
     <>
     
@@ -134,19 +127,21 @@ const AccordionList = () => {
             className="mt-4"
             style={accordionStyle}
           >
-            {personalInfos.map((personalInfo) => (
-              <AccordionItem style={accordionStyle} key={personalInfo.id}>
+            {alumni.length === 0 && "No Alumni Information"}
+
+            {alumni.map((alumnus) => (
+              <AccordionItem style={accordionStyle} key={alumnus.id}>
                 <AccordionHeader
-                  targetId={personalInfo.id}
+                  targetId={alumnus.id.toString()}
                   className="accordionHeaderStyle"
                 >
-                  <div className="d-flex">{personalInfo.name}</div>
+                  <div className="d-flex">{alumnus.firstName} + {alumnus.lastName}</div>
                   <div className="d-flex align-items-center">
                     <input
                       type="checkbox"
                       className="align-self-end checkBoxStyle"
-                      checked={selectedItems.includes(personalInfo.id)}
-                      onChange={() => handleCheckboxChange(personalInfo.id)}
+                      checked={selectedItems.includes(alumnus.id)}
+                      onChange={() => handleCheckboxChange(alumnus.id)}
                       onMouseEnter={onHover}
                       onMouseLeave={onHover}
                     />
@@ -155,37 +150,39 @@ const AccordionList = () => {
 
                 <AccordionBody
                   className="accordionBodyStyle"
-                  accordionId={personalInfo.id}
+                  accordionId={alumnus.id.toString()}
                   style={{ backgroundColor: "#F8F8F8" }}
                 >
-                  <span className="nameLabel">Name : {personalInfo.name}</span>{" "}
+                  <span className="nameLabel">Name : {alumnus.firstName + " " + alumnus.lastName}</span>{" "}
+                  <br />
+                  <span className="genderLabel">Sex : {alumnus.sex}</span>{" "}
                   <br />
                   <span className="birthDateLabel">
-                    Birthdate : {personalInfo.birthdate}
+                    Birthdate : {alumnus.birthDate}
                   </span>{" "}
                   <br />
                   <span className="addressLabel">
-                    Address : Sambag
+                    Address : {alumnus.street + ", " + alumnus.barangay + ", " + alumnus.municipality + ", " + alumnus.province}
                   </span> <br /> <br />
                   <span className="contactLabel">
-                    Contact Number : 09213123123
+                    Contact Number : {alumnus.contactNumber}
                   </span>{" "}
                   <br />
                   <span className="emailAddLabel">
-                    Email Address : emailniya@gmail.com
+                    Email Address : {alumnus.email}
                   </span>{" "}
                   <br /> <br />
                   <div style={departmentStyle}>
                     <span className="departmentLabel">
-                      Department : {personalInfo.department}
+                      Department : {alumnus.department}
                     </span>{" "}
                     <br />
                     <span className="programLabel">
-                      Program : Bachelor of Science in Tuba
+                      Program : {alumnus.program}
                     </span>{" "}
                     <br />
                     <span className="yearGraduatedLabel">
-                      Year Graduated : 2024
+                      Year Graduated : {alumnus.yearGraduated}
                     </span>{" "}
                     <br /> <br />
                   </div>
