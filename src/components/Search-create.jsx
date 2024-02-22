@@ -4,20 +4,21 @@ import Bttons from "./Bttons";
 
 const Searchc = ({ getAlumni }) => {
   return (
-    <div className="container" style={{ width: "1200px" }}>
+    <div className="container" style={{ width: "80%" }}>
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "10fr 1fr 1fr",
-          marginTop: 150,
-          marginBottom: 70,
+          gridTemplateColumns: "20fr 1fr 1fr",
+          marginTop: 120,
+          marginBottom: 25,
+          position: "relative",
         }}
         className=""
       >
         <Input
           type="text"
           placeholder="Search Alumni"
-          style={{ width: "95%" }}
+          style={{ width: "70%" }}
         />
 
         <Bttons getAlumni={getAlumni} />
