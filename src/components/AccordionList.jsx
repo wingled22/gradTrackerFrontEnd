@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/css/AccordionList.css";
+import "../assets/css/AccordionList.css";
 import AlumnustItem from "./AlumnusItem";
 import React, { useEffect, useState } from "react";
+
 import {
   Button,
   Container,
@@ -19,7 +20,7 @@ const AccordionList = ({ data, getAlumni }) => {
   // const [alumni, setAlumni] = useState([]);
 
   const containerStyle = {
-    width: "1200px",
+    width: "79%",
     height: "500px",
     backgroundColor: "#D9D9D9",
     maxHeight: "400px",
@@ -33,6 +34,26 @@ const AccordionList = ({ data, getAlumni }) => {
     marginBottom: "5px",
   };
 
+  const accordionHeaderStyle = {
+    backgroundColor: "#FF862D !important",
+  };
+
+  const buttonStyle = {
+    margin: "5px",
+    height: "60px",
+    width: "120px",
+    backgroundColor: "#28A745",
+
+    borderRadius: "22px",
+  };
+
+  const departmentStyle = {
+    /* top right bottom left */
+
+    margin: "-166px 0px -18px 450px",
+  };
+
+  // state for the hover of input
   const [hover, setHover] = useState(false);
 
   // onHover function
@@ -78,8 +99,8 @@ const AccordionList = ({ data, getAlumni }) => {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          // justifyContent: "center",
+          // alignItems: "center",
           height: "70vh",
         }}
       >
