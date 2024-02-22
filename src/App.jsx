@@ -3,12 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
-import PersonalInfoModal from './PersonalInfoModal.jsx'
-import AccordionList from './AccordionList';
+import PersonalInfoModal from "./PersonalInfoModal.jsx";
+import AccordionList from "./AccordionList";
 import { Button, Modal, Row, Table, Form, Input } from "reactstrap";
 import EmployeeHistory from "./components/EmpHistory";
-import Searchc from './Search-create';
-
+import Searchc from "./Search-create";
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -17,15 +16,13 @@ function App() {
   return (
     <>
       <NavigationBar />
-      <Searchc/>
+      <Searchc />
       <AccordionList />
       <PersonalInfoModal />
       <Footer />
       <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
 
-     {
-        
-
+      {
         <Button
           color="info"
           onClick={() => {
@@ -35,7 +32,6 @@ function App() {
           View Employment History
         </Button>
       }
-      
     </>
   );
 }
