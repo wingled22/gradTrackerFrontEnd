@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/css/AccordionList.css";
+import "../assets/css/AccordionList.css";
 import AlumnustItem from "./AlumnusItem";
 import React, { useEffect, useState } from "react";
 
@@ -53,10 +53,6 @@ const AccordionList = ({ data, getAlumni }) => {
     margin: "-166px 0px -18px 450px",
   };
 
-  
-
-
-
   // state for the hover of input
   const [hover, setHover] = useState(false);
 
@@ -100,8 +96,6 @@ const AccordionList = ({ data, getAlumni }) => {
 
   return (
     <>
-    
-
       <div
         style={{
           display: "flex",

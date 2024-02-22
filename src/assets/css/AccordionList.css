@@ -3,6 +3,7 @@
     background-color: #FF862D !important;
     color: #f8f8f8;
     display: grid;
+    border-radius: 10px !important;
 
     /* name, checbox, dropdown (this is inside the accordion header)*/
     grid-template-columns: 50fr 1fr 1fr;
@@ -14,6 +15,7 @@
     /* border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px; */
 }
+
 
 .accordionBodyStyle
 {
