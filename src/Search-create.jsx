@@ -10,7 +10,7 @@ const Searchc = ({ getAlumni }) => {
           display: "grid",
           gridTemplateColumns: "10fr 1fr 1fr",
           marginTop: 150,
-          marginBottom: 50,
+          marginBottom: 70,
         }}
         className=""
       >
