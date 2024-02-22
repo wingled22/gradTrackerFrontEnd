@@ -28,7 +28,7 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
 
         <ModalBody>
           {
-            <ul class="events">
+            <ul className="events">
               <li>
                 <div className="progress-circle"></div>
                 <span>IT Specialist</span>
