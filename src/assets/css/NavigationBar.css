@@ -1,0 +1,14 @@
+nav{
+    background: #FF862D;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.links{
+    margin-right: 100px
+}
+
+.links-items>li{
+    list-style: none;
+}

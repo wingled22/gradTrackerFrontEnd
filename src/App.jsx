@@ -1,15 +1,18 @@
-// import { useState } from 'react'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
 import PersonalInfoModal from './PersonalInfoModal.jsx'
-import LoginForm from './LoginForm.jsx'
+
 function App() {
   return (
     <>
-        <PersonalInfoModal />
-        <LoginForm />
+      <NavigationBar />
+      <PersonalInfoModal />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
