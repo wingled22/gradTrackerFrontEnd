@@ -20,7 +20,7 @@ const AccordionList = ({ data, getAlumni }) => {
   // const [alumni, setAlumni] = useState([]);
 
   const containerStyle = {
-    width: "1200px",
+    width: "79%",
     height: "500px",
     backgroundColor: "#D9D9D9",
     maxHeight: "400px",
@@ -99,8 +99,8 @@ const AccordionList = ({ data, getAlumni }) => {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          // justifyContent: "center",
+          // alignItems: "center",
           height: "70vh",
         }}
       >
