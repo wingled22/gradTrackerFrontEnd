@@ -1,8 +1,8 @@
-import { Button, Input } from "reactstrap";
+import { Input } from "reactstrap";
 import React from "react";
 import Bttons from "./Bttons";
 
-const Searchc = () => {
+const Searchc = ({ getAlumni }) => {
   return (
     <div className="container" style={{ width: "1200px" }}>
       <div
@@ -10,7 +10,7 @@ const Searchc = () => {
           display: "grid",
           gridTemplateColumns: "10fr 1fr 1fr",
           marginTop: 150,
-          marginBottom: 50,
+          marginBottom: 70,
         }}
         className=""
       >
@@ -20,7 +20,7 @@ const Searchc = () => {
           style={{ width: "95%" }}
         />
 
-        <Bttons />
+        <Bttons getAlumni={getAlumni} />
       </div>
     </div>
   );
