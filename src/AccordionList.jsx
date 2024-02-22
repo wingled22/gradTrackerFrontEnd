@@ -16,10 +16,10 @@ import {
 
 const AccordionList = () => {
   const containerStyle = {
-    width: "1400px",
+    width: "1200px",
     height: "500px",
     backgroundColor: "#D9D9D9",
-    maxHeight: "500px",
+    maxHeight: "400px",
 
     borderRadius: "20px",
     overflow: "auto",
@@ -118,15 +118,17 @@ const AccordionList = () => {
   console.log(hover);
   return (
     <>
+    
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          height: "70vh",
         }}
       >
         <Container className="accordionContainer" style={containerStyle}>
+          
           <Accordion
             open={open}
             toggle={toggle}

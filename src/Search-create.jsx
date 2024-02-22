@@ -5,12 +5,17 @@ import Bttons from './Bttons';
 const Searchc = () => {
   return (
     <>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Input type='text' placeholder='Search Alumni' style={{ width: '450px', marginRight: '280px', marginTop: '-320px' }} />
-    </div>
-    <Bttons/>
+    
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+  <Input type='text' placeholder='Search Alumni' style={{ width: '600px', marginLeft:'-503px', marginTop: '131px' }} />
+
+  <Bttons/>
+
+  </div>
+
    
-    </>
+   
+    </> 
   );
 };
 

@@ -18,9 +18,8 @@ function App() {
       <NavigationBar />
       <Searchc />
       <AccordionList />
-      <PersonalInfoModal />
       <Footer />
-      <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
+      {/* <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
 
       {
         <Button
