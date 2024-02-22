@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-
-import "bootstrap/dist/css/bootstrap.min.css";
+import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
+import PersonalInfoModal from './PersonalInfoModal.jsx'
+import AccordionList from './AccordionList';
 import { Button, Modal, Row, Table, Form, Input } from "reactstrap";
 import EmployeeHistory from "./components/EmpHistory";
-
-
 
 
 function App() {
@@ -15,14 +15,14 @@ function App() {
 
   return (
     <>
+      <NavigationBar />
+      <AccordionList />
+      <PersonalInfoModal />
+      <Footer />
       <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
 
       {
-        /* <div>
-        <FontAwesomeIcon icon={faCoffee} />
-        
-        <span> This is a coffee icon.</span>
-      </div> */
+       
 
         <Button
           color="info"
