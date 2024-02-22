@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/AccordionList.css";
 import AlumnustItem from './AlumnusItem';
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -38,7 +38,7 @@ const AccordionList = () => {
 
   // onHover function
   const onHover = () => {
-      setHover(!hover);
+    setHover(!hover);
   };
 
   //This is for the opening and closing of the Accordion
@@ -62,10 +62,9 @@ const AccordionList = () => {
 
   }, []);
 
-  const getAlumni = async () => 
-  {
+  const getAlumni = async () => {
     try {
-      
+
       const response = await fetch("http://localhost:5134/api/Alumni");
       const data = await response.json();
       setAlumni(data);
@@ -80,7 +79,7 @@ const AccordionList = () => {
 
   return (
     <>
-    
+
       <div
         style={{
           display: "flex",
@@ -95,7 +94,7 @@ const AccordionList = () => {
             {alumni.length === 0 && "No Alumni Information"}
 
             {alumni.map((alumnus) => (
-              <AlumnustItem key={alumnus.id} alumnus={alumnus}/>
+              <AlumnustItem key={alumnus.id} alumnus={alumnus} />
             ))}
 
           </Accordion>
