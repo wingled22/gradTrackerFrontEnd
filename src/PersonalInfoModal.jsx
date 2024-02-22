@@ -28,7 +28,7 @@ const PersonalInfoModal = (props) => {
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>Create</Button>
+      <Button color="primary" style={{marginLeft:'1020px',marginTop:'-70px'}} onClick={toggle}>Create</Button>
       <Modal size='lg' isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} className="header">Personal Information Form</ModalHeader>
         <ModalBody className='modal-body'>
