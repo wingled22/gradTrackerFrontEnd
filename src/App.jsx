@@ -7,6 +7,7 @@ import PersonalInfoModal from './PersonalInfoModal.jsx'
 import AccordionList from './AccordionList';
 import { Button, Modal, Row, Table, Form, Input } from "reactstrap";
 import EmployeeHistory from "./components/EmpHistory";
+import Searchc from './Search-create';
 
 
 function App() {
@@ -16,13 +17,14 @@ function App() {
   return (
     <>
       <NavigationBar />
+      <Searchc/>
       <AccordionList />
       <PersonalInfoModal />
       <Footer />
       <EmployeeHistory toggled={modal} untoggle={toggle}></EmployeeHistory>
 
-      {
-       
+     {
+        
 
         <Button
           color="info"
@@ -33,6 +35,7 @@ function App() {
           View Employment History
         </Button>
       }
+      
     </>
   );
 }
