@@ -14,6 +14,8 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/AccordionList.css";
 import React, { useEffect, useState } from "react";
+import EmployeeHistory from "./components/EmpHistory";
+
 
 const AlumnusItem = ({ alumnus }) => {
 
@@ -49,6 +51,13 @@ const AlumnusItem = ({ alumnus }) => {
         margin: "-166px 0px -18px 450px",
     };
 
+    const [modal, setModal] = useState(false);
+    const toggleEmpHistory = () => setModal(!modal);
+
+
+
+
+
     const [selectedItems, setSelectedItems] = useState([]);
     const handleCheckboxChange = (item) => {
         const updatedSelection = [...selectedItems];
@@ -74,6 +83,8 @@ const AlumnusItem = ({ alumnus }) => {
 
     return (
         <>
+           <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory}></EmployeeHistory>
+
             <AccordionItem style={accordionStyle} key={id}>
                 <AccordionHeader
                     targetId={id.toString()}
@@ -136,6 +147,8 @@ const AlumnusItem = ({ alumnus }) => {
                             color="success"
                             className="mr-2"
                             style={buttonStyle}
+
+                            onClick={toggleEmpHistory}
                         >
                             Employment History
                         </Button>

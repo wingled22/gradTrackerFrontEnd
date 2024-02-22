@@ -2,8 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/AccordionList.css";
 import AlumnustItem from "./AlumnusItem";
 import React, { useEffect, useState } from "react";
-import React, { useState } from "react";
-import EmployeeHistory from "./components/EmpHistory";
 
 import {
   Button,
@@ -56,9 +54,7 @@ const AccordionList = ({ data, getAlumni }) => {
   };
 
   
-// for modal employee history
-const [modal, setModal] = useState(false);
-const toggleEmpHistory = () => setModal(!modal);
+
 
 
   // state for the hover of input
@@ -104,8 +100,7 @@ const toggleEmpHistory = () => setModal(!modal);
 
   return (
     <>
-    <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory}></EmployeeHistory>
-
+    
 
       <div
         style={{
