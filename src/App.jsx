@@ -4,11 +4,13 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import PersonalInfoModal from './PersonalInfoModal.jsx'
+import AccordionList from './AccordionList';
 
 function App() {
   return (
     <>
       <NavigationBar />
+      <AccordionList />
       <PersonalInfoModal />
       <Footer />
     </>
