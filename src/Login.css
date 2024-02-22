@@ -1,0 +1,360 @@
+.login {
+    background-color: #f7fafc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .login .div {
+    background-color: #f7fafc;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+  }
+  
+  .login .overlap {
+    position: absolute;
+    width: 629px;
+    height: 732px;
+    top: 63px;
+    left: 22px;
+  }
+  
+  .login .side-l {
+    position: absolute;
+    width: 629px;
+    height: 732px;
+    top: 0;
+    left: 0;
+  }
+  
+  .login .logo {
+    position: absolute;
+    width: 171px;
+    height: 62px;
+    top: 0;
+    left: 0;
+  }
+  
+  .login .header {
+    position: absolute;
+    width: 180px;
+    height: 77px;
+    top: 237px;
+    left: 57px;
+    background-color: transparent;
+  }
+  
+  .login .element {
+    position: absolute;
+    width: 178px;
+    top: 0;
+    left: 0;
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: 700;
+    color: #171923;
+    font-size: 48px;
+    letter-spacing: 0;
+    line-height: 48px;
+  }
+  
+  .login .form {
+    position: absolute;
+    width: 608px;
+    height: 366px;
+    top: 366px;
+    left: 20px;
+  }
+  
+  .login .input {
+    position: absolute;
+    width: 571px;
+    height: 262px;
+    top: 0;
+    left: 38px;
+  }
+  
+  .login .overlap-group {
+    position: relative;
+    height: 262px;
+  }
+  
+  .login .text-field {
+    position: absolute;
+    width: 570px;
+    height: 145px;
+    top: 0;
+    left: 0;
+  }
+  
+  .login .text-input {
+    position: absolute;
+    width: 528px;
+    height: 55px;
+    top: 34px;
+    left: 0;
+    background-color: #f7fafc;
+    border-radius: 12px;
+    border: 1px solid;
+    border-color: #cbd5e0;
+    box-shadow: var(--inner-shadow-default);
+  }
+  
+  .login .text {
+    display: flex;
+    width: 429px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    position: relative;
+    top: 7px;
+  }
+  
+  .login input[type="email"],
+  .login input[type="password"] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #4a5568;
+    font-size: 16px;
+    letter-spacing: -0.15px;
+    line-height: 20px;
+    white-space: nowrap;
+    padding: 0;
+    outline: none;
+  }
+  
+  .login .top {
+    display: flex;
+    width: 428px;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    top: 0;
+    left: -1px;
+  }
+  
+  .login .left {
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .login .form-field-label {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 4px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .login .label {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #718096;
+    font-size: 16px;
+    letter-spacing: -0.15px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  
+  .login .right {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .login .text-field-2 {
+    position: absolute;
+    width: 571px;
+    height: 143px;
+    top: 120px;
+    left: 0;
+  }
+  
+  .login .text-field-3 {
+    position: relative;
+    width: 459px;
+    height: 44px;
+  }
+  
+  .login .text-input-2 {
+    position: absolute;
+    width: 528px;
+    height: 55px;
+    top: 28px;
+    left: 0;
+    background-color: #f7fafc;
+    border-radius: 12px;
+    border: 1px solid;
+    border-color: #cbd5e0;
+    box-shadow: var(--inner-shadow-default);
+  }
+  
+  .login .text-2 {
+    position: absolute;
+    width: 408px;
+    height: 40px;
+    top: 8px;
+    left: 0;
+  }
+  
+  .login .text-wrapper {
+    position: absolute;
+    height: 20px;
+    top: 9px;
+    left: 12px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #4a5568;
+    font-size: 16px;
+    letter-spacing: -0.15px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  
+  .login .icon-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0px 16px 0px 0px;
+    position: absolute;
+    top: 7px;
+    left: 468px;
+    border-radius: 0px 6px 6px 0px;
+  }
+  
+  .login .divider-vertical {
+    position: relative;
+    width: 1px;
+    height: 40px;
+    background-color: #cfd9e0;
+  }
+  
+  .login .ai-fill-eye {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .login .form-field-label-wrapper {
+    width: 405px;
+    position: absolute;
+    top: -3px;
+    left: -1px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .login .form-field-label-2 {
+    position: relative;
+    width: 37px;
+    height: 20px;
+  }
+  
+  .login .text-wrapper-2 {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #718096;
+    font-size: 16px;
+    letter-spacing: -0.15px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  
+  .login .button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    width: 592px;
+    height: 103px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0px 24px;
+    position: absolute;
+    top: 263px;
+    left: 0;
+    background-color: #1c4532;
+    border-radius: 20px;
+  }
+  
+  .login .children {
+    position: relative;
+    width: fit-content;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #f7fafc;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+  }
+  
+  .login .top-2 {
+    position: absolute;
+    width: 459px;
+    height: 20px;
+    top: 449px;
+    left: 67px;
+  }
+  
+  .login .overlap-2 {
+    position: absolute;
+    width: 770px;
+    height: 1024px;
+    top: 0;
+    left: 670px;
+    background-image: url(./img/right.png);
+    background-size: 100% 100%;
+  }
+  
+  .login .alumni-tracker {
+    position: absolute;
+    width: 595px;
+    top: 608px;
+    left: 123px;
+    font-family: "Poppins-Bold", Helvetica;
+    font-weight: 700;
+    color: transparent;
+    font-size: 90px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .login .span {
+    color: #ffffff;
+  }
+  
+  .login .text-wrapper-3 {
+    color: #ff862d;
+    font-size: 55px;
+  }
+  
+  .login .CRMC-LOGO {
+    position: absolute;
+    width: 512px;
+    height: 470px;
+    top: 139px;
+    left: 139px;
+    object-fit: cover;
+  }
