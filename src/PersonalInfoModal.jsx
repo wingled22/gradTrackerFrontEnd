@@ -2,16 +2,37 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import './assets/css/PersonalInfoModal.css'; 
 
-const PersonalInfoModal = (props) => {
+  const PersonalInfoModal = (prop) => {
   const [modal, setModal] = useState(false);
   const [department, setDepartment] = useState('');
   const [program, setProgram] = useState('');
 
   const toggle = () => setModal(!modal);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
+    try {
+      const response = await fetch('http://localhost:5134/api/Alumni', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(personalFormData)
+      });
+
+      if (response.ok) {
+        
+        console.log('Form data submitted successfully');
+       
+        setModal(false);
+      } else {
+
+        console.error('Failed to submit form data');
+      }
+    } catch (error) {
+      console.error('Error submitting form data:', error);
+    }
   };
 
  
@@ -54,12 +75,6 @@ const PersonalInfoModal = (props) => {
               </Col>
             </Row>
             <Row>
-              <Col>
-                <FormGroup>
-                  <Label for="birthPlace">Birth Place</Label>
-                  <Input type="text" name="birthPlace" id="birthPlace" />
-                </FormGroup>
-              </Col>
               <Col>
                 <FormGroup>
                   <Label for="birthDate">Birth Date</Label>
@@ -149,7 +164,7 @@ const PersonalInfoModal = (props) => {
           </form>
         </ModalBody>
         <ModalFooter>
-            <Button color="success" type="submit">Submit</Button>
+            <Button onClick ={handleSubmit} color="success" type="submit">Submit</Button>
         </ModalFooter>
       </Modal>
     </div>
