@@ -2,7 +2,7 @@ import { Button, Input } from "reactstrap";
 import React from "react";
 import Bttons from "./Bttons";
 
-const Searchc = () => {
+const Searchc = ({ getAlumni }) => {
   return (
     <div className="container" style={{ width: "1200px" }}>
       <div
@@ -20,7 +20,7 @@ const Searchc = () => {
           style={{ width: "95%" }}
         />
 
-        <Bttons />
+        <Bttons getAlumni={getAlumni} />
       </div>
     </div>
   );

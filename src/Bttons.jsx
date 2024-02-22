@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "reactstrap";
 import PersonalInfoModal from "./PersonalInfoModal";
 
-const Bttons = () => {
+const Bttons = ({ getAlumni }) => {
   return (
     <>
-      <PersonalInfoModal />
+      <PersonalInfoModal getAlumni={getAlumni} />
       <div style={{}}>
         <Button color="danger">Delete</Button>
       </div>

@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col } from 'reactstrap';
-import './assets/css/PersonalInfoModal.css';
+import React, { useState } from "react";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+} from "reactstrap";
+import "./assets/css/PersonalInfoModal.css";
 
-const PersonalInfoModal = (props) => {
+const PersonalInfoModal = ({ getAlumni }) => {
   const [modal, setModal] = useState(false);
 
   const [alumniCredentials, setAlumniCredentials] = useState({
@@ -37,7 +48,7 @@ const PersonalInfoModal = (props) => {
     program,
     yearGraduated,
     birthDate,
-    sex
+    sex,
   } = alumniCredentials;
 
   // monitor changes in the alumni credentials
@@ -53,18 +64,16 @@ const PersonalInfoModal = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await fetch('http://localhost:5134/api/Alumni', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5134/api/Alumni", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(alumniCredentials)
+        body: JSON.stringify(alumniCredentials),
       });
 
       if (response.ok) {
-
         setAlumniCredentials({
           firstName: "",
           lastName: "",
@@ -80,17 +89,17 @@ const PersonalInfoModal = (props) => {
           yearGraduated: "",
           birthDate: "",
           sex: "",
-        })
+        });
 
-        console.log('Form data submitted successfully');
-        alert('Form submitted successfully!');
+        console.log("Form data submitted successfully");
+        alert("Form submitted successfully!");
         setModal(false);
+        getAlumni();
       } else {
-
-        console.error('Failed to submit form data');
+        console.error("Failed to submit form data");
       }
     } catch (error) {
-      console.error('Error submitting form data:', error);
+      console.error("Error submitting form data:", error);
     }
   };
 
@@ -321,7 +330,9 @@ const PersonalInfoModal = (props) => {
           </form>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={handleSubmit} color="success" type="submit">Submit</Button>
+          <Button onClick={handleSubmit} color="success" type="submit">
+            Submit
+          </Button>
         </ModalFooter>
       </Modal>
     </div>

@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/AccordionList.css";
-import AlumnustItem from './AlumnusItem';
+import AlumnustItem from "./AlumnusItem";
 import React, { useEffect, useState } from "react";
 import {
   Button,
@@ -15,9 +15,8 @@ import {
   Collapse,
 } from "reactstrap";
 
-const AccordionList = () => {
-
-  const [alumni, setAlumni] = useState([]);
+const AccordionList = ({ data, getAlumni }) => {
+  // const [alumni, setAlumni] = useState([]);
 
   const containerStyle = {
     width: "1200px",
@@ -55,31 +54,27 @@ const AccordionList = () => {
 
   //This is for the check and unchecking of checbox
 
-
   //FETCHING THE DATA OF THE ALUMNI
   useEffect(() => {
     getAlumni();
-
   }, []);
 
-  const getAlumni = async () => {
-    try {
+  // const getAlumni = async () => {
+  //   try {
 
-      const response = await fetch("http://localhost:5134/api/Alumni");
-      const data = await response.json();
-      setAlumni(data);
+  //     const response = await fetch("http://localhost:5134/api/Alumni");
+  //     const data = await response.json();
+  //     setAlumni(data);
 
-      console.log(data);
+  //     console.log(data);
 
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   return (
     <>
-
       <div
         style={{
           display: "flex",
@@ -89,14 +84,17 @@ const AccordionList = () => {
         }}
       >
         <Container className="accordionContainer" style={containerStyle}>
-          <Accordion open={open} toggle={toggle} className="mt-4" style={accordionStyle}>
+          <Accordion
+            open={open}
+            toggle={toggle}
+            className="mt-4"
+            style={accordionStyle}
+          >
+            {data.length === 0 && "No Alumni Information"}
 
-            {alumni.length === 0 && "No Alumni Information"}
-
-            {alumni.map((alumnus) => (
+            {data.map((alumnus) => (
               <AlumnustItem key={alumnus.id} alumnus={alumnus} />
             ))}
-
           </Accordion>
         </Container>
       </div>
