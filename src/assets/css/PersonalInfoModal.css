@@ -1,15 +1,17 @@
 .header {
-    background-color: orange;
+    background-color: #FF862D;
     color: white;
   }
 
 
 .modal-body{
     background-color: #D9D9D9;
+    padding: 30px;
     
 }
 
 .modal-content {
+  
     width: 1080px;
 }
   

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import './assets/css/PersonalInfoModal.css'; 
 
-const ModalForm = (props) => {
+const PersonalInfoModal = (props) => {
   const [modal, setModal] = useState(false);
   const [department, setDepartment] = useState('');
   const [program, setProgram] = useState('');
@@ -156,4 +156,4 @@ const ModalForm = (props) => {
   );
 }
 
-export default ModalForm;
+export default PersonalInfoModal;
