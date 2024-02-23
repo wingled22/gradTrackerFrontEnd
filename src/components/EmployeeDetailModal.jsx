@@ -17,17 +17,16 @@ const EmployeeDetailModal = ({ toggled, untoggle }) => {
         </ModalHeader>
 
         <ModalBody>
-          {
-            <h1>MJ</h1>
+           
 
-
-          }
+           <div className="radius-rectangle text-white">
+            <p className="company fw-bold">Company: </p>
+            <span className="span-company">Accenture</span>
+           </div>
           
 
           
-          <div className="btnAddEmpDetail" >
-          <Button color="primary" >Add Employment</Button>
-          </div>
+          
         </ModalBody>
       </Modal>
     </div>

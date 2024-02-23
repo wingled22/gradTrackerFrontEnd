@@ -10,7 +10,7 @@ import "../assets/css/AccordionList.css";
 import React, { useEffect, useState } from "react";
 import EmployeeHistory from "./EmpHistory";
 
-const AlumnusItem = ({ alumnus }) => {
+const AlumnusItem = ({ alumnus, hover, setHover }) => {
   const {
     id,
     firstName,
@@ -70,13 +70,11 @@ const AlumnusItem = ({ alumnus }) => {
   };
 
   // state for the hover of input
-  const [hover, setHover] = useState(false);
 
   // onHover function
   const onHover = () => {
     setHover(!hover);
   };
-
   return (
     <>
       <EmployeeHistory
