@@ -11,7 +11,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import "./assets/css/PersonalInfoModal.css";
+import "../assets/css/PersonalInfoModal.css";
 
 const PersonalInfoModal = ({ getAlumni }) => {
   const [modal, setModal] = useState(false);
@@ -110,7 +110,7 @@ const PersonalInfoModal = ({ getAlumni }) => {
       <Button color="primary" onClick={toggle}>
         Create
       </Button>
-      <Modal size="lg" isOpen={modal} toggle={toggle}>
+      <Modal size="" isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} className="personal-info-header">
           Personal Information Form
         </ModalHeader>

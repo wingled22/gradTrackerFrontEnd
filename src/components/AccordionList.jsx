@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/css/AccordionList.css";
+import "../assets/css/AccordionList.css";
 import AlumnustItem from "./AlumnusItem";
 import React, { useEffect, useState } from "react";
 
@@ -20,7 +20,7 @@ const AccordionList = ({ data, getAlumni }) => {
   // const [alumni, setAlumni] = useState([]);
 
   const containerStyle = {
-    width: "1200px",
+    width: "79%",
     height: "500px",
     backgroundColor: "#D9D9D9",
     maxHeight: "400px",
@@ -53,17 +53,8 @@ const AccordionList = ({ data, getAlumni }) => {
     margin: "-166px 0px -18px 450px",
   };
 
-  
-
-
-
   // state for the hover of input
   const [hover, setHover] = useState(false);
-
-  // onHover function
-  const onHover = () => {
-    setHover(!hover);
-  };
 
   //This is for the opening and closing of the Accordion
   const [open, setOpen] = useState("0");
@@ -82,8 +73,7 @@ const AccordionList = ({ data, getAlumni }) => {
   //FETCHING THE DATA OF THE ALUMNI
   useEffect(() => {
     getAlumni();
-  }, []);
-
+  }, [data.id]);
   // const getAlumni = async () => {
   //   try {
 
@@ -100,13 +90,11 @@ const AccordionList = ({ data, getAlumni }) => {
 
   return (
     <>
-    
-
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          // justifyContent: "center",
+          // alignItems: "center",
           height: "70vh",
         }}
       >
@@ -120,7 +108,12 @@ const AccordionList = ({ data, getAlumni }) => {
             {data.length === 0 && "No Alumni Information"}
 
             {data.map((alumnus) => (
-              <AlumnustItem key={alumnus.id} alumnus={alumnus} />
+              <AlumnustItem
+                key={alumnus.id}
+                alumnus={alumnus}
+                hover={hover}
+                setHover={setHover}
+              />
             ))}
           </Accordion>
         </Container>
