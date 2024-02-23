@@ -34,10 +34,10 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
           
             <ul className="events">
               <li>
-                <div className="progress-circle"></div>
-                <span>IT Specialist</span>
+                <div className="progress-circle "></div>
+                <span className="EmpJob fw-bold  fs-4">IT Specialist</span>
                 <div className="h-line"></div>
-                <div className="year">2023-present</div>
+                <div className="year fw-bold  fs-4">2023-present</div>
 
                 <div className="buttonAction">
                   <Button

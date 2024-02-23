@@ -18,12 +18,12 @@
 
 
  .btnAddEmpHistory{
-  margin-left: 475px;
+  margin-left: 490px;
  }
 
  /* Customize the width of the modal dialog */
 .modal-dialog {
-    max-width: 700px; /* Adjust the width according to your needs */
+    max-width: 900px; /* Adjust the width according to your needs */
   }
   
   /* Optional: If you want to center the modal horizontally */
@@ -52,8 +52,8 @@
      top: 0;
      transform: translateX(50%);
      border-radius: 50%;
-     background: #fff;
-     border: 1px #ccc solid;
+     background: #545252;
+     border: 1px #cccccc solid;
      width: .8em;
      height: .8em;
   }
@@ -71,7 +71,7 @@
      z-index: 1;
      left: 0;
      height: 100%;
-     border-left: 1px #ccc solid;
+     border-left: 1px #676363 solid;
      width: 300px;
   }
   
