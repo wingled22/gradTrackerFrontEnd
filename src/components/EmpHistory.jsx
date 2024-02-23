@@ -11,7 +11,11 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
 
   // for modal employee history
   const [modalEmpDetail, setModalEmpDetail] = useState(false);
+
   const toggleEmpDetail = () => setModalEmpDetail(!modalEmpDetail);
+
+ 
+
 
   return (
     <div>
@@ -27,7 +31,7 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
         </ModalHeader>
 
         <ModalBody>
-          {
+          
             <ul className="events">
               <li>
                 <div className="progress-circle"></div>
@@ -44,12 +48,27 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
                   >
                     Details
                   </Button>
-                  <Button color="success">Update</Button>
-                  <Button color="danger">Delete</Button>
+                  <Button
+                    color="success"
+                    onClick={() => {
+                     toggleEmpDetail();
+                    }}
+                  >
+                    Update
+                  </Button>
+                  
+                  <Button
+                    color="danger text-white"
+                    onClick={() => {
+                      toggleEmpDetail();
+                    }}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </li>
             </ul>
-          }
+          
 
           <div className="btnAddEmpHistory">
             <Button color="primary">Add Employment</Button>
