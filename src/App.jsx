@@ -14,10 +14,10 @@ function App() {
   const [searchText, setSearchText] = useState('');
 
 
-  const searchAlumni = (search)=>{
+  const searchAlumni = (search) => {
     setAlumni(originalAlumni);
     setAlumni(alums => {
-      return alums.filter(alumnus => 
+      return alums.filter(alumnus =>
         alumnus.firstName.toLowerCase().includes(search.toLowerCase()) ||
         alumnus.lastName.toLowerCase().includes(search.toLowerCase())
       );
@@ -43,7 +43,7 @@ function App() {
     <>
       <NavigationBar />
       <Searchc getAlumni={getAlumni} getSearchValue={searchAlumni} />
-      <AccordionList data={alumni} getAlumni={getAlumni}/>
+      <AccordionList data={alumni} getAlumni={getAlumni} />
       <Footer />
     </>
   );

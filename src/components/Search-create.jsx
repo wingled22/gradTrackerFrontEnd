@@ -6,8 +6,7 @@ const Searchc = ({ getAlumni, getSearchValue }) => {
 
   const [searchText, setSearchText] = useState('');
 
-  const passSearchValue = (e) => 
-  {
+  const passSearchValue = (e) => {
     setSearchText(e);
     getSearchValue(e);
   };
