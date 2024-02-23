@@ -56,11 +56,6 @@ const AccordionList = ({ data, getAlumni }) => {
   // state for the hover of input
   const [hover, setHover] = useState(false);
 
-  // onHover function
-  const onHover = () => {
-    setHover(!hover);
-  };
-
   //This is for the opening and closing of the Accordion
   const [open, setOpen] = useState("0");
   const toggle = (id) => {
@@ -78,8 +73,7 @@ const AccordionList = ({ data, getAlumni }) => {
   //FETCHING THE DATA OF THE ALUMNI
   useEffect(() => {
     getAlumni();
-  }, []);
-
+  }, [data.id]);
   // const getAlumni = async () => {
   //   try {
 
@@ -112,7 +106,12 @@ const AccordionList = ({ data, getAlumni }) => {
             {data.length === 0 && "No Alumni Information"}
 
             {data.map((alumnus) => (
-              <AlumnustItem key={alumnus.id} alumnus={alumnus} />
+              <AlumnustItem
+                key={alumnus.id}
+                alumnus={alumnus}
+                hover={hover}
+                setHover={setHover}
+              />
             ))}
           </Accordion>
         </Container>
