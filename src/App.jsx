@@ -9,18 +9,16 @@ function App() {
   const toggle = () => setModal(!modal);
   const [alumni, setAlumni] = useState([]);
   const [originalAlumni, setOriginalAlumni] = useState([]);
-  const [searched, setSeached] = useState([])
-
-  const [searchText, setSearchText] = useState('');
+  const [mergedName, setMergedName] = useState('');
 
 
   const searchAlumni = (search) => {
     setAlumni(originalAlumni);
     setAlumni(alums => {
-      return alums.filter(alumnus =>
-        alumnus.firstName.toLowerCase().includes(search.toLowerCase()) ||
-        alumnus.lastName.toLowerCase().includes(search.toLowerCase())
-      );
+      return alums.filter(alumnus => {
+        const mergedName = (alumnus.firstName + " " + alumnus.lastName).toLowerCase();
+        return mergedName.includes(search.toLowerCase());
+      });
     });
 
     console.log(alumni);

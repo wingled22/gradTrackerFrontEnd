@@ -93,8 +93,6 @@ const AccordionList = ({ data, getAlumni }) => {
       <div
         style={{
           display: "flex",
-          // justifyContent: "center",
-          // alignItems: "center",
           height: "70vh",
         }}
       >
