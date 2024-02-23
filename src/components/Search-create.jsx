@@ -1,8 +1,17 @@
 import { Input } from "reactstrap";
-import React from "react";
 import Bttons from "./Bttons";
+import React, { useEffect, useState } from "react";
 
-const Searchc = ({ getAlumni }) => {
+const Searchc = ({ getAlumni, getSearchValue }) => {
+
+  const [searchText, setSearchText] = useState('');
+
+  const passSearchValue = (e) => 
+  {
+    setSearchText(e);
+    getSearchValue(e);
+  };
+
   return (
     <div className="container" style={{ width: "79%" }}>
       <div
@@ -17,6 +26,10 @@ const Searchc = ({ getAlumni }) => {
           type="text"
           placeholder="Search Alumni"
           style={{ width: "70%" }}
+          value={searchText}
+          onChange={(e) => {
+            passSearchValue(e.target.value);
+          }}
         />
 
         <Bttons getAlumni={getAlumni} />
