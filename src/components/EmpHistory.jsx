@@ -14,6 +14,9 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
 
   const toggleEmpDetail = () => setModalEmpDetail(!modalEmpDetail);
 
+ 
+
+
   return (
     <div>
       <EmployeeDetailModal
