@@ -11,6 +11,7 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
 
   // for modal employee history
   const [modalEmpDetail, setModalEmpDetail] = useState(false);
+
   const toggleEmpDetail = () => setModalEmpDetail(!modalEmpDetail);
 
   return (
@@ -27,29 +28,42 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
         </ModalHeader>
 
         <ModalBody>
-          {
-            <ul className="events">
-              <li>
-                <div className="progress-circle"></div>
-                <span>IT Specialist</span>
-                <div className="h-line"></div>
-                <div className="year">2023-present</div>
+          <ul className="events">
+            <li>
+              <div className="progress-circle"></div>
+              <span>IT Specialist</span>
+              <div className="h-line"></div>
+              <div className="year">2023-present</div>
 
-                <div className="buttonAction">
-                  <Button
-                    color="info text-white"
-                    onClick={() => {
-                      toggleEmpDetail();
-                    }}
-                  >
-                    Details
-                  </Button>
-                  <Button color="success">Update</Button>
-                  <Button color="danger">Delete</Button>
-                </div>
-              </li>
-            </ul>
-          }
+              <div className="buttonAction">
+                <Button
+                  color="info text-white"
+                  onClick={() => {
+                    toggleEmpDetail();
+                  }}
+                >
+                  Details
+                </Button>
+                <Button
+                  color="success"
+                  onClick={() => {
+                    toggleEmpDetail();
+                  }}
+                >
+                  Update
+                </Button>
+
+                <Button
+                  color="danger text-white"
+                  onClick={() => {
+                    toggleEmpDetail();
+                  }}
+                >
+                  Delete
+                </Button>
+              </div>
+            </li>
+          </ul>
 
           <div className="btnAddEmpHistory">
             <Button color="primary">Add Employment</Button>
