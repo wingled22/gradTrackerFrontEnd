@@ -34,8 +34,6 @@ const PersonalInfoModal = ({
   alumnus,
   isCreate,
 }) => {
-  const [modal, setModal] = useState(toggled);
-
   const [alumniCredentials, setAlumniCredentials] = isCreate
     ? useState({
         firstName: "",
@@ -402,7 +400,7 @@ const PersonalInfoModal = ({
               </Row>
               <ModalFooter>
                 <Button color="success" size="lg" type="submit">
-                  Submit
+                  {isCreate ? "Submit" : "Update"}
                 </Button>
               </ModalFooter>
             </form>
