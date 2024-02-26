@@ -6,9 +6,8 @@
  font-family: "Poppins";
 
 }
-.header{
+.header-empHistory{
    margin: -20px 0px 15px 200px;
-
 }
 .header-name{
 
@@ -37,7 +36,8 @@
 
  .events li { 
     display: flex; 
-    color: #999;
+    color: #000000;
+    font-family: "Poppins";
   }
   
   .events .progress-circle { 
@@ -72,7 +72,7 @@
      left: 0;
      height: 100%;
      border-left: 1px #ccc solid;
-     width: 500px;
+     width: 300px;
   }
   
  
@@ -97,4 +97,5 @@
 
   .buttonAction{
     margin-left: 20px;
+    
   }
