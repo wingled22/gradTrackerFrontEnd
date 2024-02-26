@@ -14,21 +14,24 @@ function App() {
   const toggle = () => setModal(!modal);
   const [alumni, setAlumni] = useState([]);
   const [originalAlumni, setOriginalAlumni] = useState([]);
-  const [mergedName, setMergedName] = useState('');
   const [batchID, setBatchID] = useState([]);
+  const [mergedName, setMergedName] = useState("");
 
-
-  const searchAlumni = (search)=>{
+  const searchAlumni = (search) => {
     setAlumni(originalAlumni);
-    setAlumni(alums => {
-      return alums.filter(alumnus => {
-        const mergedName = (alumnus.firstName + " " + alumnus.lastName).toLowerCase();
+    setAlumni((alums) => {
+      return alums.filter((alumnus) => {
+        const mergedName = (
+          alumnus.firstName +
+          " " +
+          alumnus.lastName
+        ).toLowerCase();
         return mergedName.includes(search.toLowerCase());
       });
     });
 
     console.log(alumni);
-  }
+  };
 
   const getAlumni = async () => {
     try {
@@ -39,7 +42,7 @@ function App() {
 
       console.log(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
@@ -116,11 +119,11 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <NavigationBar />
       <Searchc getAlumni={getAlumni} getSearchValue={searchAlumni} deleteAlumni={batchID.length === 0 ? showErrorDeleteAlumni : showConfirmationDeleteAlumni} />
       <AccordionList data={alumni} getAlumni={getAlumni} addBatchID={addBatchID} deleteBatchID={deleteBatchID}/>
       <Footer />
-      <ToastContainer />
     </>
   );
 }

@@ -7,24 +7,21 @@ import EmployeeDetailModal from "./EmployeeDetailModal";
 import "../assets/css/EmpHistory.css";
 
 const EmployeeHistory = ({ toggled, untoggle }) => {
-  const [modal, setModal] = useState(toggled);
+  // const [modal, setModal] = useState(toggled);
 
   // for modal employee history
   const [modalEmpDetail, setModalEmpDetail] = useState(false);
 
   const toggleEmpDetail = () => setModalEmpDetail(!modalEmpDetail);
 
- 
-
-
   return (
     <div>
       <EmployeeDetailModal
         toggled={modalEmpDetail}
         untoggle={toggleEmpDetail}
-      ></EmployeeDetailModal>
+      />
 
-      <Modal isOpen={toggled} toggled={untoggle} className="modalForm">
+      <Modal isOpen={toggled} toggle={untoggle} className="modalForm">
         <ModalHeader toggle={untoggle} className="EmpHeader text-center">
           <p className="header-empHistory fw-bold">Employment History</p>
           <p className="header-name fw-bold">(Juan Dela Cruz)</p>

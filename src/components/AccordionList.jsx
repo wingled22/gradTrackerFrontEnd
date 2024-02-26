@@ -102,6 +102,7 @@ const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
 
                 addBatchID={addBatchID}
                 deleteBatchID={deleteBatchID}
+                getAlumni={getAlumni}
               />
             ))}
           </Accordion>
