@@ -56,6 +56,8 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
   const [modal, setModal] = useState(false);
   const toggleEmpHistory = () => setModal(!modal);
 
+  const [selectedAlumniID, setSelectedAlumniID] = useState(0);
+
   const [selectedItems, setSelectedItems] = useState([]);
   const handleCheckboxChange = (item) => {
     const updatedSelection = [...selectedItems];
@@ -75,12 +77,19 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
   const onHover = () => {
     setHover(!hover);
   };
+
+  const toggleEmploymentHistory = (id) => 
+  {
+    toggleEmpHistory();
+    setSelectedAlumniID(id);
+  }
   return (
     <>
       <EmployeeHistory
         toggled={modal}
         untoggle={toggleEmpHistory}
-      ></EmployeeHistory>
+        selectedAlumniID = {selectedAlumniID}
+      />
 
       <AccordionItem style={accordionStyle} key={id}>
         <AccordionHeader
@@ -151,7 +160,7 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
               color="success"
               className="mr-2"
               style={buttonStyle}
-              onClick={toggleEmpHistory}
+              onClick={() => toggleEmploymentHistory(id)}
             >
               Employment History
             </Button>
