@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 import PersonalInfoModal from "./PersonalInfoModal";
 import { useState } from "react";
 
-const Bttons = ({ getAlumni }) => {
+const Bttons = ({ getAlumni, deleteAlumni}) => {
   const [modal, setModal] = useState(false);
   const toggleModal = () => setModal(!modal);
   return (
@@ -24,7 +24,7 @@ const Bttons = ({ getAlumni }) => {
         <Button color="primary" onClick={toggleModal}>
           Create
         </Button>
-        <Button color="danger">Delete</Button>
+        <Button color="danger" onClick={() => {deleteAlumni()}}>Delete</Button>
       </div>
     </>
   );
