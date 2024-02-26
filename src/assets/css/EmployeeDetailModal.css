@@ -26,6 +26,8 @@
 .modal-dialog {
     max-width: 700px; /* Adjust the width according to your needs */
   }
+
+  
   
   /* Optional: If you want to center the modal horizontally */
   .modal {
@@ -47,13 +49,11 @@
 
   .radius-rectangle{
     width: 600px;
-    height: 300px;
+    height: 230px;
     background-color: #545151;
     border-radius: 10px;
     font-size: 25px;
 
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
     padding: 5px; /* Adjust padding as needed */
     
     /* top right bottom left */
@@ -61,15 +61,22 @@
  
   }
 
-  .company{
-     
+  
+
+
+  .span-company  , .span-start-Date, .span-end-Date {
     /* top right bottom left */
-    margin: -200px 0px 0px 30px ;
- 
+    margin: -10px 0px 0px 30px;
+  
   }
 
-  .span-company{
-    /* top right bottom left */
-    margin: -200px 0px 0px 20px;
-   
+  .span-position{
+     /* top right bottom left */
+     margin: -10px 0px 0px 53px;
+  }
+
+  .colCompany , .colPosition , .col-end-Date , .col-start-Date {
+     /* top right bottom left */
+     margin: 20px 0px -30px 30px;
+  
   }
