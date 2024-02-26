@@ -9,8 +9,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/AccordionList.css";
 import React, { useEffect, useState } from "react";
 import EmployeeHistory from "./EmpHistory";
+import PersonalInfoModal from "./PersonalInfoModal";
 
-const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID }) => {
+// to format the dates
+const formatDate = (dateString) => {
+  let date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};
+
+const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getAlumni }) => {
   const {
     id,
     firstName,
@@ -54,7 +65,12 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID }) =>
   };
 
   const [modal, setModal] = useState(false);
+  const [updateAlumnusModal, setUpdateAlumnusModal] = useState(false);
   const toggleEmpHistory = () => setModal(!modal);
+  const toggleUpdatePersonalInfoModal = () =>
+    setUpdateAlumnusModal(!updateAlumnusModal);
+
+  const [selectedAlumniID, setSelectedAlumniID] = useState(0);
 
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -88,12 +104,32 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID }) =>
   const onHover = () => {
     setHover(!hover);
   };
+
+  const toggleEmploymentHistory = (id) => 
+  {
+    toggleEmpHistory();
+    setSelectedAlumniID(id);
+  }
   return (
     <>
-      <EmployeeHistory
-        toggled={modal}
-        untoggle={toggleEmpHistory}
-      ></EmployeeHistory>
+      {modal ? (
+        <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory}
+        selectedAlumniID = {selectedAlumniID}
+        />
+      ) : (
+        ""
+      )}
+      {updateAlumnusModal ? (
+        <PersonalInfoModal
+          toggled={updateAlumnusModal}
+          untoggle={toggleUpdatePersonalInfoModal}
+          alumnus={alumnus}
+          isCreate={false}
+          getAlumni={getAlumni}
+        />
+      ) : (
+        ""
+      )}
 
       <AccordionItem style={accordionStyle} key={id}>
         <AccordionHeader
@@ -129,7 +165,7 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID }) =>
           </span>{" "}
           <br />
           <span className="birthDateLabel">
-            <b>Birthdate :</b> {birthDate}
+            <b>Birthdate :</b> {formatDate(birthDate)}
           </span>{" "}
           <br />
           <span className="addressLabel">
@@ -155,7 +191,7 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID }) =>
             </span>{" "}
             <br />
             <span className="yearGraduatedLabel">
-              <b>Year Graduated :</b> {yearGraduated}
+              <b>Year Graduated :</b> {formatDate(yearGraduated)}
             </span>{" "}
             <br /> <br />
           </div>
@@ -164,11 +200,15 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID }) =>
               color="success"
               className="mr-2"
               style={buttonStyle}
-              onClick={toggleEmpHistory}
+              onClick={() => toggleEmploymentHistory(id)}
             >
               Employment History
             </Button>
-            <Button color="success" style={buttonStyle}>
+            <Button
+              color="success"
+              style={buttonStyle}
+              onClick={toggleUpdatePersonalInfoModal}
+            >
               Update
             </Button>
           </div>

@@ -3,11 +3,8 @@ import Bttons from "./Bttons";
 import React, { useEffect, useState } from "react";
 
 const Searchc = ({ getAlumni, getSearchValue, deleteAlumni }) => {
-
   const [searchText, setSearchText] = useState('');
-
-  const passSearchValue = (e) => 
-  {
+  const passSearchValue = (e) => {
     setSearchText(e);
     getSearchValue(e);
   };
@@ -17,7 +14,7 @@ const Searchc = ({ getAlumni, getSearchValue, deleteAlumni }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "20fr 1fr 1fr",
+          gridTemplateColumns: "10fr 1fr 1fr",
           marginTop: 120,
           marginBottom: 25,
         }}
