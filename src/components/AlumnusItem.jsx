@@ -70,6 +70,8 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getA
   const toggleUpdatePersonalInfoModal = () =>
     setUpdateAlumnusModal(!updateAlumnusModal);
 
+  const [selectedAlumniID, setSelectedAlumniID] = useState(0);
+
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleCheckboxChange = (item) => {
@@ -102,10 +104,18 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getA
   const onHover = () => {
     setHover(!hover);
   };
+
+  const toggleEmploymentHistory = (id) => 
+  {
+    toggleEmpHistory();
+    setSelectedAlumniID(id);
+  }
   return (
     <>
       {modal ? (
-        <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory} />
+        <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory}
+        selectedAlumniID = {selectedAlumniID}
+        />
       ) : (
         ""
       )}
@@ -190,7 +200,7 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getA
               color="success"
               className="mr-2"
               style={buttonStyle}
-              onClick={toggleEmpHistory}
+              onClick={() => toggleEmploymentHistory(id)}
             >
               Employment History
             </Button>
