@@ -51,6 +51,8 @@ const PersonalInfoModal = ({ getAlumni }) => {
     sex,
   } = alumniCredentials;
 
+  
+
   // monitor changes in the alumni credentials
   const handleChange = (e) => {
     const { name, value } = e.target;
