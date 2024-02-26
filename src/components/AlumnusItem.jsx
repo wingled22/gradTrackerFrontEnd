@@ -10,7 +10,7 @@ import "../assets/css/AccordionList.css";
 import React, { useEffect, useState } from "react";
 import EmployeeHistory from "./EmpHistory";
 
-const AlumnusItem = ({ alumnus, hover, setHover }) => {
+const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID }) => {
   const {
     id,
     firstName,
@@ -57,13 +57,26 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
   const toggleEmpHistory = () => setModal(!modal);
 
   const [selectedItems, setSelectedItems] = useState([]);
+
   const handleCheckboxChange = (item) => {
     const updatedSelection = [...selectedItems];
 
     if (updatedSelection.includes(item)) {
+      //If unchecked 
+      console.log("removed item");
+
       updatedSelection.splice(updatedSelection.indexOf(item), 1);
+
+      //pass it to other functional component and delete the id that handle this
+      deleteBatchID(item);
     } else {
+
+      //Else checked
+      console.log("added item");
       updatedSelection.push(item);
+
+      //pass it to other functional component and add this to the array
+      addBatchID(item);
     }
 
     setSelectedItems(updatedSelection);
