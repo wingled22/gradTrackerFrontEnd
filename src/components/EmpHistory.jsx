@@ -73,6 +73,7 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
       />
 
 
+
       <Modal isOpen={toggled} toggle={untoggle} className="modalForm">
         <ModalHeader toggle={untoggle} className="EmpHeader text-center">
           <p className="header-empHistory fw-bold">Employment History</p>
