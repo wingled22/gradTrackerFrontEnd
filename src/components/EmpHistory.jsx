@@ -4,6 +4,8 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import EmployeeDetailModal from "./EmployeeDetailModal";
 import AddEmploymentModal from "./AddEmploymentModal";
+import UpdateEmployeeModal from "./UpdateEmploymentModal";
+
 import "../assets/css/EmpHistory.css";
 
 const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
@@ -26,6 +28,11 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   const [modalEmpDetail, setModalEmpDetail] = useState(false);
 
   const toggleEmpDetail = () => setModalEmpDetail(!modalEmpDetail);
+
+  // for modal update employee history
+    const [modalEmpUpdate, setModalEmpUpdate] = useState(false);
+
+    const toggleEmpUpdate = () => setModalEmpUpdate(!modalEmpUpdate);
 
   const handleAddEmployment = (employmentDetails) => {
     // Handle the addition of employment details
@@ -65,13 +72,26 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
         untoggle={toggleEmpDetail}
       ></EmployeeDetailModal>
 
+
+      <UpdateEmployeeModal
+        toggled={modalEmpUpdate}
+        untoggle={toggleEmpUpdate}
+      ></UpdateEmployeeModal>
+
+
+
+      <UpdateEmployeeModal
+        toggled={modalEmpUpdate}
+        untoggle={toggleEmpUpdate}
+      ></UpdateEmployeeModal>
+
+
       <AddEmploymentModal
         isOpen={addEmploymentModalOpen}
         toggle={toggleAddEmploymentModal}
         addEmployment={handleAddEmployment}
 
       />
-
 
 
       <Modal isOpen={toggled} toggle={untoggle} className="modalForm">
@@ -81,42 +101,45 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
         </ModalHeader>
 
         <ModalBody>
-          <ul className="events">
-            <li>
-              <div className="progress-circle"></div>
-              <span>IT Specialist</span>
-              <div className="h-line"></div>
-              <div className="year">2023-present</div>
+          
+            <ul className="events">
+              <li>
+                <div className="progress-circle "></div>
+                <span className="EmpJob fw-bold  fs-4">IT Specialist</span>
+                <div className="h-line"></div>
+                <div className="year fw-bold  fs-4">2023-present</div>
 
-              <div className="buttonAction">
-                <Button
-                  color="info text-white"
-                  onClick={() => {
-                    toggleEmpDetail();
-                  }}
-                >
-                  Details
-                </Button>
-                <Button
-                  color="success"
-                  onClick={() => {
-                    toggleEmpDetail();
-                  }}
-                >
-                  Update
-                </Button>
-
-                <Button
-                  color="danger text-white"
-                  onClick={() => {
-                    toggleEmpDetail();
-                  }}
-                >
-                  Delete
-                </Button>
-              </div>
-            </li>
-          </ul>
+                <div className="buttonAction">
+                  <Button
+                    color="secondary text-white"
+                    onClick={() => {
+                      toggleEmpDetail();
+                    }}
+                  >
+                    Details
+                  </Button>
+                  <Button
+                    color="success"
+                    onClick={() => {
+                     toggleEmpUpdate();
+                    }}
+                  >
+                    Update
+                  </Button>
+                  
+                  <Button
+                    color="danger text-white"
+                    onClick={() => {
+                      toggleEmpDetail();
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </div>
+              </li>
+            </ul>
+          
+          
 
           <div className="btnAddEmpHistory">
             <Button color="primary" onClick={toggleAddEmploymentModal}>
