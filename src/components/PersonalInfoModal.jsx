@@ -15,28 +15,49 @@ import "../assets/css/PersonalInfoModal.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const PersonalInfoModal = ({ getAlumni }) => {
-  const [modal, setModal] = useState(false);
+// to format the dates
+const formatDate = (dateString) => {
+  let date = new Date(dateString);
+  return (
+    date.getFullYear() +
+    "-" +
+    (date.getMonth() + 1).toString().padStart(2, "0") +
+    "-" +
+    date.getDate().toString().padStart(2, "0")
+  );
+};
 
-  const [alumniCredentials, setAlumniCredentials] = useState({
-    firstName: "",
-    lastName: "",
-    middleName: "",
-    province: "",
-    municipality: "",
-    barangay: "",
-    street: "",
-    email: "",
-    contactNumber: "",
-    department: "",
-    program: "",
-    yearGraduated: "",
-    birthDate: "",
-    sex: "",
-  });
+const PersonalInfoModal = ({
+  getAlumni,
+  toggled,
+  untoggle,
+  alumnus,
+  isCreate,
+}) => {
+  const [modal, setModal] = useState(toggled);
+
+  const [alumniCredentials, setAlumniCredentials] = isCreate
+    ? useState({
+        firstName: "",
+        lastName: "",
+        middleName: "",
+        province: "",
+        municipality: "",
+        barangay: "",
+        street: "",
+        email: "",
+        contactNumber: "",
+        department: "",
+        program: "",
+        yearGraduated: "",
+        birthDate: "",
+        sex: "",
+      })
+    : useState(alumnus);
 
   // destructure the alumni creds
   const {
+    id,
     firstName,
     lastName,
     middleName,
@@ -53,16 +74,47 @@ const PersonalInfoModal = ({ getAlumni }) => {
     sex,
   } = alumniCredentials;
 
+  const formattedYearGraduated = formatDate(yearGraduated);
+  const formattedBirthDate = formatDate(birthDate);
+
   // monitor changes in the alumni credentials
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAlumniCredentials((currentCreds) => ({
       ...currentCreds,
-      [name]: value,
+      [name]:
+        name === "yearGraduated"
+          ? formatDate(value)
+          : name === "birthDate"
+          ? formatDate(value)
+          : value,
     }));
   };
 
-  const toggle = () => setModal(!modal);
+  const resetForm = () => {
+    setAlumniCredentials((prevCreds) => ({
+      ...prevCreds,
+      firstName: "",
+      lastName: "",
+      middleName: "",
+      province: "",
+      municipality: "",
+      barangay: "",
+      street: "",
+      email: "",
+      contactNumber: "",
+      department: "",
+      program: "",
+      yearGraduated: "",
+      birthDate: "",
+      sex: "",
+    }));
+  };
+
+  const toggle = () => {
+    resetForm();
+    untoggle();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,45 +127,54 @@ const PersonalInfoModal = ({ getAlumni }) => {
         body: JSON.stringify(alumniCredentials),
       });
 
-      setAlumniCredentials({
-        firstName: "",
-        lastName: "",
-        middleName: "",
-        province: "",
-        municipality: "",
-        barangay: "",
-        street: "",
-        email: "",
-        contactNumber: "",
-        department: "",
-        program: "",
-        yearGraduated: "",
-        birthDate: "",
-        sex: "",
-      });
-
-      toast.success("Registered an alumni successfully");
-      setModal(false);
-      getAlumni();
+      if (response.ok) {
+        toast.success("Registered an alumni successfully");
+        getAlumni();
+      } else {
+        toast.error("Something went wrong"); // Changed this line
+      }
     } catch (error) {
       toast.error("Error submitting form data:" + error);
+    } finally {
+      resetForm();
+      toggle();
     }
   };
 
-  console.log(alumniCredentials);
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5134/api/Alumni/" + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(alumniCredentials),
+      });
+
+      if (response.ok) {
+        toast.success("Updated an alumni successfully");
+        getAlumni();
+      } else {
+        toast.error("Something went wrong");
+      }
+    } catch (error) {
+      toast.error("Error submitting form data:" + error);
+    } finally {
+      resetForm();
+      toggle();
+    }
+  };
 
   return (
     <>
       <div>
-        <Button color="primary" onClick={toggle}>
-          Create
-        </Button>
-        <Modal size="" isOpen={modal} toggle={toggle}>
+        <Modal size="" isOpen={toggled} toggle={toggle}>
           <ModalHeader toggle={toggle} className="personal-info-header">
             Personal Information Form
           </ModalHeader>
           <ModalBody className="modal-body">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={isCreate ? handleSubmit : handleUpdate}>
               <Row>
                 <Col>
                   <FormGroup>
@@ -180,7 +241,7 @@ const PersonalInfoModal = ({ getAlumni }) => {
                       type="date"
                       name="birthDate"
                       id="birthDate"
-                      value={birthDate}
+                      value={isCreate ? birthDate : formattedBirthDate}
                       onChange={handleChange}
                       required
                     />
@@ -332,7 +393,7 @@ const PersonalInfoModal = ({ getAlumni }) => {
                       type="date"
                       name="yearGraduated"
                       id="yearGraduated"
-                      value={yearGraduated}
+                      value={isCreate ? yearGraduated : formattedYearGraduated}
                       onChange={handleChange}
                       required
                     />
@@ -346,7 +407,6 @@ const PersonalInfoModal = ({ getAlumni }) => {
               </ModalFooter>
             </form>
           </ModalBody>
-          {/* <ModalFooter></ModalFooter> */}
         </Modal>
       </div>
     </>

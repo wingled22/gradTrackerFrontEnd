@@ -111,6 +111,7 @@ const AccordionList = ({ data, getAlumni }) => {
                 alumnus={alumnus}
                 hover={hover}
                 setHover={setHover}
+                getAlumni={getAlumni}
               />
             ))}
           </Accordion>

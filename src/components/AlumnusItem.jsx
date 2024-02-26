@@ -9,8 +9,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/AccordionList.css";
 import React, { useEffect, useState } from "react";
 import EmployeeHistory from "./EmpHistory";
+import PersonalInfoModal from "./PersonalInfoModal";
 
-const AlumnusItem = ({ alumnus, hover, setHover }) => {
+// to format the dates
+const formatDate = (dateString) => {
+  let date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};
+
+const AlumnusItem = ({ alumnus, hover, setHover, getAlumni }) => {
   const {
     id,
     firstName,
@@ -54,7 +65,10 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
   };
 
   const [modal, setModal] = useState(false);
+  const [updateAlumnusModal, setUpdateAlumnusModal] = useState(false);
   const toggleEmpHistory = () => setModal(!modal);
+  const toggleUpdatePersonalInfoModal = () =>
+    setUpdateAlumnusModal(!updateAlumnusModal);
 
   const [selectedItems, setSelectedItems] = useState([]);
   const handleCheckboxChange = (item) => {
@@ -77,10 +91,22 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
   };
   return (
     <>
-      <EmployeeHistory
-        toggled={modal}
-        untoggle={toggleEmpHistory}
-      ></EmployeeHistory>
+      {modal ? (
+        <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory} />
+      ) : (
+        ""
+      )}
+      {updateAlumnusModal ? (
+        <PersonalInfoModal
+          toggled={updateAlumnusModal}
+          untoggle={toggleUpdatePersonalInfoModal}
+          alumnus={alumnus}
+          isCreate={false}
+          getAlumni={getAlumni}
+        />
+      ) : (
+        ""
+      )}
 
       <AccordionItem style={accordionStyle} key={id}>
         <AccordionHeader
@@ -116,7 +142,7 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
           </span>{" "}
           <br />
           <span className="birthDateLabel">
-            <b>Birthdate :</b> {birthDate}
+            <b>Birthdate :</b> {formatDate(birthDate)}
           </span>{" "}
           <br />
           <span className="addressLabel">
@@ -142,7 +168,7 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
             </span>{" "}
             <br />
             <span className="yearGraduatedLabel">
-              <b>Year Graduated :</b> {yearGraduated}
+              <b>Year Graduated :</b> {formatDate(yearGraduated)}
             </span>{" "}
             <br /> <br />
           </div>
@@ -155,7 +181,11 @@ const AlumnusItem = ({ alumnus, hover, setHover }) => {
             >
               Employment History
             </Button>
-            <Button color="success" style={buttonStyle}>
+            <Button
+              color="success"
+              style={buttonStyle}
+              onClick={toggleUpdatePersonalInfoModal}
+            >
               Update
             </Button>
           </div>

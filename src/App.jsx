@@ -34,10 +34,8 @@ function App() {
       const data = await response.json();
       setAlumni(data);
       setOriginalAlumni(data);
-
-      console.log(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
