@@ -12,8 +12,8 @@ const EmployeeDetailModal = ({ toggled, untoggle }) => {
     <div>
       <Modal isOpen={toggled} toggled={untoggle} className="EmpDetailmodalForm">
         <ModalHeader toggle={untoggle} className="EmpDetailHeader text-center">
-          <p className="header-empDetail fw-bold">Employment Detail</p>
-          <p className="header-name fw-bold">(Juan Dela Cruz)</p>
+          <p className="header-empDetail fw-bold fs-1">Employment Detail</p>
+          <p className="header-name fw-bold fs-4">(Juan Dela Cruz)</p>
         </ModalHeader>
 
         <ModalBody>

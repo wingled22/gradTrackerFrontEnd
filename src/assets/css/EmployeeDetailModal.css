@@ -7,7 +7,7 @@
 
 }
 .header-empDetail{
-   margin: -20px 0px 15px 200px;
+   margin: -10px 0px 25px 250px;
 
 }
 .header-name{
@@ -35,6 +35,11 @@
     align-items: center;
     justify-content: center;
   }
+
+
+  .btn-close{
+    background-color: aliceblue;
+  }
   
 
  
@@ -48,7 +53,7 @@
   }
 
   .radius-rectangle{
-    width: 600px;
+    width: 780px;
     height: 230px;
     background-color: #545151;
     border-radius: 10px;

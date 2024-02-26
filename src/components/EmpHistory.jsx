@@ -39,8 +39,8 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
 
       <Modal isOpen={toggled} toggled={untoggle} className="modalForm">
         <ModalHeader toggle={untoggle} className="EmpHeader text-center">
-          <p className="header-empHistory fw-bold">Employment History</p>
-          <p className="header-name fw-bold">(Juan Dela Cruz)</p>
+          <p className="header-empHistory fw-bold fs-3">Employment History</p>
+          <p className="header-name fw-bold fs-6">(Juan Dela Cruz)</p>
         </ModalHeader>
 
         <ModalBody>
@@ -54,7 +54,7 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
 
                 <div className="buttonAction">
                   <Button
-                    color="info text-white"
+                    color="secondary text-white"
                     onClick={() => {
                       toggleEmpDetail();
                     }}
