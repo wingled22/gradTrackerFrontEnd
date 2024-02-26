@@ -12,6 +12,8 @@ import {
   Col,
 } from "reactstrap";
 import "../assets/css/PersonalInfoModal.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PersonalInfoModal = ({ getAlumni }) => {
   const [modal, setModal] = useState(false);
