@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import EmployeeDetailModal from "./EmployeeDetailModal";
+import UpdateEmployeeModal from "./UpdateEmploymentModal";
 
 import "../assets/css/EmpHistory.css";
 
@@ -14,6 +15,11 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
 
   const toggleEmpDetail = () => setModalEmpDetail(!modalEmpDetail);
 
+  // for modal update employee history
+    const [modalEmpUpdate, setModalEmpUpdate] = useState(false);
+
+    const toggleEmpUpdate = () => setModalEmpUpdate(!modalEmpUpdate);
+
  
 
 
@@ -23,6 +29,13 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
         toggled={modalEmpDetail}
         untoggle={toggleEmpDetail}
       ></EmployeeDetailModal>
+
+
+      <UpdateEmployeeModal
+        toggled={modalEmpUpdate}
+        untoggle={toggleEmpUpdate}
+      ></UpdateEmployeeModal>
+
 
       <Modal isOpen={toggled} toggled={untoggle} className="modalForm">
         <ModalHeader toggle={untoggle} className="EmpHeader text-center">
@@ -51,7 +64,7 @@ const EmployeeHistory = ({ toggled, untoggle }) => {
                   <Button
                     color="success"
                     onClick={() => {
-                     toggleEmpDetail();
+                     toggleEmpUpdate();
                     }}
                   >
                     Update
