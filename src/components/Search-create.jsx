@@ -2,7 +2,7 @@ import { Input } from "reactstrap";
 import Bttons from "./Bttons";
 import React, { useEffect, useState } from "react";
 
-const Searchc = ({ getAlumni, getSearchValue, deleteAlumni }) => {
+const Searchc = ({ getAlumni, getSearchValue }) => {
 
   const [searchText, setSearchText] = useState('');
 
@@ -32,7 +32,7 @@ const Searchc = ({ getAlumni, getSearchValue, deleteAlumni }) => {
           }}
         />
 
-        <Bttons getAlumni={getAlumni} deleteAlumni={deleteAlumni} />
+        <Bttons getAlumni={getAlumni} />
       </div>
     </div>
   );
