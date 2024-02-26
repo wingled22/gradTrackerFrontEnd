@@ -3,26 +3,30 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import AccordionList from "./components/AccordionList.jsx";
 import Searchc from "./components/Search-create.jsx";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const [alumni, setAlumni] = useState([]);
   const [originalAlumni, setOriginalAlumni] = useState([]);
-  const [mergedName, setMergedName] = useState('');
+  const [mergedName, setMergedName] = useState("");
 
-
-  const searchAlumni = (search)=>{
+  const searchAlumni = (search) => {
     setAlumni(originalAlumni);
-    setAlumni(alums => {
-      return alums.filter(alumnus => {
-        const mergedName = (alumnus.firstName + " " + alumnus.lastName).toLowerCase();
+    setAlumni((alums) => {
+      return alums.filter((alumnus) => {
+        const mergedName = (
+          alumnus.firstName +
+          " " +
+          alumnus.lastName
+        ).toLowerCase();
         return mergedName.includes(search.toLowerCase());
       });
     });
 
     console.log(alumni);
-  }
+  };
 
   const getAlumni = async () => {
     try {
@@ -39,9 +43,10 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <NavigationBar />
       <Searchc getAlumni={getAlumni} getSearchValue={searchAlumni} />
-      <AccordionList data={alumni} getAlumni={getAlumni}/>
+      <AccordionList data={alumni} getAlumni={getAlumni} />
       <Footer />
     </>
   );
