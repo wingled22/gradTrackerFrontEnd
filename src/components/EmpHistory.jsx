@@ -18,10 +18,12 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     setSelectedEmpId(id);
     setEmploymentDetail(
       employmentHistoryDetails.find((item) =>
-        item.id === id ? { ...item } : item
+        item.id === selectedEmpId ? { ...item } : item
       )
     );
   };
+
+  console.log(selectedEmpId);
   const [alumniDetail, setAlumniDetail] = useState({
     firstName: "",
     middleName: "",
@@ -96,7 +98,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
 
   return (
     <>
-      {toggleEmpDetail ? (
+      {modalEmpDetail ? (
         <EmployeeDetailModal
           toggled={modalEmpDetail}
           untoggle={toggleEmpDetail}
@@ -112,7 +114,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           toggled={modalEmpUpdate}
           untoggle={toggleEmpUpdate}
           empDetail={employmentDetail}
-          getEmploymentHistory = {getEmploymentHistory}
+          getEmploymentHistory={getEmploymentHistory}
         />
       ) : (
         ""
@@ -148,14 +150,18 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
               empDetail={empDetail}
               toggleEmpDetail={toggleEmpDetail}
               toggleEmpUpdate={toggleEmpUpdate}
-              employmentDetail={_employmentDetail}
+              _employmentDetail={_employmentDetail}
               setSelectedEmpId={SetEmpDetail}
               getEmploymentHistory={getEmploymentHistory}
             />
           ))}
 
           <div className="btnAddEmpHistory">
-            <Button style={{marginLeft:"130px"}}color="primary" onClick={toggleAddEmploymentModal}>
+            <Button
+              style={{ marginLeft: "130px" }}
+              color="primary"
+              onClick={toggleAddEmploymentModal}
+            >
               Add Employment
             </Button>
           </div>

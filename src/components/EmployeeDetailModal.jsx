@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Row ,Col} from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Row,
+  Col,
+} from "reactstrap";
 import "../assets/css/EmployeeDetailModal.css";
 
 
@@ -16,7 +24,6 @@ const formatDate = (dateString) => {
 
 const EmployeeDetailModal = ({ toggled, untoggle, employmentInformation, alumniDetail }) => {
   const [modalEmpDetail, setModalEmpDetail] = useState(toggled);
-  
 
   const {
     id,
@@ -27,18 +34,16 @@ const EmployeeDetailModal = ({ toggled, untoggle, employmentInformation, alumniD
     alumniId,
 } = employmentInformation;
 
-const {
-  firstName,
-  middleName,
-  lastName,
-} = alumniDetail;
+  const { firstName, middleName, lastName } = alumniDetail;
 
   return (
     <div>
       <Modal isOpen={toggled} toggled={untoggle} className="EmpDetailmodalForm">
         <ModalHeader toggle={untoggle} className="EmpDetailHeader text-center">
           <p className="header-empDetail fw-bold fs-1">Employment Detail</p>
-          <p className="header-name fw-bold fs-4">{firstName + " " + lastName}</p>
+          <p className="header-name fw-bold fs-4">
+            {firstName + " " + lastName}
+          </p>
         </ModalHeader>
 
         <ModalBody>
