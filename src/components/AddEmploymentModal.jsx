@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col, Form } from "reactstrap";
 
 // Create the AddEmploymentModal component
-const AddEmploymentModal = ({ isOpen, toggle, addEmployment }) => {
+const AddEmploymentModal = ({ isOpen, toggle, addEmployment}) => {
 
     const [employmentDetails, setEmploymentDetails] = useState({
         companyName: "",
