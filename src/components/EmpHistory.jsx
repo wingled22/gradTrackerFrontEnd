@@ -114,7 +114,7 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           {employmentHistoryDetails.length === 0 && "No Employment History Information"}
           {
             employmentHistoryDetails.map(empDetail => (
-              <EmpHistoryItem key={empDetail.id} empDetail={empDetail} toggleEmpDetail={toggleEmpDetail} toggleEmpUpdate={toggleEmpUpdate}/>
+              <EmpHistoryItem key={empDetail.id} empDetail={empDetail} toggleEmpDetail={toggleEmpDetail} toggleEmpUpdate={toggleEmpUpdate} getEmploymentHistory={getEmploymentHistory}/>
           ))
         }
           
