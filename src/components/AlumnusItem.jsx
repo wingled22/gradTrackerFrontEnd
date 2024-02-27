@@ -8,7 +8,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/AccordionList.css";
 import React, { useEffect, useState } from "react";
-import EmployeeHistory from "./EmpHistory";
+import EmploymentHistory from "./EmpHistory";
 import PersonalInfoModal from "./PersonalInfoModal";
 
 // to format the dates
@@ -21,7 +21,14 @@ const formatDate = (dateString) => {
   });
 };
 
-const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getAlumni }) => {
+const AlumnusItem = ({
+  alumnus,
+  hover,
+  setHover,
+  addBatchID,
+  deleteBatchID,
+  getAlumni,
+}) => {
   const {
     id,
     firstName,
@@ -78,7 +85,7 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getA
     const updatedSelection = [...selectedItems];
 
     if (updatedSelection.includes(item)) {
-      //If unchecked 
+      //If unchecked
       console.log("removed item");
 
       updatedSelection.splice(updatedSelection.indexOf(item), 1);
@@ -86,7 +93,6 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getA
       //pass it to other functional component and delete the id that handle this
       deleteBatchID(item);
     } else {
-
       //Else checked
       console.log("added item");
       updatedSelection.push(item);
@@ -105,16 +111,17 @@ const AlumnusItem = ({ alumnus, hover, setHover, addBatchID, deleteBatchID, getA
     setHover(!hover);
   };
 
-  const toggleEmploymentHistory = (id) => 
-  {
+  const toggleEmploymentHistory = (id) => {
     toggleEmpHistory();
     setSelectedAlumniID(id);
-  }
+  };
   return (
     <>
       {modal ? (
-        <EmployeeHistory toggled={modal} untoggle={toggleEmpHistory}
-        selectedAlumniID = {selectedAlumniID}
+        <EmploymentHistory
+          toggled={modal}
+          untoggle={toggleEmpHistory}
+          selectedAlumniID={selectedAlumniID}
         />
       ) : (
         ""
