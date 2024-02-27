@@ -114,7 +114,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           toggled={modalEmpUpdate}
           untoggle={toggleEmpUpdate}
           empDetail={employmentDetail}
-          getEmploymentHistory = {getEmploymentHistory}
+          getEmploymentHistory={getEmploymentHistory}
         />
       ) : (
         ""
@@ -150,14 +150,18 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
               empDetail={empDetail}
               toggleEmpDetail={toggleEmpDetail}
               toggleEmpUpdate={toggleEmpUpdate}
-              employmentDetail={_employmentDetail}
+              _employmentDetail={_employmentDetail}
               setSelectedEmpId={SetEmpDetail}
               getEmploymentHistory={getEmploymentHistory}
             />
           ))}
 
           <div className="btnAddEmpHistory">
-            <Button style={{marginLeft:"130px"}}color="primary" onClick={toggleAddEmploymentModal}>
+            <Button
+              style={{ marginLeft: "130px" }}
+              color="primary"
+              onClick={toggleAddEmploymentModal}
+            >
               Add Employment
             </Button>
           </div>
