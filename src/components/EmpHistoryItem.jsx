@@ -2,12 +2,22 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 
+// to format the dates
+const formatDate = (dateString) => {
+  let date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};
 const EmpHistoryItem = ({
   empDetail,
   toggleEmpDetail,
   toggleEmpUpdate,
   setSelectedEmpId,
   getEmploymentHistory,
+  employmentDetail,
 }) => {
   const { id, companyName, position, startDate, endDate, alumniId } = empDetail;
 
@@ -51,17 +61,17 @@ const EmpHistoryItem = ({
       <ul className="events">
         <li>
           <div className="progress-circle "></div>
-          <span className="EmpJob fw-bold  fs-4">{position}</span>
+          <span className="EmpJob fw-bold  fs-25">{position}</span>
           <div className="h-line"></div>
-          <div className="year fw-bold  fs-4">
-            {startDate + " - " + endDate}
+          <div className="year fw-bold  fs-25">
+            {formatDate(startDate) + " - " + formatDate(endDate)}
           </div>
 
           <div className="buttonAction">
             <Button
               color="secondary text-white"
               onClick={() => {
-                toggleEmpDetail();
+                employmentDetail(empDetail);
               }}
             >
               Details

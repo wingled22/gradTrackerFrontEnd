@@ -30,7 +30,9 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     lastName: "",
   });
 
-  // const [modal, setModal] = useState(toggled);
+  const [employmentInformation, setEmploymentInformation] = useState([]);
+
+  const [modal, setModal] = useState(toggled);
   const [addEmploymentModalOpen, setAddEmploymentModalOpen] = useState(false);
 
   const toggleAddEmploymentModal = () =>
@@ -83,6 +85,12 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     } catch (error) {}
   };
 
+  const _employmentDetail = (e) => {
+    console.log(e);
+    setEmploymentInformation(e);
+    toggleEmpDetail();
+  };
+
   useEffect(() => {
     getAlumnus();
     getEmploymentHistory();
@@ -94,6 +102,8 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
         <EmployeeDetailModal
           toggled={modalEmpDetail}
           untoggle={toggleEmpDetail}
+          employmentInformation={employmentInformation}
+          alumniDetail={alumniDetail}
         />
       ) : (
         ""
@@ -104,6 +114,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           toggled={modalEmpUpdate}
           untoggle={toggleEmpUpdate}
           empDetail={employmentDetail}
+          getEmploymentHistory = {getEmploymentHistory}
         />
       ) : (
         ""
@@ -139,13 +150,14 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
               empDetail={empDetail}
               toggleEmpDetail={toggleEmpDetail}
               toggleEmpUpdate={toggleEmpUpdate}
+              employmentDetail={_employmentDetail}
               setSelectedEmpId={SetEmpDetail}
               getEmploymentHistory={getEmploymentHistory}
             />
           ))}
 
           <div className="btnAddEmpHistory">
-            <Button color="primary" onClick={toggleAddEmploymentModal}>
+            <Button style={{marginLeft:"130px"}}color="primary" onClick={toggleAddEmploymentModal}>
               Add Employment
             </Button>
           </div>
