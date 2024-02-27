@@ -26,7 +26,12 @@ const formatDate = (dateString) => {
   );
 };
 
-const UpdateEmployementModal = ({ toggled, untoggle, empDetail, getEmploymentHistory }) => {
+const UpdateEmployementModal = ({
+  toggled,
+  untoggle,
+  empDetail,
+  getEmploymentHistory,
+}) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
   const { id, alumniId, companyName, position, startDate, endDate } =
@@ -42,21 +47,24 @@ const UpdateEmployementModal = ({ toggled, untoggle, empDetail, getEmploymentHis
         name === "startDate"
           ? formatDate(value)
           : name === "endDate"
-            ? formatDate(value)
-            : value,
+          ? formatDate(value)
+          : value,
     }));
   };
 
   const onUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5134/api/EmploymentHistory/" + id, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(employmentCredentials),
-      });
+      const response = await fetch(
+        "http://localhost:5134/api/EmploymentHistory/" + id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(employmentCredentials),
+        }
+      );
 
       if (response.ok) {
         toast.success("Updated an alumni successfully");
@@ -79,7 +87,7 @@ const UpdateEmployementModal = ({ toggled, untoggle, empDetail, getEmploymentHis
       companyName,
       position,
       startDate,
-      endDate
+      endDate,
     }));
   };
 
@@ -151,7 +159,7 @@ const UpdateEmployementModal = ({ toggled, untoggle, empDetail, getEmploymentHis
                   </div>
                 </Row>
               </div>
-              <Button className="UpdateEmpHistory">Edit Employment</Button>
+              <Button className="UpdateEmpHistory">Update</Button>
             </form>
           </ModalBody>
         </Modal>
