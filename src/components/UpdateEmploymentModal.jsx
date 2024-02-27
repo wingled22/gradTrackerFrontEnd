@@ -12,8 +12,38 @@ import {
 } from "reactstrap";
 import "../assets/css/EmployeeUpdateModal.css";
 
-const UpdateEmployeeModal = ({ toggled, untoggle }) => {
+// to format the dates
+const formatDate = (dateString) => {
+  let date = new Date(dateString);
+  return (
+    date.getFullYear() +
+    "-" +
+    (date.getMonth() + 1).toString().padStart(2, "0") +
+    "-" +
+    date.getDate().toString().padStart(2, "0")
+  );
+};
+
+const UpdateEmployementModal = ({ toggled, untoggle, empDetail }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
+  const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
+  const { id, alumniId, companyName, position, startDate, endDate } =
+    employmentCredentials;
+
+  console.log(employmentCredentials);
+
+  const handleCredentials = (e) => {
+    const { name, value } = e.target;
+    setEmploymentCredentials((currentCreds) => ({
+      ...currentCreds,
+      [name]:
+        name === "startDate"
+          ? formatDate(value)
+          : name === "endDate"
+          ? formatDate(value)
+          : value,
+    }));
+  };
 
   return (
     <div>
@@ -37,29 +67,49 @@ const UpdateEmployeeModal = ({ toggled, untoggle }) => {
                 <Row>
                   <div className="rec-company-name text-white">
                     <p className="update-company-title fs-6 ">Company Name</p>
-                    {/* <p className="update-company-sub fs-2">Accenture</p> */}
                     <input
                       type="text"
                       name="companyName"
                       id="companyName"
-                      className="form-control update-company-sub fs-2"
+                      value={companyName}
+                      onChange={handleCredentials}
+                      className="form-control update-company-sub fs-4"
                     />
                   </div>
                   <div className="rec-position text-white">
                     <p className="update-position-title fs-6 ">Position</p>
-                    <p className="update-position-sub fs-2">
-                      Sr. Web Developer
-                    </p>
+                    <input
+                      type="text"
+                      name="position"
+                      id="position"
+                      value={position}
+                      onChange={handleCredentials}
+                      className="form-control update-company-sub fs-4"
+                    />
                   </div>
                 </Row>
                 <Row>
                   <div className="rec-start text-white">
                     <p className="update-start-title fs-6 ">Start</p>
-                    <p className="update-start-sub fs-2">10/1/2019</p>
+                    <input
+                      type="date"
+                      name="startDate"
+                      id="startDate"
+                      value={formatDate(startDate)}
+                      onChange={handleCredentials}
+                      className="form-control update-company-sub fs-4"
+                    />
                   </div>
                   <div className="rec-end text-white">
                     <p className="update-end-title fs-6 ">End</p>
-                    <p className="update-end-sub fs-2">10/1/2020</p>
+                    <input
+                      type="date"
+                      name="endDate"
+                      id="endDate"
+                      value={formatDate(endDate)}
+                      onChange={handleCredentials}
+                      className="form-control update-company-sub fs-4"
+                    />
                   </div>
                 </Row>
               </div>
@@ -72,4 +122,4 @@ const UpdateEmployeeModal = ({ toggled, untoggle }) => {
   );
 };
 
-export default UpdateEmployeeModal;
+export default UpdateEmployementModal;

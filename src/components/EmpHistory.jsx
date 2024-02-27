@@ -4,22 +4,31 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import EmployeeDetailModal from "./EmployeeDetailModal";
 import AddEmploymentModal from "./AddEmploymentModal";
-import UpdateEmployeeModal from "./UpdateEmploymentModal";
+import UpdateEmployementModal from "./UpdateEmploymentModal";
 import EmpHistoryItem from "./EmpHistoryItem";
 
 import "../assets/css/EmpHistory.css";
 
-const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
+const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   const [alumniID, setAlumniID] = useState(selectedAlumniID);
   const [employmentHistoryDetails, setEmploymentHistoryDetails] = useState([]);
-
+  const [employmentDetail, setEmploymentDetail] = useState({});
+  const [selectedEmpId, setSelectedEmpId] = useState(null);
+  const SetEmpDetail = (id) => {
+    setSelectedEmpId(id);
+    setEmploymentDetail(
+      employmentHistoryDetails.find((item) =>
+        item.id === id ? { ...item } : item
+      )
+    );
+  };
   const [alumniDetail, setAlumniDetail] = useState({
     firstName: "",
     middleName: "",
     lastName: "",
   });
 
-  const [modal, setModal] = useState(toggled);
+  // const [modal, setModal] = useState(toggled);
   const [addEmploymentModalOpen, setAddEmploymentModalOpen] = useState(false);
 
   const toggleAddEmploymentModal = () =>
@@ -78,22 +87,35 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   }, [selectedAlumniID]);
 
   return (
-    <div>
-      <EmployeeDetailModal
-        toggled={modalEmpDetail}
-        untoggle={toggleEmpDetail}
-      />
+    <>
+      {toggleEmpDetail ? (
+        <EmployeeDetailModal
+          toggled={modalEmpDetail}
+          untoggle={toggleEmpDetail}
+        />
+      ) : (
+        ""
+      )}
 
-      <UpdateEmployeeModal
-        toggled={modalEmpUpdate}
-        untoggle={toggleEmpUpdate}
-      />
+      {modalEmpUpdate ? (
+        <UpdateEmployementModal
+          toggled={modalEmpUpdate}
+          untoggle={toggleEmpUpdate}
+          empDetail={employmentDetail}
+        />
+      ) : (
+        ""
+      )}
 
-      <AddEmploymentModal
-        isOpen={addEmploymentModalOpen}
-        toggle={toggleAddEmploymentModal}
-        addEmployment={handleAddEmployment}
-      />
+      {addEmploymentModalOpen ? (
+        <AddEmploymentModal
+          isOpen={addEmploymentModalOpen}
+          toggle={toggleAddEmploymentModal}
+          empDetails={employmentHistoryDetails}
+        />
+      ) : (
+        ""
+      )}
 
       <Modal isOpen={toggled} toggle={untoggle} className="modalForm">
         <ModalHeader toggle={untoggle} className="EmpHeader text-center">
@@ -112,6 +134,7 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
               empDetail={empDetail}
               toggleEmpDetail={toggleEmpDetail}
               toggleEmpUpdate={toggleEmpUpdate}
+              setSelectedEmpId={SetEmpDetail}
             />
           ))}
 
@@ -122,8 +145,8 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           </div>
         </ModalBody>
       </Modal>
-    </div>
+    </>
   );
 };
 
-export default EmployeeHistory;
+export default EmploymentHistory;
