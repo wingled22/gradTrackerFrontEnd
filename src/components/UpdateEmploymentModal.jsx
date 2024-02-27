@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   Button,
   Modal,
@@ -24,7 +26,7 @@ const formatDate = (dateString) => {
   );
 };
 
-const UpdateEmployementModal = ({ toggled, untoggle, empDetail }) => {
+const UpdateEmployementModal = ({ toggled, untoggle, empDetail, getEmploymentHistory }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
   const { id, alumniId, companyName, position, startDate, endDate } =
@@ -40,8 +42,44 @@ const UpdateEmployementModal = ({ toggled, untoggle, empDetail }) => {
         name === "startDate"
           ? formatDate(value)
           : name === "endDate"
-          ? formatDate(value)
-          : value,
+            ? formatDate(value)
+            : value,
+    }));
+  };
+
+  const onUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5134/api/EmploymentHistory/" + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(employmentCredentials),
+      });
+
+      if (response.ok) {
+        toast.success("Updated an alumni successfully");
+        // getAlumni();
+      } else {
+        toast.error("Something went wrong");
+      }
+    } catch (error) {
+      toast.error("Error submitting form data:" + error);
+    } finally {
+      resetForm();
+      untoggle();
+      getEmploymentHistory();
+    }
+  };
+
+  const resetForm = () => {
+    setEmploymentCredentials((prevCreds) => ({
+      ...prevCreds,
+      companyName,
+      position,
+      startDate,
+      endDate
     }));
   };
 
@@ -62,7 +100,7 @@ const UpdateEmployementModal = ({ toggled, untoggle, empDetail }) => {
           </ModalHeader>
 
           <ModalBody>
-            <form>
+            <form onSubmit={onUpdate}>
               <div className="thin-Rounded">
                 <Row>
                   <div className="rec-company-name text-white">
