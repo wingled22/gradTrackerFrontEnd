@@ -5,8 +5,18 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Row ,Col} from "reac
 import "../assets/css/EmployeeDetailModal.css";
 
 
+const formatDate = (dateString) => {
+  let date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};
+
 const EmployeeDetailModal = ({ toggled, untoggle, employmentInformation, alumniDetail }) => {
   const [modalEmpDetail, setModalEmpDetail] = useState(toggled);
+  
 
   const {
     id,
@@ -45,11 +55,11 @@ const {
            </Col>
            <Col  className="col-start-Date d-flex align-items-center">
            <p className="start-Date fw-bold">Start Date: </p>
-           <span className="span-start-Date">{startDate}</span>
+           <span className="span-start-Date">{ formatDate(startDate)}</span>
            </Col>
            <Col  className="col-end-Date d-flex align-items-center">
            <p className="end-Date fw-bold">Start Date: </p>
-           <span className="span-end-Date">{endDate}</span>
+           <span className="span-end-Date">{ formatDate(endDate)}</span>
            </Col>
           
          
