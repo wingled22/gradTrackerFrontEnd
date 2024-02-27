@@ -144,7 +144,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           ))}
 
           <div className="btnAddEmpHistory">
-            <Button color="primary" onClick={toggleAddEmploymentModal}>
+            <Button style={{marginLeft:"130px"}}color="primary" onClick={toggleAddEmploymentModal}>
               Add Employment
             </Button>
           </div>
