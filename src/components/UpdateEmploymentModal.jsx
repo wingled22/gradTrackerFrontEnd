@@ -26,7 +26,7 @@ const formatDate = (dateString) => {
   );
 };
 
-const UpdateEmployementModal = ({ toggled, untoggle, empDetail }) => {
+const UpdateEmployementModal = ({ toggled, untoggle, empDetail, getEmploymentHistory }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
   const { id, alumniId, companyName, position, startDate, endDate } =
@@ -69,6 +69,7 @@ const UpdateEmployementModal = ({ toggled, untoggle, empDetail }) => {
     } finally {
       resetForm();
       untoggle();
+      getEmploymentHistory();
     }
   };
 
