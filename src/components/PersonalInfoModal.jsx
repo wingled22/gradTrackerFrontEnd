@@ -139,7 +139,7 @@ const PersonalInfoModal = ({
     }
   };
 
-  const handleUpdate = async (e) => {
+  const onUpdate = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch("http://localhost:5134/api/Alumni/" + id, {
@@ -172,7 +172,7 @@ const PersonalInfoModal = ({
             Personal Information Form
           </ModalHeader>
           <ModalBody className="modal-body">
-            <form onSubmit={isCreate ? handleSubmit : handleUpdate}>
+            <form onSubmit={isCreate ? handleSubmit : onUpdate}>
               <Row>
                 <Col>
                   <FormGroup>
