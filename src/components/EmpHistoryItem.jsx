@@ -13,11 +13,10 @@ const formatDate = (dateString) => {
 };
 const EmpHistoryItem = ({
   empDetail,
-  toggleEmpDetail,
   toggleEmpUpdate,
   setSelectedEmpId,
   getEmploymentHistory,
-  employmentDetail,
+  _employmentDetail,
 }) => {
   const { id, companyName, position, startDate, endDate, alumniId } = empDetail;
 
@@ -71,7 +70,7 @@ const EmpHistoryItem = ({
             <Button
               color="secondary text-white"
               onClick={() => {
-                employmentDetail(empDetail);
+                _employmentDetail(empDetail);
               }}
             >
               Details
