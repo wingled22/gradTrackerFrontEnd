@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col, Form } from "reactstrap";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHistory }) => {
     const [employmentDetails, setEmploymentDetails] = useState({
@@ -19,63 +21,53 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
             [name]: value,
         }));
     };
-
     const handleAddEmployment = async (e) => {
         e.preventDefault();
-
+    
         try {
             setIsLoading(true);
-            // console.log(employmentDetails);
-            // setEmploymentDetails(()=>({
-            //     ...
-            //     {
-            //         alumniId: selectedAlumniID
-            //     },
-
-                
-            // }))
             const formData = {
                 alumniId: selectedAlumniID,
                 companyName: employmentDetails.companyName,
                 position: employmentDetails.position,
                 startDate: employmentDetails.startDate,
                 endDate: employmentDetails.endDate,
-
-            }
-            console.log(formData)
-            const response = await fetch("http://localhost:5134/api/EmploymentHistory",{
+            };
+    
+            console.log(formData);
+    
+            const response = await fetch("http://localhost:5134/api/EmploymentHistory", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(formData),
             });
-
-            
-
+    
             if (response.ok) {
                 setEmploymentDetails({
                     companyName: "",
                     position: "",
                     startDate: "",
                     endDate: "",
-                    alumniId:""
+                    alumniId: "",
                 });
-
+    
                 console.log("Form data submitted successfully");
-                alert("Form submitted successfully!");
+                toast.success("Form submitted successfully!"); // Display success notification
                 toggle(); // close the modal after successful submission
                 getEmploymentHistory();
             } else {
                 console.error("Failed to submit form data");
+                toast.error("Failed to submit form data"); // Display error notification
             }
         } catch (error) {
             console.error("Error submitting form data:", error);
+            toast.error("Error submitting form data"); // Display error notification
         } finally {
             setIsLoading(false);
         }
     };
-
 
     return (
         <Modal isOpen={isOpen} toggle={toggle}>
