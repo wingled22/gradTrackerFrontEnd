@@ -18,10 +18,12 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     setSelectedEmpId(id);
     setEmploymentDetail(
       employmentHistoryDetails.find((item) =>
-        item.id === id ? { ...item } : item
+        item.id === selectedEmpId ? { ...item } : item
       )
     );
   };
+
+  console.log(selectedEmpId);
   const [alumniDetail, setAlumniDetail] = useState({
     firstName: "",
     middleName: "",
