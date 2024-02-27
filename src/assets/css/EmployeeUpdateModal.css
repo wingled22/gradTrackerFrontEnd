@@ -59,7 +59,7 @@
   }
 
   .rec-company-name ,.rec-position , .rec-end , .rec-start{
-    background-color: #545151;
+    /* background-color: #545151; */
     width: 350px;
     height: 70px;
     border-radius: 10px;

@@ -20,9 +20,8 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   const [modal, setModal] = useState(toggled);
   const [addEmploymentModalOpen, setAddEmploymentModalOpen] = useState(false);
 
-  const toggleAddEmploymentModal = () => setAddEmploymentModalOpen(!addEmploymentModalOpen);
-  
-
+  const toggleAddEmploymentModal = () =>
+    setAddEmploymentModalOpen(!addEmploymentModalOpen);
 
   // for modal employee history
   const [modalEmpDetail, setModalEmpDetail] = useState(false);
@@ -30,9 +29,9 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   const toggleEmpDetail = () => setModalEmpDetail(!modalEmpDetail);
 
   // for modal update employee history
-    const [modalEmpUpdate, setModalEmpUpdate] = useState(false);
+  const [modalEmpUpdate, setModalEmpUpdate] = useState(false);
 
-    const toggleEmpUpdate = () => setModalEmpUpdate(!modalEmpUpdate);
+  const toggleEmpUpdate = () => setModalEmpUpdate(!modalEmpUpdate);
 
   const handleAddEmployment = (employmentDetails) => {
     // Handle the addition of employment details
@@ -40,26 +39,25 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     console.log("Added employment:", employmentDetails);
   };
 
-  const getAlumnus = async () => 
-  {
+  const getAlumnus = async () => {
     try {
-
       console.log(selectedAlumniID);
-      const response = await fetch("http://localhost:5134/api/Alumni/" + selectedAlumniID);
+      const response = await fetch(
+        "http://localhost:5134/api/Alumni/" + selectedAlumniID
+      );
       const data = await response.json();
 
       setAlumniDetail(() => ({
-        ...
-        {
+        ...{
           firstName: data.firstName,
           middleName: data.middleName,
-          lastName : data.lastName,
+          lastName: data.lastName,
         },
       }));
     } catch (error) {
       //console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getAlumnus();
@@ -70,76 +68,69 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
       <EmployeeDetailModal
         toggled={modalEmpDetail}
         untoggle={toggleEmpDetail}
-      ></EmployeeDetailModal>
-
-
-      <UpdateEmployeeModal
-        toggled={modalEmpUpdate}
-        untoggle={toggleEmpUpdate}
-      ></UpdateEmployeeModal>
-
-
+      />
 
       <UpdateEmployeeModal
         toggled={modalEmpUpdate}
         untoggle={toggleEmpUpdate}
-      ></UpdateEmployeeModal>
+      />
 
+      <UpdateEmployeeModal
+        toggled={modalEmpUpdate}
+        untoggle={toggleEmpUpdate}
+      />
 
       <AddEmploymentModal
         isOpen={addEmploymentModalOpen}
         toggle={toggleAddEmploymentModal}
         addEmployment={handleAddEmployment}
-
       />
-
 
       <Modal isOpen={toggled} toggle={untoggle} className="modalForm">
         <ModalHeader toggle={untoggle} className="EmpHeader text-center">
           <p className="header-empHistory fw-bold">Employment History</p>
-          <p className="header-name fw-bold">({alumniDetail.firstName + " " + alumniDetail.lastName})</p>
+          <p className="header-name fw-bold">
+            ({alumniDetail.firstName + " " + alumniDetail.lastName})
+          </p>
         </ModalHeader>
 
         <ModalBody>
-          
-            <ul className="events">
-              <li>
-                <div className="progress-circle "></div>
-                <span className="EmpJob fw-bold  fs-4">IT Specialist</span>
-                <div className="h-line"></div>
-                <div className="year fw-bold  fs-4">2023-present</div>
+          <ul className="events">
+            <li>
+              <div className="progress-circle "></div>
+              <span className="EmpJob fw-bold  fs-4">IT Specialist</span>
+              <div className="h-line"></div>
+              <div className="year fw-bold  fs-4">2023-present</div>
 
-                <div className="buttonAction">
-                  <Button
-                    color="secondary text-white"
-                    onClick={() => {
-                      toggleEmpDetail();
-                    }}
-                  >
-                    Details
-                  </Button>
-                  <Button
-                    color="success"
-                    onClick={() => {
-                     toggleEmpUpdate();
-                    }}
-                  >
-                    Update
-                  </Button>
-                  
-                  <Button
-                    color="danger text-white"
-                    onClick={() => {
-                      toggleEmpDetail();
-                    }}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              </li>
-            </ul>
-          
-          
+              <div className="buttonAction">
+                <Button
+                  color="secondary text-white"
+                  onClick={() => {
+                    toggleEmpDetail();
+                  }}
+                >
+                  Details
+                </Button>
+                <Button
+                  color="success"
+                  onClick={() => {
+                    toggleEmpUpdate();
+                  }}
+                >
+                  Update
+                </Button>
+
+                <Button
+                  color="danger text-white"
+                  onClick={() => {
+                    toggleEmpDetail();
+                  }}
+                >
+                  Delete
+                </Button>
+              </div>
+            </li>
+          </ul>
 
           <div className="btnAddEmpHistory">
             <Button color="primary" onClick={toggleAddEmploymentModal}>
