@@ -19,6 +19,8 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     lastName: "",
   });
 
+  const [employmentInformation, setEmploymentInformation] = useState([]);
+
   const [modal, setModal] = useState(toggled);
   const [addEmploymentModalOpen, setAddEmploymentModalOpen] = useState(false);
 
@@ -77,6 +79,13 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     }
   }
 
+  const employmentDetail = (e) => {
+
+    console.log(e);
+    setEmploymentInformation(e);
+    toggleEmpDetail();
+  };
+
   useEffect(() => {
     getAlumnus();
     getEmploymentHistory();
@@ -87,6 +96,8 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
       <EmployeeDetailModal
         toggled={modalEmpDetail}
         untoggle={toggleEmpDetail}
+        employmentInformation={employmentInformation}
+        alumniDetail={alumniDetail}
       ></EmployeeDetailModal>
 
 
@@ -115,7 +126,7 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           {employmentHistoryDetails.length === 0 && "No Employment History Information"}
           {
             employmentHistoryDetails.map(empDetail => (
-              <EmpHistoryItem key={empDetail.id} empDetail={empDetail} toggleEmpDetail={toggleEmpDetail} toggleEmpUpdate={toggleEmpUpdate} getEmploymentHistory={getEmploymentHistory}/>
+              <EmpHistoryItem key={empDetail.id} empDetail={empDetail} employmentDetail={employmentDetail} toggleEmpUpdate={toggleEmpUpdate} getEmploymentHistory={getEmploymentHistory}/>
           ))
         }
           
