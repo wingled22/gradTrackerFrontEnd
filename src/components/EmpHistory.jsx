@@ -111,7 +111,10 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
         <AddEmploymentModal
           isOpen={addEmploymentModalOpen}
           toggle={toggleAddEmploymentModal}
+          addEmployment={handleAddEmployment}
           empDetails={employmentHistoryDetails}
+          selectedAlumniID={selectedAlumniID}
+          getEmploymentHistory={getEmploymentHistory}
         />
       ) : (
         ""
@@ -135,6 +138,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
               toggleEmpDetail={toggleEmpDetail}
               toggleEmpUpdate={toggleEmpUpdate}
               setSelectedEmpId={SetEmpDetail}
+              getEmploymentHistory={getEmploymentHistory}
             />
           ))}
 
