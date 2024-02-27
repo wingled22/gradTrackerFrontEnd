@@ -1,34 +1,31 @@
-// Import necessary dependencies
 import { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col, Form } from "reactstrap";
 
-// Create the AddEmploymentModal component
-const AddEmploymentModal = ({ isOpen, toggle, addEmployment }) => {
-
+const AddEmploymentModal = ({ isOpen, toggle }) => {
     const [employmentDetails, setEmploymentDetails] = useState({
         companyName: "",
         position: "",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        alumniId:""
     });
 
-    const {
-        companyName,
-        position,
-        startDate,
-        endDate
-      } = employmentDetails;
+    const [isLoading, setIsLoading] = useState(false);
 
-      const handleChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setEmploymentDetails((currentCreds) => ({
-          ...currentCreds,
-          [name]: value,
+            ...currentCreds,
+            [name]: value,
         }));
-      };
+    };
+
     const handleAddEmployment = async (e) => {
         e.preventDefault();
+
         try {
+            setIsLoading(true);
+
             const response = await fetch("http://localhost:5134/api/EmploymentHistory", {
                 method: "POST",
                 headers: {
@@ -43,17 +40,18 @@ const AddEmploymentModal = ({ isOpen, toggle, addEmployment }) => {
                     position: "",
                     startDate: "",
                     endDate: "",
-
                 });
 
                 console.log("Form data submitted successfully");
                 alert("Form submitted successfully!");
-                {isOpen}
+                toggle(); // close the modal after successful submission
             } else {
                 console.error("Failed to submit form data");
             }
         } catch (error) {
             console.error("Error submitting form data:", error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -70,8 +68,9 @@ const AddEmploymentModal = ({ isOpen, toggle, addEmployment }) => {
                                 <Input
                                     type="text"
                                     id="companyName"
-                                    value={companyName}
+                                    value={employmentDetails.companyName}
                                     onChange={handleChange}
+                                    name="companyName" 
                                 />
                             </FormGroup>
                         </Col>
@@ -81,8 +80,9 @@ const AddEmploymentModal = ({ isOpen, toggle, addEmployment }) => {
                                 <Input
                                     type="text"
                                     id="position"
-                                    value={position}
+                                    value={employmentDetails.position}
                                     onChange={handleChange}
+                                    name="position" 
                                 />
                             </FormGroup>
                         </Col>
@@ -94,8 +94,9 @@ const AddEmploymentModal = ({ isOpen, toggle, addEmployment }) => {
                                 <Input
                                     type="date"
                                     id="startDate"
-                                    value={startDate}
+                                    value={employmentDetails.startDate}
                                     onChange={handleChange}
+                                    name="startDate" 
                                 />
                             </FormGroup>
                         </Col>
@@ -105,21 +106,19 @@ const AddEmploymentModal = ({ isOpen, toggle, addEmployment }) => {
                                 <Input
                                     type="date"
                                     id="endDate"
-                                    value={endDate}
+                                    value={employmentDetails.endDate}
                                     onChange={handleChange}
+                                    name="endDate" 
                                 />
                             </FormGroup>
                         </Col>
                     </Row>
-                    <Button color="success" type="submit">
-                        Submit
+                    <Button color="success" type="submit" disabled={isLoading}>
+                        {isLoading ? "Submitting..." : "Submit"}
                     </Button>
                 </Form>
-
             </ModalBody>
-            <ModalFooter>
-
-            </ModalFooter>
+            <ModalFooter></ModalFooter>
         </Modal>
     );
 };
