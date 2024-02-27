@@ -88,7 +88,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
 
   return (
     <>
-      {toggleEmpDetail ? (
+      {modalEmpDetail ? (
         <EmployeeDetailModal
           toggled={modalEmpDetail}
           untoggle={toggleEmpDetail}
