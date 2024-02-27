@@ -61,9 +61,9 @@ const EmpHistoryItem = ({
       <ul className="events">
         <li>
           <div className="progress-circle "></div>
-          <span className="EmpJob fw-bold  fs-4">{position}</span>
+          <span className="EmpJob fw-bold  fs-25">{position}</span>
           <div className="h-line"></div>
-          <div className="year fw-bold  fs-4">
+          <div className="year fw-bold  fs-25">
             {formatDate(startDate) + " - " + formatDate(endDate)}
           </div>
 
