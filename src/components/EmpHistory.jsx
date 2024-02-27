@@ -5,11 +5,13 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import EmployeeDetailModal from "./EmployeeDetailModal";
 import AddEmploymentModal from "./AddEmploymentModal";
 import UpdateEmployeeModal from "./UpdateEmploymentModal";
+import EmpHistoryItem from "./EmpHistoryItem";
 
 import "../assets/css/EmpHistory.css";
 
 const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   const [alumniID, setAlumniID] = useState(selectedAlumniID);
+  const [employmentHistoryDetails, setEmploymentHistoryDetails] = useState([]);
 
   const [alumniDetail, setAlumniDetail] = useState({
     firstName: "",
@@ -59,8 +61,20 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     }
   };
 
+  const getEmploymentHistory = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5134/api/EmploymentHistory/" + selectedAlumniID
+      );
+      const data = await response.json();
+
+      setEmploymentHistoryDetails(data);
+    } catch (error) {}
+  };
+
   useEffect(() => {
     getAlumnus();
+    getEmploymentHistory();
   }, [selectedAlumniID]);
 
   return (
@@ -68,11 +82,6 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
       <EmployeeDetailModal
         toggled={modalEmpDetail}
         untoggle={toggleEmpDetail}
-      />
-
-      <UpdateEmployeeModal
-        toggled={modalEmpUpdate}
-        untoggle={toggleEmpUpdate}
       />
 
       <UpdateEmployeeModal
@@ -95,42 +104,16 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
         </ModalHeader>
 
         <ModalBody>
-          <ul className="events">
-            <li>
-              <div className="progress-circle "></div>
-              <span className="EmpJob fw-bold  fs-4">IT Specialist</span>
-              <div className="h-line"></div>
-              <div className="year fw-bold  fs-4">2023-present</div>
-
-              <div className="buttonAction">
-                <Button
-                  color="secondary text-white"
-                  onClick={() => {
-                    toggleEmpDetail();
-                  }}
-                >
-                  Details
-                </Button>
-                <Button
-                  color="success"
-                  onClick={() => {
-                    toggleEmpUpdate();
-                  }}
-                >
-                  Update
-                </Button>
-
-                <Button
-                  color="danger text-white"
-                  onClick={() => {
-                    toggleEmpDetail();
-                  }}
-                >
-                  Delete
-                </Button>
-              </div>
-            </li>
-          </ul>
+          {employmentHistoryDetails.length === 0 &&
+            "No Employment History Information"}
+          {employmentHistoryDetails.map((empDetail) => (
+            <EmpHistoryItem
+              key={empDetail.id}
+              empDetail={empDetail}
+              toggleEmpDetail={toggleEmpDetail}
+              toggleEmpUpdate={toggleEmpUpdate}
+            />
+          ))}
 
           <div className="btnAddEmpHistory">
             <Button color="primary" onClick={toggleAddEmploymentModal}>
