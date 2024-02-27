@@ -12,16 +12,10 @@ import "../assets/css/EmpHistory.css";
 const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   const [alumniID, setAlumniID] = useState(selectedAlumniID);
   const [employmentHistoryDetails, setEmploymentHistoryDetails] = useState([]);
-  const [employmentDetail, setEmploymentDetail] = useState({});
+  const [employmentDetail, setEmploymentDetail] = useState([]);
   const [selectedEmpId, setSelectedEmpId] = useState(null);
-  const SetEmpDetail = (id) => {
-    setSelectedEmpId(id);
-    setEmploymentDetail(
-      employmentHistoryDetails.find((item) =>
-        item.id === id ? { ...item } : item
-      )
-    );
-  };
+
+  console.log(selectedEmpId);
   const [alumniDetail, setAlumniDetail] = useState({
     firstName: "",
     middleName: "",
@@ -88,6 +82,10 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     setEmploymentInformation(e);
     toggleEmpDetail();
   };
+  const SetEmpDetail = (e) => {
+    setEmploymentDetail(e);
+    toggleEmpUpdate();
+  };
 
   useEffect(() => {
     getAlumnus();
@@ -96,7 +94,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
 
   return (
     <>
-      {toggleEmpDetail ? (
+      {modalEmpDetail ? (
         <EmployeeDetailModal
           toggled={modalEmpDetail}
           untoggle={toggleEmpDetail}
@@ -112,7 +110,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           toggled={modalEmpUpdate}
           untoggle={toggleEmpUpdate}
           empDetail={employmentDetail}
-          getEmploymentHistory = {getEmploymentHistory}
+          getEmploymentHistory={getEmploymentHistory}
         />
       ) : (
         ""
@@ -147,15 +145,18 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
               key={empDetail.id}
               empDetail={empDetail}
               toggleEmpDetail={toggleEmpDetail}
-              toggleEmpUpdate={toggleEmpUpdate}
-              employmentDetail={_employmentDetail}
-              setSelectedEmpId={SetEmpDetail}
+              _employmentDetail={_employmentDetail}
+              SetEmpDetail={SetEmpDetail}
               getEmploymentHistory={getEmploymentHistory}
             />
           ))}
 
           <div className="btnAddEmpHistory">
-            <Button style={{marginLeft:"130px"}}color="primary" onClick={toggleAddEmploymentModal}>
+            <Button
+              style={{ marginLeft: "130px" }}
+              color="primary"
+              onClick={toggleAddEmploymentModal}
+            >
               Add Employment
             </Button>
           </div>

@@ -13,11 +13,9 @@ const formatDate = (dateString) => {
 };
 const EmpHistoryItem = ({
   empDetail,
-  toggleEmpDetail,
-  toggleEmpUpdate,
-  setSelectedEmpId,
+  SetEmpDetail,
   getEmploymentHistory,
-  employmentDetail,
+  _employmentDetail,
 }) => {
   const { id, companyName, position, startDate, endDate, alumniId } = empDetail;
 
@@ -67,11 +65,14 @@ const EmpHistoryItem = ({
             {formatDate(startDate) + " - " + formatDate(endDate)}
           </div>
 
-          <div className="buttonAction">
+          <div
+            className="buttonAction"
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}
+          >
             <Button
               color="secondary text-white"
               onClick={() => {
-                employmentDetail(empDetail);
+                _employmentDetail(empDetail);
               }}
             >
               Details
@@ -79,8 +80,7 @@ const EmpHistoryItem = ({
             <Button
               color="success"
               onClick={() => {
-                toggleEmpUpdate();
-                setSelectedEmpId(id);
+                SetEmpDetail(empDetail);
               }}
             >
               Update
