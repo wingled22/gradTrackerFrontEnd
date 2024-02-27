@@ -10,7 +10,7 @@ import EmpHistoryItem from "./EmpHistoryItem";
 import "../assets/css/EmpHistory.css";
 
 const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
-  const [alumniID, setAlumniID] = useState(selectedAlumniID);
+  // const [alumniID, setAlumniID] = useState(selectedAlumniID);
   const [employmentHistoryDetails, setEmploymentHistoryDetails] = useState([]);
 
   const [alumniDetail, setAlumniDetail] = useState({
@@ -99,7 +99,8 @@ const EmployeeHistory = ({ toggled, untoggle, selectedAlumniID }) => {
         isOpen={addEmploymentModalOpen}
         toggle={toggleAddEmploymentModal}
         addEmployment={handleAddEmployment}
-
+        selectedAlumniID = {selectedAlumniID}
+        getEmploymentHistory = {getEmploymentHistory}
       />
 
 

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Row, Col, Form } from "reactstrap";
 
-const AddEmploymentModal = ({ isOpen, toggle }) => {
+const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHistory }) => {
     const [employmentDetails, setEmploymentDetails] = useState({
         companyName: "",
         position: "",
         startDate: "",
         endDate: "",
-        alumniId:""
+        alumniId: ""
     });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -25,14 +25,33 @@ const AddEmploymentModal = ({ isOpen, toggle }) => {
 
         try {
             setIsLoading(true);
+            // console.log(employmentDetails);
+            // setEmploymentDetails(()=>({
+            //     ...
+            //     {
+            //         alumniId: selectedAlumniID
+            //     },
 
-            const response = await fetch("http://localhost:5134/api/EmploymentHistory", {
+                
+            // }))
+            const formData = {
+                alumniId: selectedAlumniID,
+                companyName: employmentDetails.companyName,
+                position: employmentDetails.position,
+                startDate: employmentDetails.startDate,
+                endDate: employmentDetails.endDate,
+
+            }
+            console.log(formData)
+            const response = await fetch("http://localhost:5134/api/EmploymentHistory",{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(employmentDetails),
+                body: JSON.stringify(formData),
             });
+
+            
 
             if (response.ok) {
                 setEmploymentDetails({
@@ -40,11 +59,13 @@ const AddEmploymentModal = ({ isOpen, toggle }) => {
                     position: "",
                     startDate: "",
                     endDate: "",
+                    alumniId:""
                 });
 
                 console.log("Form data submitted successfully");
                 alert("Form submitted successfully!");
                 toggle(); // close the modal after successful submission
+                getEmploymentHistory();
             } else {
                 console.error("Failed to submit form data");
             }
@@ -54,6 +75,7 @@ const AddEmploymentModal = ({ isOpen, toggle }) => {
             setIsLoading(false);
         }
     };
+
 
     return (
         <Modal isOpen={isOpen} toggle={toggle}>
@@ -70,6 +92,7 @@ const AddEmploymentModal = ({ isOpen, toggle }) => {
                                     id="companyName"
                                     value={employmentDetails.companyName}
                                     onChange={handleChange}
+                                    required
                                     name="companyName" 
                                 />
                             </FormGroup>
@@ -81,6 +104,7 @@ const AddEmploymentModal = ({ isOpen, toggle }) => {
                                     type="text"
                                     id="position"
                                     value={employmentDetails.position}
+                                    required
                                     onChange={handleChange}
                                     name="position" 
                                 />
@@ -95,6 +119,7 @@ const AddEmploymentModal = ({ isOpen, toggle }) => {
                                     type="date"
                                     id="startDate"
                                     value={employmentDetails.startDate}
+                                    required
                                     onChange={handleChange}
                                     name="startDate" 
                                 />
@@ -107,6 +132,7 @@ const AddEmploymentModal = ({ isOpen, toggle }) => {
                                     type="date"
                                     id="endDate"
                                     value={employmentDetails.endDate}
+                                    required
                                     onChange={handleChange}
                                     name="endDate" 
                                 />
