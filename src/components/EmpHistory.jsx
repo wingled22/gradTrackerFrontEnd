@@ -12,16 +12,8 @@ import "../assets/css/EmpHistory.css";
 const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
   const [alumniID, setAlumniID] = useState(selectedAlumniID);
   const [employmentHistoryDetails, setEmploymentHistoryDetails] = useState([]);
-  const [employmentDetail, setEmploymentDetail] = useState({});
+  const [employmentDetail, setEmploymentDetail] = useState([]);
   const [selectedEmpId, setSelectedEmpId] = useState(null);
-  const SetEmpDetail = (id) => {
-    setSelectedEmpId(id);
-    setEmploymentDetail(
-      employmentHistoryDetails.find((item) =>
-        item.id === selectedEmpId ? { ...item } : item
-      )
-    );
-  };
 
   console.log(selectedEmpId);
   const [alumniDetail, setAlumniDetail] = useState({
@@ -90,6 +82,10 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     setEmploymentInformation(e);
     toggleEmpDetail();
   };
+  const SetEmpDetail = (e) => {
+    setEmploymentDetail(e);
+    toggleEmpUpdate();
+  };
 
   useEffect(() => {
     getAlumnus();
@@ -149,9 +145,8 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
               key={empDetail.id}
               empDetail={empDetail}
               toggleEmpDetail={toggleEmpDetail}
-              toggleEmpUpdate={toggleEmpUpdate}
               _employmentDetail={_employmentDetail}
-              setSelectedEmpId={SetEmpDetail}
+              SetEmpDetail={SetEmpDetail}
               getEmploymentHistory={getEmploymentHistory}
             />
           ))}
