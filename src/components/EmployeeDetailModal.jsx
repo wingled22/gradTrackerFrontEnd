@@ -12,16 +12,27 @@ import {
 } from "reactstrap";
 import "../assets/css/EmployeeDetailModal.css";
 
-const EmployeeDetailModal = ({
-  toggled,
-  untoggle,
-  employmentInformation,
-  alumniDetail,
-}) => {
+
+const formatDate = (dateString) => {
+  let date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};
+
+const EmployeeDetailModal = ({ toggled, untoggle, employmentInformation, alumniDetail }) => {
   const [modalEmpDetail, setModalEmpDetail] = useState(toggled);
 
-  const { id, companyName, position, startDate, endDate, alumniId } =
-    employmentInformation;
+  const {
+    id,
+    companyName,
+    position,
+    startDate,
+    endDate,
+    alumniId,
+} = employmentInformation;
 
   const { firstName, middleName, lastName } = alumniDetail;
 
@@ -36,24 +47,36 @@ const EmployeeDetailModal = ({
         </ModalHeader>
 
         <ModalBody>
-          <div className="radius-rectangle text-white ">
-            <Col className="colCompany d-flex align-items-center">
-              <p className="company fw-bold">Company:</p>
-              <span className="span-company">{companyName}</span>
-            </Col>
-            <Col className="colPosition d-flex align-items-center">
-              <p className="position fw-bold">Position: </p>
-              <span className="span-position">{position}</span>
-            </Col>
-            <Col className="col-start-Date d-flex align-items-center">
-              <p className="start-Date fw-bold">Start Date: </p>
-              <span className="span-start-Date">{startDate}</span>
-            </Col>
-            <Col className="col-end-Date d-flex align-items-center">
-              <p className="end-Date fw-bold">Start Date: </p>
-              <span className="span-end-Date">{endDate}</span>
-            </Col>
-          </div>
+           
+
+           <div className="radius-rectangle text-white ">
+          <Col  className="colCompany d-flex align-items-center">
+           <p className="company fw-bold">Company:</p>
+           <span className="span-company">{companyName}</span>
+           </Col>
+           <Col  className="colPosition d-flex align-items-center">
+           <p className="position fw-bold">Position: </p>
+           <span className="span-position">{position}</span>
+           </Col>
+           <Col  className="col-start-Date d-flex align-items-center">
+           <p className="start-Date fw-bold">Start Date: </p>
+           <span className="span-start-Date">{ formatDate(startDate)}</span>
+           </Col>
+           <Col  className="col-end-Date d-flex align-items-center">
+           <p className="end-Date fw-bold">Start Date: </p>
+           <span className="span-end-Date">{ formatDate(endDate)}</span>
+           </Col>
+          
+         
+          
+
+         
+           </div>
+           
+          
+
+          
+          
         </ModalBody>
       </Modal>
     </div>
