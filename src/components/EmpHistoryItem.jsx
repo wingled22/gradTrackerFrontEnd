@@ -54,6 +54,8 @@ const EmpHistoryItem = ({
     });
   };
 
+  console.log(formatDate(endDate).toString());
+
   return (
     <>
       <ul className="events">
@@ -62,7 +64,11 @@ const EmpHistoryItem = ({
           <span className="EmpJob fw-bold  fs-25">{position}</span>
           <div className="h-line"></div>
           <div className="year fw-bold  fs-25">
-            {formatDate(startDate) + " - " + formatDate(endDate)}
+            {formatDate(startDate).toString() +
+            " - " +
+            formatDate(endDate).toString().includes("January 1, 1970")
+              ? "Present"
+              : formatDate(endDate)}
           </div>
 
           <div
