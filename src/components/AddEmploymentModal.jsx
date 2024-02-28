@@ -3,14 +3,16 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, I
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHistory }) => {
+const AddEmploymentModal = ({ isOpen, toggle, selectedAlumniID, getEmploymentHistory, alumniDetail }) => {
     const [employmentDetails, setEmploymentDetails] = useState({
         companyName: "",
         position: "",
         startDate: "",
-        endDate: "",
+        endDate: null,
         alumniId: ""
     });
+
+    const { firstName, lastName } = alumniDetail;
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -24,7 +26,7 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
 
     const handleAddEmployment = async (e) => {
         e.preventDefault();
-    
+
         try {
             setIsLoading(true);
             const formData = {
@@ -34,9 +36,9 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                 startDate: employmentDetails.startDate,
                 endDate: employmentDetails.endDate,
             };
-    
+
             console.log(formData);
-    
+
             const response = await fetch("http://localhost:5134/api/EmploymentHistory", {
                 method: "POST",
                 headers: {
@@ -44,7 +46,7 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                 },
                 body: JSON.stringify(formData),
             });
-    
+
             if (response.ok) {
                 setEmploymentDetails({
                     companyName: "",
@@ -53,7 +55,7 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                     endDate: "",
                     alumniId: "",
                 });
-    
+
                 console.log("Form data submitted successfully");
                 toast.success("Form submitted successfully!"); // Display success notification
                 toggle(); // close the modal after successful submission
@@ -72,7 +74,12 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
 
     return (
         <Modal isOpen={isOpen} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Add Employment</ModalHeader>
+            <ModalHeader style={{ background: "#FF862D" }} toggle={toggle} className="EmpAddHeader text-center">
+               <p className="header-empAdd fw-bold fs-1 text-white" style={{ marginLeft: "250px" }}>Add Employment </p>
+                <p className="header-name fw-bold fs-4 text-white">
+                    {firstName + " " + lastName}
+                </p>
+            </ModalHeader>
             <ModalBody>
                 <Form onSubmit={handleAddEmployment}>
                     <hr className="separator" />
@@ -86,7 +93,7 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                                     value={employmentDetails.companyName}
                                     onChange={handleChange}
                                     required
-                                    name="companyName" 
+                                    name="companyName"
                                 />
                             </FormGroup>
                         </Col>
@@ -99,7 +106,7 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                                     value={employmentDetails.position}
                                     required
                                     onChange={handleChange}
-                                    name="position" 
+                                    name="position"
                                 />
                             </FormGroup>
                         </Col>
@@ -114,7 +121,7 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                                     value={employmentDetails.startDate}
                                     required
                                     onChange={handleChange}
-                                    name="startDate" 
+                                    name="startDate"
                                 />
                             </FormGroup>
                         </Col>
@@ -125,9 +132,8 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                                     type="date"
                                     id="endDate"
                                     value={employmentDetails.endDate}
-                                    required
                                     onChange={handleChange}
-                                    name="endDate" 
+                                    name="endDate"
                                 />
                             </FormGroup>
                         </Col>
@@ -137,7 +143,7 @@ const AddEmploymentModal = ({ isOpen, toggle,selectedAlumniID,getEmploymentHisto
                     </Button>
                 </Form>
             </ModalBody>
-            <ModalFooter></ModalFooter>
+          
         </Modal>
     );
 };

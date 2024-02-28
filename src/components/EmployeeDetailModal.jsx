@@ -13,6 +13,11 @@ import {
 import "../assets/css/EmployeeDetailModal.css";
 
 const formatDate = (dateString) => {
+
+  if (!dateString) {
+    return "Present"; 
+  }
+
   let date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
     month: "long",
@@ -59,7 +64,7 @@ const EmployeeDetailModal = ({
               <span className="span-start-Date">{formatDate(startDate)}</span>
             </Col>
             <Col className="col-end-Date d-flex align-items-center">
-              <p className="end-Date fw-bold">Start Date: </p>
+              <p className="end-Date fw-bold">End Date: </p>
               <span className="span-end-Date">{formatDate(endDate)}</span>
             </Col>
           </div>
