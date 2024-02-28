@@ -31,13 +31,17 @@ const UpdateEmployementModal = ({
   untoggle,
   empDetail,
   getEmploymentHistory,
+  alumniDetail
 }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
-  const { id, alumniId, companyName, position, startDate, endDate } =
-    employmentCredentials;
+  const { id, alumniId, companyName, position, startDate, endDate } = employmentCredentials;
+  const { firstName, middleName, lastName } = alumniDetail;
 
+  console.log("alumi detail ni",alumniDetail)
   console.log(employmentCredentials);
+
+
 
   const handleCredentials = (e) => {
     const { name, value } = e.target;
@@ -104,7 +108,7 @@ const UpdateEmployementModal = ({
             className="EmpUpdateHeader text-center"
           >
             <p className="header-empUpdate fw-bold">Update Employment</p>
-            <p className="header-name-update fw-bold">(Juan Dela Cruz)</p>
+            <p className="header-name-update fw-bold"> {firstName + " " + lastName}</p>
           </ModalHeader>
 
           <ModalBody>
@@ -112,7 +116,7 @@ const UpdateEmployementModal = ({
               <div className="thin-Rounded">
                 <Row>
                   <div className="rec-company-name text-white">
-                    <p className="update-company-title fs-6 ">Company Name</p>
+                    <p className="update-company-title fs-6 text-black">Company Name</p>
                     <input
                       type="text"
                       name="companyName"
@@ -123,7 +127,7 @@ const UpdateEmployementModal = ({
                     />
                   </div>
                   <div className="rec-position text-white">
-                    <p className="update-position-title fs-6 ">Position</p>
+                    <p className="update-position-title fs-6 text-black">Position</p>
                     <input
                       type="text"
                       name="position"
@@ -136,7 +140,7 @@ const UpdateEmployementModal = ({
                 </Row>
                 <Row>
                   <div className="rec-start text-white">
-                    <p className="update-start-title fs-6 ">Start</p>
+                    <p className="update-start-title fs-6 text-black">Start</p>
                     <input
                       type="date"
                       name="startDate"
@@ -147,7 +151,7 @@ const UpdateEmployementModal = ({
                     />
                   </div>
                   <div className="rec-end text-white">
-                    <p className="update-end-title fs-6 ">End</p>
+                    <p className="update-end-title fs-6 text-black">End</p>
                     <input
                       type="date"
                       name="endDate"

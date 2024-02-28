@@ -18,6 +18,8 @@ const EmpHistoryItem = ({
   getEmploymentHistory,
   _employmentDetail,
 }) => {
+
+ 
   const { id, companyName, position, startDate, endDate, alumniId } = empDetail;
 
   const deleteEmploymentHistory = async (empID) => {
