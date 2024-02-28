@@ -31,12 +31,12 @@ const UpdateEmployementModal = ({
   untoggle,
   empDetail,
   getEmploymentHistory,
+  alumniDetail,
 }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
-  const { id, alumniId, companyName, position, startDate, endDate } =
-    employmentCredentials;
-
+  const { id, alumniId, companyName, position, startDate, endDate } = employmentCredentials;
+  const { firstName, middleName, lastName } = alumniDetail;
   console.log(employmentCredentials);
 
   const handleCredentials = (e) => {
@@ -104,7 +104,7 @@ const UpdateEmployementModal = ({
             className="EmpUpdateHeader text-center"
           >
             <p className="header-empUpdate fw-bold">Update Employment</p>
-            <p className="header-name-update fw-bold">(Juan Dela Cruz)</p>
+            <p className="header-name-update fw-bold"> {firstName + " " + lastName}</p>
           </ModalHeader>
 
           <ModalBody>

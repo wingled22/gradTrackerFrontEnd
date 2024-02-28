@@ -111,6 +111,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
           untoggle={toggleEmpUpdate}
           empDetail={employmentDetail}
           getEmploymentHistory={getEmploymentHistory}
+          alumniDetail={alumniDetail}
         />
       ) : (
         ""
