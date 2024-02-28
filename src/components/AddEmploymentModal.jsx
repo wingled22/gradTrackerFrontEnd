@@ -74,9 +74,9 @@ const AddEmploymentModal = ({ isOpen, toggle, selectedAlumniID, getEmploymentHis
 
     return (
         <Modal isOpen={isOpen} toggle={toggle}>
-            <ModalHeader style={{ background: "#FF862D" }} toggle={toggle}>
-                Add Employment
-                <p className="header-name fw-bold fs-4">
+            <ModalHeader style={{ background: "#FF862D" }} toggle={toggle} className="EmpAddHeader text-center">
+               <p className="header-empAdd fw-bold fs-1 text-white" style={{ marginLeft: "250px" }}>Add Employment </p>
+                <p className="header-name fw-bold fs-4 text-white">
                     {firstName + " " + lastName}
                 </p>
             </ModalHeader>
@@ -143,7 +143,7 @@ const AddEmploymentModal = ({ isOpen, toggle, selectedAlumniID, getEmploymentHis
                     </Button>
                 </Form>
             </ModalBody>
-            <ModalFooter></ModalFooter>
+          
         </Modal>
     );
 };

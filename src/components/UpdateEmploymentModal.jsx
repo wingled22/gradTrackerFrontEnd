@@ -35,10 +35,8 @@ const UpdateEmployementModal = ({
 }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
-  const { id, alumniId, companyName, position, startDate, endDate } =
-    employmentCredentials;
- 
-  const {firstName, lastName} = alumniDetail
+  const { id, alumniId, companyName, position, startDate, endDate } = employmentCredentials;
+  const { firstName, lastName } = alumniDetail;
   console.log(employmentCredentials);
 
   const handleCredentials = (e) => {
@@ -114,7 +112,7 @@ const UpdateEmployementModal = ({
             <form onSubmit={onUpdate}>
               <div className="thin-Rounded">
                 <Row>
-                  <div className="rec-company-name text-white">
+                  <div className="rec-company-name text-black">
                     <p className="update-company-title fs-6 ">Company Name</p>
                     <input
                       type="text"
@@ -126,7 +124,7 @@ const UpdateEmployementModal = ({
                       className="form-control update-company-sub fs-4"
                     />
                   </div>
-                  <div className="rec-position text-white">
+                  <div className="rec-position text-black">
                     <p className="update-position-title fs-6 ">Position</p>
                     <input
                       type="text"
@@ -140,7 +138,7 @@ const UpdateEmployementModal = ({
                   </div>
                 </Row>
                 <Row>
-                  <div className="rec-start text-white">
+                  <div className="rec-start text-black">
                     <p className="update-start-title fs-6 ">Start</p>
                     <input
                       type="date"
@@ -152,7 +150,7 @@ const UpdateEmployementModal = ({
                       className="form-control update-company-sub fs-4"
                     />
                   </div>
-                  <div className="rec-end text-white">
+                  <div className="rec-end text-black">
                     <p className="update-end-title fs-6 ">End</p>
                     <input
                       type="date"
