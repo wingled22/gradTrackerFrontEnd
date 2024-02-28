@@ -80,16 +80,25 @@ const AlumnusItem = ({
   const [selectedAlumniID, setSelectedAlumniID] = useState(0);
 
   const [selectedItems, setSelectedItems] = useState([]);
+
   const handleCheckboxChange = (item) => {
     const updatedSelection = [...selectedItems];
 
     if (updatedSelection.includes(item)) {
+      //If unchecked
       console.log("removed item");
+
       updatedSelection.splice(updatedSelection.indexOf(item), 1);
+
+      //pass it to other functional component and delete the id that handle this
+      deleteBatchID(item);
     } else {
       //Else checked
       console.log("added item");
       updatedSelection.push(item);
+
+      //pass it to other functional component and add this to the array
+      addBatchID(item);
     }
 
     setSelectedItems(updatedSelection);

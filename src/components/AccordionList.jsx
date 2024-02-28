@@ -68,8 +68,6 @@ const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
     }
   };
 
-  //This is for the check and unchecking of checbox
-
   //FETCHING THE DATA OF THE ALUMNI
   useEffect(() => {
     getAlumni();

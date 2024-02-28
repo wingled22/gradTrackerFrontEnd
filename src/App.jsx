@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//import "./components/sweetalert2/dist/sweetalert2.css";
+
 function App() {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -115,8 +117,21 @@ function App() {
     <>
       <ToastContainer />
       <NavigationBar />
-      <Searchc getAlumni={getAlumni} getSearchValue={searchAlumni} />
-      <AccordionList data={alumni} getAlumni={getAlumni} />
+      <Searchc
+        getAlumni={getAlumni}
+        getSearchValue={searchAlumni}
+        deleteAlumni={
+          batchID.length === 0
+            ? showErrorDeleteAlumni
+            : showConfirmationDeleteAlumni
+        }
+      />
+      <AccordionList
+        data={alumni}
+        getAlumni={getAlumni}
+        addBatchID={addBatchID}
+        deleteBatchID={deleteBatchID}
+      />
       <Footer />
     </>
   );
