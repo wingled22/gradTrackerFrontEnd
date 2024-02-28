@@ -4,9 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 // to format the dates
 const formatDate = (dateString) => {
-
   if (!dateString) {
-    return "Present"; 
+    return "Present";
   }
   let date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -58,8 +57,6 @@ const EmpHistoryItem = ({
     });
   };
 
-  console.log(formatDate(endDate).toString());
-
   return (
     <>
       <ul className="events">
@@ -68,11 +65,7 @@ const EmpHistoryItem = ({
           <span className="EmpJob fw-bold  fs-25">{position}</span>
           <div className="h-line"></div>
           <div className="year fw-bold  fs-25">
-            {formatDate(startDate).toString() +
-            " - " +
-            formatDate(endDate).toString().includes("January 1, 1970")
-              ? "Present"
-              : formatDate(endDate)}
+            {formatDate(startDate) + " - " + formatDate(endDate)}
           </div>
 
           <div

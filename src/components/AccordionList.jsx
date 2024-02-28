@@ -17,23 +17,6 @@ import {
 } from "reactstrap";
 
 const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
-  // const [alumni, setAlumni] = useState([]);
-
-  // const containerStyle = {
-  //   width: "79%",
-  //   height: "500px",
-  //   backgroundColor: "#D9D9D9",
-  //   maxHeight: "400px",
-
-  //   borderRadius: "20px",
-  //   overflow: "auto",
-  // };
-
-  // const accordionStyle = {
-  //   borderRadius: "20px",
-  //   marginBottom: "5px",
-  // };
-
   // state for the hover of input
   const [hover, setHover] = useState(false);
 
