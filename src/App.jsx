@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import AccordionList from "./components/AccordionList.jsx";
-import Searchc from "./components/Search-create.jsx";
+import SearchbarAlumni from "./components/SearchbarAlumni.jsx";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -117,7 +117,7 @@ function App() {
     <>
       <ToastContainer />
       <NavigationBar />
-      <Searchc
+      <SearchbarAlumni
         getAlumni={getAlumni}
         getSearchValue={searchAlumni}
         deleteAlumni={
