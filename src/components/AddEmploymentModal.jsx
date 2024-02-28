@@ -20,14 +20,17 @@ const AddEmploymentModal = ({
   toggle,
   selectedAlumniID,
   getEmploymentHistory,
+  alumniDetail,
 }) => {
   const [employmentDetails, setEmploymentDetails] = useState({
     companyName: "",
     position: "",
     startDate: "",
-    endDate: "",
+    endDate: null,
     alumniId: "",
   });
+
+  const { firstName, lastName } = alumniDetail;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,8 +52,7 @@ const AddEmploymentModal = ({
         companyName: employmentDetails.companyName,
         position: employmentDetails.position,
         startDate: employmentDetails.startDate,
-        endDate:
-          employmentDetails.endDate === "" ? null : employmentDetails.endDate,
+        endDate: employmentDetails.endDate,
       };
 
       console.log(formData);
@@ -81,11 +83,11 @@ const AddEmploymentModal = ({
         getEmploymentHistory();
       } else {
         console.error("Failed to submit form data");
-        toast.error("Failed to submit form data" + response.statusText); // Display error notification
+        toast.error("Failed to submit form data"); // Display error notification
       }
     } catch (error) {
       console.error("Error submitting form data:", error);
-      toast.error("Error submitting form data" + error); // Display error notification
+      toast.error("Error submitting form data"); // Display error notification
     } finally {
       setIsLoading(false);
     }
@@ -93,7 +95,21 @@ const AddEmploymentModal = ({
 
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
-      <ModalHeader toggle={toggle}>Add Employment</ModalHeader>
+      <ModalHeader
+        style={{ background: "#FF862D" }}
+        toggle={toggle}
+        className="EmpAddHeader text-center"
+      >
+        <p
+          className="header-empAdd fw-bold fs-1 text-white"
+          style={{ marginLeft: "250px" }}
+        >
+          Add Employment{" "}
+        </p>
+        <p className="header-name fw-bold fs-4 text-white">
+          {firstName + " " + lastName}
+        </p>
+      </ModalHeader>
       <ModalBody>
         <Form onSubmit={handleAddEmployment}>
           <hr className="separator" />
@@ -157,7 +173,6 @@ const AddEmploymentModal = ({
           </Button>
         </Form>
       </ModalBody>
-      <ModalFooter></ModalFooter>
     </Modal>
   );
 };

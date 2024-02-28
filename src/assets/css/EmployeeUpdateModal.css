@@ -8,6 +8,9 @@
 .header-empUpdate {
   margin: -20px 0px 15px 350px;
 }
+.header-empDetail {
+  margin: -10px 0px 25px 250px;
+}
 .header-name-update {
   /* top right bottom left */
   margin: -25px 0px -18px 350px;
