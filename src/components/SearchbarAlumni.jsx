@@ -1,8 +1,8 @@
 import { Input } from "reactstrap";
-import Bttons from "./Bttons";
+import AlumniButtons from "./AlumniButtons.jsx";
 import React, { useEffect, useState } from "react";
 
-const Searchc = ({ getAlumni, getSearchValue, deleteAlumni }) => {
+const SearchbarAlumni = ({ getAlumni, getSearchValue, deleteAlumni }) => {
   const [searchText, setSearchText] = useState("");
   const passSearchValue = (e) => {
     setSearchText(e);
@@ -29,10 +29,10 @@ const Searchc = ({ getAlumni, getSearchValue, deleteAlumni }) => {
           }}
         />
 
-        <Bttons getAlumni={getAlumni} deleteAlumni={deleteAlumni} />
+        <AlumniButtons getAlumni={getAlumni} deleteAlumni={deleteAlumni} />
       </div>
     </div>
   );
 };
 
-export default Searchc;
+export default SearchbarAlumni;

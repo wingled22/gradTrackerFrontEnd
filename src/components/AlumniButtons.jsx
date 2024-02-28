@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 import PersonalInfoModal from "./PersonalInfoModal";
 import { useState } from "react";
 
-const Bttons = ({ getAlumni, deleteAlumni }) => {
+const AlumniButtons = ({ getAlumni, deleteAlumni }) => {
   const [modal, setModal] = useState(false);
   const toggleModal = () => setModal(!modal);
   return (
@@ -37,4 +37,4 @@ const Bttons = ({ getAlumni, deleteAlumni }) => {
   );
 };
 
-export default Bttons;
+export default AlumniButtons;
