@@ -19,20 +19,20 @@ import {
 const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
   // const [alumni, setAlumni] = useState([]);
 
-  const containerStyle = {
-    width: "79%",
-    height: "500px",
-    backgroundColor: "#D9D9D9",
-    maxHeight: "400px",
+  // const containerStyle = {
+  //   width: "79%",
+  //   height: "500px",
+  //   backgroundColor: "#D9D9D9",
+  //   maxHeight: "400px",
 
-    borderRadius: "20px",
-    overflow: "auto",
-  };
+  //   borderRadius: "20px",
+  //   overflow: "auto",
+  // };
 
-  const accordionStyle = {
-    borderRadius: "20px",
-    marginBottom: "5px",
-  };
+  // const accordionStyle = {
+  //   borderRadius: "20px",
+  //   marginBottom: "5px",
+  // };
 
   // state for the hover of input
   const [hover, setHover] = useState(false);
@@ -62,12 +62,12 @@ const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
           height: "70vh",
         }}
       >
-        <Container className="accordionContainer" style={containerStyle}>
+        <Container className="accordionContainer">
           <Accordion
             open={open}
             toggle={toggle}
             className="mt-4"
-            style={accordionStyle}
+            // style={accordionStyle}
           >
             {data.length === 0 && "No Alumni Information"}
 
