@@ -16,7 +16,7 @@ import {
   Collapse,
 } from "reactstrap";
 
-const AccordionList = ({ data, getAlumni }) => {
+const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
   // const [alumni, setAlumni] = useState([]);
 
   const containerStyle = {
@@ -68,25 +68,10 @@ const AccordionList = ({ data, getAlumni }) => {
     }
   };
 
-  //This is for the check and unchecking of checbox
-
   //FETCHING THE DATA OF THE ALUMNI
   useEffect(() => {
     getAlumni();
   }, [data.id]);
-  // const getAlumni = async () => {
-  //   try {
-
-  //     const response = await fetch("http://localhost:5134/api/Alumni");
-  //     const data = await response.json();
-  //     setAlumni(data);
-
-  //     console.log(data);
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   return (
     <>
@@ -111,6 +96,9 @@ const AccordionList = ({ data, getAlumni }) => {
                 alumnus={alumnus}
                 hover={hover}
                 setHover={setHover}
+                addBatchID={addBatchID}
+                deleteBatchID={deleteBatchID}
+                getAlumni={getAlumni}
               />
             ))}
           </Accordion>
