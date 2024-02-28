@@ -83,6 +83,7 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
     toggleEmpDetail();
   };
   const SetEmpDetail = (e) => {
+    console.log(e);
     setEmploymentDetail(e);
     toggleEmpUpdate();
   };

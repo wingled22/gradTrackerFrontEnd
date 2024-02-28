@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, userRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,6 +17,7 @@ import "../assets/css/EmployeeUpdateModal.css";
 // to format the dates
 const formatDate = (dateString) => {
   let date = new Date(dateString);
+  if (dateString === null) return null;
   return (
     date.getFullYear() +
     "-" +
@@ -31,23 +32,25 @@ const UpdateEmployementModal = ({
   untoggle,
   empDetail,
   getEmploymentHistory,
-  alumniDetail
+  alumniDetail,
 }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
-  const { id, alumniId, companyName, position, startDate, endDate } = employmentCredentials;
+  const { id, alumniId, companyName, position, startDate, endDate } =
+    employmentCredentials;
   const { firstName, lastName } = alumniDetail;
-  console.log(employmentCredentials);
 
+  console.log(employmentCredentials);
   const handleCredentials = (e) => {
     const { name, value } = e.target;
     setEmploymentCredentials((currentCreds) => ({
       ...currentCreds,
       [name]:
-        name === "startDate"
+        (name === "startDate" || name === "endDate") && value
           ? formatDate(value)
-          : name === "endDate"
-          ? formatDate(value)
+          : (name === "startDate" || name === "endDate") &&
+            (value === null || value === "")
+          ? null
           : value,
     }));
   };
@@ -99,14 +102,15 @@ const UpdateEmployementModal = ({
           toggled={untoggle}
           className="EmpUpdatemodalForm"
         >
-          <ModalHeader toggle={untoggle} className="EmpDetailHeader text-center">
-          <p className="header-empDetail fw-bold fs-1">Update Employment</p>
-          <p className="header-name fw-bold fs-4">
-            {firstName + " " + lastName}
-          </p>
-        </ModalHeader>
-
-          
+          <ModalHeader
+            toggle={untoggle}
+            className="EmpDetailHeader text-center"
+          >
+            <p className="header-empDetail fw-bold fs-1">Update Employment</p>
+            <p className="header-name fw-bold fs-4">
+              {firstName + " " + lastName}
+            </p>
+          </ModalHeader>
 
           <ModalBody>
             <form onSubmit={onUpdate}>
