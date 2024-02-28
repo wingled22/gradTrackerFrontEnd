@@ -3,7 +3,7 @@ import Bttons from "./Bttons";
 import React, { useEffect, useState } from "react";
 
 const Searchc = ({ getAlumni, getSearchValue, deleteAlumni }) => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const passSearchValue = (e) => {
     setSearchText(e);
     getSearchValue(e);

@@ -18,7 +18,6 @@ import {
 
 const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
   // const [alumni, setAlumni] = useState([]);
-  
 
   const containerStyle = {
     width: "79%",
@@ -69,12 +68,12 @@ const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
     }
   };
 
+  //This is for the check and unchecking of checbox
+
   //FETCHING THE DATA OF THE ALUMNI
   useEffect(() => {
     getAlumni();
   }, [data.id]);
-
-  
 
   return (
     <>
@@ -99,7 +98,6 @@ const AccordionList = ({ data, getAlumni, addBatchID, deleteBatchID }) => {
                 alumnus={alumnus}
                 hover={hover}
                 setHover={setHover}
-
                 addBatchID={addBatchID}
                 deleteBatchID={deleteBatchID}
                 getAlumni={getAlumni}
