@@ -4,9 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 // to format the dates
 const formatDate = (dateString) => {
-
   if (!dateString) {
-    return "Present"; 
+    return "Present";
   }
   let date = new Date(dateString);
   return date.toLocaleDateString("en-US", {

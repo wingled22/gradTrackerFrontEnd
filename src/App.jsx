@@ -15,7 +15,7 @@ import {
   showConfirmationDeleteAlumni,
   notifySuccessDelete,
   showErrorDeleteAlumni,
-} from './components/appComponentFunction/AlumniOperations.js';
+} from "./components/appComponentFunction/AlumniOperations.js";
 
 //import "./components/sweetalert2/dist/sweetalert2.css";
 
@@ -41,7 +41,7 @@ function App() {
 
   const handleDeleteBatchID = (idToDelete) => {
     deleteBatchID(idToDelete, setBatchID, batchID);
-  }
+  };
 
   const handleDeleteAlumni = () => {
     deleteAlumni(batchID, setBatchID, handleGetAlumni, notifySuccessDelete);
