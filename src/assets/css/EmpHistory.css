@@ -1,101 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-.EmpHeader{
- background-color: #FF862D;
- color: white;
- font-family: "Poppins";
-
+.EmpHeader {
+  background-color: #ff862d;
+  color: white;
+  font-family: "Poppins";
 }
-.header-empHistory{
-   margin: -20px 0px 15px 200px;
+.header-empHistory {
+  margin: -10px 0px 15px 260px;
 }
-.header-name{
+.header-name {
+  /* top right bottom left */
+  margin: -15px 0px -10px 250px;
+}
 
-    /* top right bottom left */
-       margin: -25px 0px -18px 200px;
-       
- }
+.btnAddEmpHistory {
+  margin-left: 490px;
+}
 
-
- .btnAddEmpHistory{
-  margin-left: 475px;
- }
-
- /* Customize the width of the modal dialog */
+/* Customize the width of the modal dialog */
 .modal-dialog {
-    max-width: 700px; /* Adjust the width according to your needs */
-  }
-  
-  /* Optional: If you want to center the modal horizontally */
-  .modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  max-width: 900px; /* Adjust the width according to your needs */
+}
 
- .events li { 
-    display: flex; 
-    color: #000000;
-    font-family: "Poppins";
-  }
-  
-  .events .progress-circle { 
-    position: relative;
-    }
-  
-  .events .progress-circle::after { 
-     content: "";
-     position: absolute;
-     z-index: 2;
-     right: 0;
-     top: 0;
-     transform: translateX(50%);
-     border-radius: 50%;
-     background: #fff;
-     border: 1px #ccc solid;
-     width: .8em;
-     height: .8em;
-  }
-  
-  
-  .events span {
-    padding: 0 1.5em 1.5em 1.5em;
-    position: relative;
-    
-  }
-  
-  .events span::before {
-     content: "";
-     position: absolute;
-     z-index: 1;
-     left: 0;
-     height: 100%;
-     border-left: 1px #ccc solid;
-     width: 300px;
-  }
-  
- 
-  
-  .events { width: 100%; }
-  .events, 
-  .events *::before, 
-  .events *::after { box-sizing: border-box; font-family: Poppins; }
+/* Optional: If you want to center the modal horizontally */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .h-line{
-    width: 30px;
-    height: 5px;
-    background-color: #5D5353;
-      /* top right bottom left */
-      margin: 8px 30px 0px 0px;
-  }
+.events li {
+  display: flex;
+  color: #000000;
+  font-family: "Poppins";
+}
 
-  Button {
-    margin-left: 10px;
-    border-radius: 50px;
-  }
+.events .progress-circle {
+  position: relative;
+}
 
-  .buttonAction{
-    margin-left: 20px;
-    
-  }
+.events .progress-circle::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  transform: translateX(50%);
+  border-radius: 50%;
+  background: #545252;
+  border: 1px #cccccc solid;
+  width: 0.8em;
+  height: 0.8em;
+}
+
+.events span {
+  padding: 0 1.5em 1.5em 1.5em;
+  position: relative;
+}
+
+.events span::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  height: 100%;
+  border-left: 1px #676363 solid;
+  width: 300px;
+}
+
+.events {
+  width: 100%;
+}
+.events,
+.events *::before,
+.events *::after {
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+.h-line {
+  width: 30px;
+  height: 5px;
+  background-color: #5d5353;
+  /* top right bottom left */
+  margin: 8px 30px 0px 0px;
+}
+
+Button {
+  margin-left: 10px;
+  border-radius: 50px;
+}
+
+.buttonAction {
+  margin-left: 20px;
+}
