@@ -31,12 +31,14 @@ const UpdateEmployementModal = ({
   untoggle,
   empDetail,
   getEmploymentHistory,
+  alumniDetail
 }) => {
   const [modalEmpUpdate, setModalEmpUpdate] = useState(toggled);
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
   const { id, alumniId, companyName, position, startDate, endDate } =
     employmentCredentials;
-
+ 
+  const {firstName, lastName} = alumniDetail
   console.log(employmentCredentials);
 
   const handleCredentials = (e) => {
@@ -99,13 +101,14 @@ const UpdateEmployementModal = ({
           toggled={untoggle}
           className="EmpUpdatemodalForm"
         >
-          <ModalHeader
-            toggle={untoggle}
-            className="EmpUpdateHeader text-center"
-          >
-            <p className="header-empUpdate fw-bold">Update Employment</p>
-            <p className="header-name-update fw-bold">(Juan Dela Cruz)</p>
-          </ModalHeader>
+          <ModalHeader toggle={untoggle} className="EmpDetailHeader text-center">
+          <p className="header-empDetail fw-bold fs-1">Update Employment</p>
+          <p className="header-name fw-bold fs-4">
+            {firstName + " " + lastName}
+          </p>
+        </ModalHeader>
+
+          
 
           <ModalBody>
             <form onSubmit={onUpdate}>
@@ -118,6 +121,7 @@ const UpdateEmployementModal = ({
                       name="companyName"
                       id="companyName"
                       value={companyName}
+                      required
                       onChange={handleCredentials}
                       className="form-control update-company-sub fs-4"
                     />
@@ -128,6 +132,7 @@ const UpdateEmployementModal = ({
                       type="text"
                       name="position"
                       id="position"
+                      required
                       value={position}
                       onChange={handleCredentials}
                       className="form-control update-company-sub fs-4"
@@ -141,6 +146,7 @@ const UpdateEmployementModal = ({
                       type="date"
                       name="startDate"
                       id="startDate"
+                      required
                       value={formatDate(startDate)}
                       onChange={handleCredentials}
                       className="form-control update-company-sub fs-4"
