@@ -29,6 +29,7 @@ const SearchbarAlumni = ({ getAlumni, getSearchValue, deleteAlumni }) => {
           }}
         />
 
+
         <AlumniButtons getAlumni={getAlumni} deleteAlumni={deleteAlumni} />
       </div>
     </div>
