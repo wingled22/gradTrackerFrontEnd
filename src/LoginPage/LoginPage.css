@@ -27,7 +27,7 @@ body{
 .text-tracker{
     color: #45413D;
     font-weight: bolder;
-    margin: -5px 0px 0px 35px !important;
+    margin: -5px 0px 0px 45px !important;
     font-size: 10px !important;
 }
 
@@ -89,15 +89,17 @@ body{
   }
 
 
-  /* **********forgot password********** */
+  /******************** **********forgot password********** *******************/
 .forgot-pass{
   margin: -15px 0px 0px 100px !important;
   font-family: "Poppins",sans-serif !important;
   font-weight: bold !important;
 }
 
+/******************************* button login styling************************* */
+
 .button-login{
-    width: 260px !important;
+    max-width: 260px !important;
     margin-left: -5px !important;
     font-family: "Poppins",sans-serif !important;
     background-color: #FF862D !important;
