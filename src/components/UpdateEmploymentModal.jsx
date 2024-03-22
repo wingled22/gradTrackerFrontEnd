@@ -37,8 +37,8 @@ const UpdateEmployementModal = ({
   const [employmentCredentials, setEmploymentCredentials] = useState(empDetail);
   const { id, alumniId, companyName, position, startDate, endDate } =
     employmentCredentials;
- 
-  const {firstName, lastName} = alumniDetail
+
+  const { firstName, lastName } = alumniDetail
   console.log(employmentCredentials);
 
   const handleCredentials = (e) => {
@@ -49,8 +49,8 @@ const UpdateEmployementModal = ({
         name === "startDate"
           ? formatDate(value)
           : name === "endDate"
-          ? formatDate(value)
-          : value,
+            ? formatDate(value)
+            : value,
     }));
   };
 
@@ -102,13 +102,13 @@ const UpdateEmployementModal = ({
           className="EmpUpdatemodalForm"
         >
           <ModalHeader toggle={untoggle} className="EmpDetailHeader text-center">
-          <p className="header-empDetail fw-bold fs-1">Update Employment</p>
-          <p className="header-name fw-bold fs-4">
-            {firstName + " " + lastName}
-          </p>
-        </ModalHeader>
+            <p className="header-empDetail fw-bold fs-1">Update Employment</p>
+            <p className="header-name fw-bold fs-4">
+              {firstName + " " + lastName}
+            </p>
+          </ModalHeader>
 
-          
+
 
           <ModalBody>
             <form onSubmit={onUpdate}>
