@@ -6,11 +6,7 @@ body{
     background-color: #00523F !important;
 }
 
-/******************** header styling **********************/
-.header-area{
-    background-color: #FF862D !important;
-    max-height: 45px !important;
-}
+
 
  /************************* header text styling************** */
 .text-label{
@@ -23,7 +19,7 @@ body{
     font-style: normal !important;
    
     color: #FFFFFF !important;
-    margin: 0px 0px 0px 10px !important;
+    margin: -45px 0px 0px 20px !important;
     font-size: 25px !important;
     position: relative;
 }
@@ -44,7 +40,7 @@ body{
     position: relative !important;
    max-width: 360px !important;
    max-height:  360px !important;
-   margin: 120px 0px 0px 602px !important;
+   margin: 150px 0px 0px 550px !important;
 }
 
 
@@ -98,4 +94,11 @@ body{
   margin: -15px 0px 0px 100px !important;
   font-family: "Poppins",sans-serif !important;
   font-weight: bold !important;
+}
+
+.button-login{
+    width: 260px !important;
+    margin-left: -5px !important;
+    font-family: "Poppins",sans-serif !important;
+    background-color: #FF862D !important;
 }
