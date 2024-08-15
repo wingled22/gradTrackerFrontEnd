@@ -1,40 +1,46 @@
-import React from "react";
-import { Row, Col, Input, Form ,Button} from "reactstrap";
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import authService from '../services/authService';
 
 
 const LoginForm = () => {
-    return ( 
-    <>
-     <div className="form-container">
-          <Form className="formPosition">
-            <div className="usernameFormat">
-              <div className="text-username">Username</div>
-              <Input
-                type="text"
-                className="form-control custom-input"
-              />
-              <br />
-            </div>
-            <div className="passwordFormat">
-              <div className="text-password">Password</div>
-              <Input
-                type="password"
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-                className="form-control custom-input"
-              />
-              <br />
-            </div>
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await authService.login(username, password);
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
 
-            <div className="forgot-pass">
-                <p>Forgot Password?</p>
-            </div>
-
-            <Button className="button-login">Login</Button>
-          </Form>
-        </div>
-    </>
-
-     );
+  return (
+    <form onSubmit={handleLogin} className="formPosition">
+      <div>
+        <label className="text-username">Username</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="custom-input"
+        />
+      </div>
+      <div>
+        <label className="text-password">Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="custom-input"
+        />
+      </div>
+      <button type="submit" className="button-login">Login</button>
+    </form>
+  );
 }
- 
+
 export default LoginForm;
