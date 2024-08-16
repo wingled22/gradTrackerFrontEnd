@@ -141,18 +141,19 @@ const EmploymentHistory = ({ toggled, untoggle, selectedAlumniID }) => {
         </ModalHeader>
 
         <ModalBody>
-          {employmentHistoryDetails.length === 0 &&
-            "No Employment History Information"}
-          {employmentHistoryDetails.map((empDetail) => (
-            <EmpHistoryItem
-              key={empDetail.id}
-              empDetail={empDetail}
-              toggleEmpDetail={toggleEmpDetail}
-              _employmentDetail={_employmentDetail}
-              SetEmpDetail={SetEmpDetail}
-              getEmploymentHistory={getEmploymentHistory}
-            />
-          ))}
+          {employmentDetail}
+          {employmentHistoryDetails.length === 0
+            ? "No Employment History Information"
+            : employmentHistoryDetails.map((empDetail) => (
+                <EmpHistoryItem
+                  key={empDetail.id}
+                  empDetail={empDetail}
+                  toggleEmpDetail={toggleEmpDetail}
+                  _employmentDetail={_employmentDetail}
+                  SetEmpDetail={SetEmpDetail}
+                  getEmploymentHistory={getEmploymentHistory}
+                />
+              ))}
 
           <div className="btnAddEmpHistory">
             <Button
