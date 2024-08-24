@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import authService from '../services/authService';
-
+import authService from "../services/authService";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await authService.login(username, password);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
     }
   };
 
@@ -38,9 +37,11 @@ const LoginForm = () => {
           className="custom-input"
         />
       </div>
-      <button type="submit" className="button-login">Login</button>
+      <button type="submit" className="button-login btn mt-2">
+        Login
+      </button>
     </form>
   );
-}
+};
 
 export default LoginForm;

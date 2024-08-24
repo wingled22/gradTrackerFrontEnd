@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   getAlumni,
   searchAlumni,
+  filterAlumni,
   addBatchID,
   deleteBatchID,
   deleteAlumni,
@@ -32,7 +33,11 @@ function App() {
   };
 
   const handleSearch = (search) => {
-    searchAlumni(alumni, originalAlumni, setAlumni, search);
+    searchAlumni(originalAlumni, setAlumni, search);
+  };
+
+  const handleFilter = (filter) => {
+    filterAlumni(originalAlumni, setAlumni, filter);
   };
 
   const handleAddBatchID = (newID) => {
@@ -57,12 +62,12 @@ function App() {
 
   return (
     <>
-    
       <ToastContainer />
       <NavigationBar />
       <SearchbarAlumni
         getAlumni={handleGetAlumni}
         getSearchValue={handleSearch}
+        getFilterValue={handleFilter}
         deleteAlumni={
           batchID.length === 0
             ? handleShowErrorDeleteAlumni
