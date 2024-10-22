@@ -1,10 +1,13 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { decodeToken, useJwt } from "react-jwt";
+const user = JSON.parse(localStorage.getItem("user")); //
 
 const PrivateRoute = ({ children }) => {
-  const user = JSON.parse(localStorage.getItem('user')); // Retrieve the user from localStorage
+  const { decodedToken, isExpired } = useJwt(user);
 
-  return user ? children : <Navigate to="/" />;
+  console.log(decodeToken);
+  return decodeToken ? children : <Navigate to="/" />;
 };
 
 export default PrivateRoute;

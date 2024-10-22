@@ -26,7 +26,7 @@ function App() {
   const [alumni, setAlumni] = useState([]);
   const [originalAlumni, setOriginalAlumni] = useState([]);
   const [batchID, setBatchID] = useState([]);
-  const [mergedName, setMergedName] = useState("");
+  // const [mergedName, setMergedName] = useState("");
 
   const handleGetAlumni = () => {
     getAlumni(setAlumni, setOriginalAlumni);

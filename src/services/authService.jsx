@@ -1,40 +1,37 @@
 // src/services/authService.js
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:5134/api/authentication/'; // Update with your API base URL
+const API_URL = "http://localhost:5134/api/authentication/"; // Update with your API base URL
 
-const register = (username, password) => {
-    return axios.post(`${API_URL}registeruser`, {
-        username,
-        password,
-    });
+const register = async (username, password) => {
+  return await axios.post(`${API_URL}registeruser`, {
+    username,
+    password,
+  });
 };
 
-const login = (username, password) => {
-    return axios.post(`${API_URL}loginuser`, {
-        username,
-        password,
-    })
-    .then(response => {
-        console.log(response)
-        if (response.data) {
-            localStorage.setItem('user', JSON.stringify(response.data));
-        }
-        return response.data;
-    });
+const login = async (username, password) => {
+  const response = await axios.post(`${API_URL}loginuser`, {
+    username,
+    password,
+  });
+  if (response.data) {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
+  return response.data;
 };
 
 const logout = () => {
-    localStorage.removeItem('user');
+  localStorage.removeItem("user");
 };
 
 const getCurrentUser = () => {
-    return JSON.parse(localStorage.getItem('user'));
+  return JSON.parse(localStorage.getItem("user"));
 };
 
 export default {
-    register,
-    login,
-    logout,
-    getCurrentUser,
+  register,
+  login,
+  logout,
+  getCurrentUser,
 };
