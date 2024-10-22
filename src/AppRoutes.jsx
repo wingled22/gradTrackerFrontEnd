@@ -3,28 +3,32 @@ import App from "./App";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import UsersPage from "./UsersPage/UsersPage";
+import NavigationBar from "./components/NavigationBar";
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route
-        path="/dashboard"
-        element={
-          <PrivateRoute>
-            <App />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/home"
-        element={
-          <PrivateRoute>
-            <UsersPage />
-          </PrivateRoute>
-        }
-      />
-    </Routes>
+    <>
+      <NavigationBar />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <App />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <UsersPage />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </>
   );
 };
 

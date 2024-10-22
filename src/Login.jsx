@@ -1,5 +1,5 @@
 import React from "react";
-import LoginHeader from "./LoginPage/LoginHeader";
+// import LoginHeader from "./LoginPage/LoginHeader";
 import { Row, Col, Input, Form, Button } from "reactstrap";
 import "../src/LoginPage/LoginPage.css";
 import crmclogo from "../src/assets/CRMC_LOGO1.png";
@@ -8,9 +8,9 @@ const Login = () => {
   return (
     <>
       <Row>
-        <div style={{ backgroundColor: "#FF862D", height: 45 }}></div>
+        {/* <div style={{ backgroundColor: "#FF862D", height: 45 }}></div> */}
 
-        <LoginHeader />
+        {/* <LoginHeader /> */}
 
         <div className="Logo">
           <img src={crmclogo} alt="" className="crmc-logo" />
@@ -21,8 +21,6 @@ const Login = () => {
         </div>
 
         <LoginForm />
-
-        
       </Row>
     </>
   );
