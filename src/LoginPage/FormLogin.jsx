@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/authService";
+import { decodeToken } from "react-jwt";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -10,8 +11,17 @@ const LoginForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await authService.login(username, password);
-      navigate("/dashboard");
+      const token = await authService.login(username, password);
+      const decodedToken = decodeToken(token);
+      const userRole =
+        decodedToken[
+          "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+        ];
+      userRole === "Admin"
+        ? navigate("/dashboard")
+        : userRole === "User"
+        ? navigate("/home")
+        : navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
     }
