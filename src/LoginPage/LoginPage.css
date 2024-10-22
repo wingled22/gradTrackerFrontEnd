@@ -32,6 +32,7 @@ body {
 
 .Logo {
   position: absolute !important;
+  z-index: -200;
 }
 .crmc-logo {
   position: relative !important;
@@ -43,7 +44,7 @@ body {
 /********************* welcome text styling*********************** */
 .label-welcome {
   position: absolute !important;
-  z-index: 0;
+  z-index: -200 !important;
 }
 .text-welcome {
   font-family: "Poppins", sans-serif;
