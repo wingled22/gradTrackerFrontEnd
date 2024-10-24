@@ -370,13 +370,20 @@ const PersonalInfoModal = ({
                     >
                       {department === "CCS" ? (
                         <>
+                          <option value="">Select Program</option>
                           <option value="IT">IT</option>
                           <option value="Computer Science">
                             Computer Science
                           </option>
                         </>
                       ) : department === "Commerce" ? (
-                        <option value="Accountancy">Accountancy</option>
+                        <>
+                          <option value="">Select Program</option>
+                          <option value="Accountancy">Accountancy</option>
+                          <option value="Financial Management">
+                            Financial Management
+                          </option>
+                        </>
                       ) : (
                         <option value="">Select Program</option>
                       )}

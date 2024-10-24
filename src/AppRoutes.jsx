@@ -4,6 +4,7 @@ import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import UsersPage from "./UsersPage/UsersPage";
 import NavigationBar from "./components/NavigationBar";
+import UserRegistrationPage from "./UserRegistrationPage/UserRegistrationPage";
 
 const AppRoutes = () => {
   return (
@@ -11,6 +12,7 @@ const AppRoutes = () => {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<UserRegistrationPage />} />
         <Route
           path="/dashboard"
           element={

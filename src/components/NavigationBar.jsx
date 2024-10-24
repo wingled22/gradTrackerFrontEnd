@@ -31,7 +31,17 @@ const NavigationBar = () => {
           </div>
         </>
       ) : (
-        <></>
+        <div className="links">
+          <ul className="links-items d-flex align-items-center text-light">
+            <li
+              style={{ cursor: "pointer" }}
+              className="mx-2 mt-3"
+              onClick={() => navigate("/register")}
+            >
+              Alumni Registration
+            </li>
+          </ul>
+        </div>
       )}
     </nav>
   );
